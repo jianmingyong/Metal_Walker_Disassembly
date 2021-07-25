@@ -568,7 +568,7 @@ jr_017_4b5c:
     rst $38                                       ; $4b65: $ff
     rst $38                                       ; $4b66: $ff
     inc bc                                        ; $4b67: $03
-    jp Jump_000_0606                              ; $4b68: $c3 $06 $06
+    jp $0606                                      ; $4b68: $c3 $06 $06
 
 
     inc c                                         ; $4b6b: $0c
@@ -8916,7 +8916,7 @@ jr_017_7473:
     xor h                                         ; $747e: $ac
     call nc, $fc9d                                ; $747f: $d4 $9d $fc
     db $fd                                        ; $7482: $fd
-    call nz, Call_000_04c7                        ; $7483: $c4 $c7 $04
+    call nz, $04c7                                ; $7483: $c4 $c7 $04
     rlca                                          ; $7486: $07
     ld [$086f], sp                                ; $7487: $08 $6f $08
 
@@ -9205,7 +9205,7 @@ jr_017_7570:
     ld e, a                                       ; $75bf: $5f
     cp h                                          ; $75c0: $bc
     cp h                                          ; $75c1: $bc
-    jp nz, Jump_000_0fff                          ; $75c2: $c2 $ff $0f
+    jp nz, $0fff                                  ; $75c2: $c2 $ff $0f
 
     ret c                                         ; $75c5: $d8
 

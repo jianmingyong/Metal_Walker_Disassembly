@@ -8,11 +8,15 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     db $28, $01, $40, $21
 
     nop                                           ; $4004: $00
-    pop af                                        ; $4005: $f1
-    ld b, c                                       ; $4006: $41
-    ld hl, $5d00                                  ; $4007: $21 $00 $5d
-    ld b, h                                       ; $400a: $44
-    ld hl, $d700                                  ; $400b: $21 $00 $d7
+
+    db $f1, $41, $21
+
+    nop                                           ; $4008: $00
+
+    db $5d, $44, $21
+
+    nop                                           ; $400c: $00
+    rst $10                                       ; $400d: $d7
     ld [hl], e                                    ; $400e: $73
     inc h                                         ; $400f: $24
     nop                                           ; $4010: $00
@@ -98,9 +102,9 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     ld [hl], a                                    ; $408e: $77
     inc h                                         ; $408f: $24
     nop                                           ; $4090: $00
-    ld [hl], b                                    ; $4091: $70
-    ld d, l                                       ; $4092: $55
-    ld [hl+], a                                   ; $4093: $22
+
+    db $70, $55, $22
+
     nop                                           ; $4094: $00
     add hl, bc                                    ; $4095: $09
     ld h, b                                       ; $4096: $60
@@ -110,9 +114,9 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
 
     ld [hl+], a                                   ; $409b: $22
     nop                                           ; $409c: $00
-    di                                            ; $409d: $f3
-    ld b, d                                       ; $409e: $42
-    ld [hl+], a                                   ; $409f: $22
+
+    db $f3, $42, $22
+
     nop                                           ; $40a0: $00
     and [hl]                                      ; $40a1: $a6
     ld d, b                                       ; $40a2: $50
@@ -126,15 +130,17 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     ld d, l                                       ; $40aa: $55
     dec h                                         ; $40ab: $25
     nop                                           ; $40ac: $00
-    ld bc, $2240                                  ; $40ad: $01 $40 $22
+
+    db $01, $40, $22
+
     nop                                           ; $40b0: $00
     sbc d                                         ; $40b1: $9a
     ld h, d                                       ; $40b2: $62
     dec h                                         ; $40b3: $25
     nop                                           ; $40b4: $00
-    sbc d                                         ; $40b5: $9a
-    ld d, a                                       ; $40b6: $57
-    ld [hl+], a                                   ; $40b7: $22
+
+    db $9a, $57, $22
+
     nop                                           ; $40b8: $00
     dec d                                         ; $40b9: $15
     ld d, d                                       ; $40ba: $52
@@ -148,9 +154,9 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     ld h, d                                       ; $40c2: $62
     ld [hl+], a                                   ; $40c3: $22
     nop                                           ; $40c4: $00
-    ld a, l                                       ; $40c5: $7d
-    ld h, h                                       ; $40c6: $64
-    ld [hl+], a                                   ; $40c7: $22
+
+    db $7d, $64, $22
+
     nop                                           ; $40c8: $00
     and h                                         ; $40c9: $a4
     ld h, a                                       ; $40ca: $67
@@ -168,9 +174,9 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     ld h, l                                       ; $40d6: $65
     dec h                                         ; $40d7: $25
     nop                                           ; $40d8: $00
-    xor [hl]                                      ; $40d9: $ae
-    ld [hl], d                                    ; $40da: $72
-    ld [hl+], a                                   ; $40db: $22
+
+    db $ae, $72, $22
+
     nop                                           ; $40dc: $00
     inc c                                         ; $40dd: $0c
     db $76                                        ; $40de: $76
@@ -178,9 +184,11 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     nop                                           ; $40e0: $00
     inc sp                                        ; $40e1: $33
     ld a, c                                       ; $40e2: $79
-    ld hl, $0100                                  ; $40e3: $21 $00 $01
-    ld b, b                                       ; $40e6: $40
-    inc hl                                        ; $40e7: $23
+    db $21                                        ; $40e3: $21
+    nop                                           ; $40e4: $00
+
+    db $01, $40, $23
+
     nop                                           ; $40e8: $00
     and c                                         ; $40e9: $a1
     ld b, e                                       ; $40ea: $43
@@ -204,9 +212,9 @@ jr_028_40f6:
     ld d, c                                       ; $40fa: $51
     inc hl                                        ; $40fb: $23
     nop                                           ; $40fc: $00
-    ld c, a                                       ; $40fd: $4f
-    ld d, l                                       ; $40fe: $55
-    inc hl                                        ; $40ff: $23
+
+    db $4f, $55, $23
+
     nop                                           ; $4100: $00
     add hl, sp                                    ; $4101: $39
     ld e, b                                       ; $4102: $58
@@ -242,9 +250,9 @@ jr_028_40f6:
     db $1d, $70, $23
 
     nop                                           ; $4124: $00
-    db $eb                                        ; $4125: $eb
-    ld e, b                                       ; $4126: $58
-    dec h                                         ; $4127: $25
+
+    db $eb, $58, $25
+
     nop                                           ; $4128: $00
     db $db                                        ; $4129: $db
     ld [hl], d                                    ; $412a: $72
@@ -254,13 +262,13 @@ jr_028_40f6:
     db $76                                        ; $412e: $76
     inc hl                                        ; $412f: $23
     nop                                           ; $4130: $00
-    ld a, d                                       ; $4131: $7a
-    ld c, c                                       ; $4132: $49
-    ld [hl+], a                                   ; $4133: $22
+
+    db $7a, $49, $22
+
     nop                                           ; $4134: $00
-    ld d, c                                       ; $4135: $51
-    ld c, [hl]                                    ; $4136: $4e
-    ld [hl+], a                                   ; $4137: $22
+
+    db $51, $4e, $22
+
     nop                                           ; $4138: $00
     and $5b                                       ; $4139: $e6 $5b
     dec h                                         ; $413b: $25
@@ -273,9 +281,9 @@ jr_028_40f6:
     ld c, e                                       ; $4142: $4b
     inc h                                         ; $4143: $24
     nop                                           ; $4144: $00
-    db $ed                                        ; $4145: $ed
-    ld c, [hl]                                    ; $4146: $4e
-    inc h                                         ; $4147: $24
+
+    db $ed, $4e, $24
+
     nop                                           ; $4148: $00
     sbc c                                         ; $4149: $99
     ld d, c                                       ; $414a: $51
@@ -289,9 +297,9 @@ jr_028_40f6:
     ld e, b                                       ; $4152: $58
     inc h                                         ; $4153: $24
     nop                                           ; $4154: $00
-    or [hl]                                       ; $4155: $b6
-    ld l, l                                       ; $4156: $6d
-    dec h                                         ; $4157: $25
+
+    db $b6, $6d, $25
+
     nop                                           ; $4158: $00
     add $5a                                       ; $4159: $c6 $5a
     inc h                                         ; $415b: $24
@@ -347,10 +355,10 @@ jr_028_4191:
 
 jr_028_4195:
     ld e, $4f                                     ; $4195: $1e $4f
-    jr nz, jr_028_4199                            ; $4197: $20 $00
+    jr nz, @+$02                                  ; $4197: $20 $00
 
-jr_028_4199:
-    ld bc, $2050                                  ; $4199: $01 $50 $20
+    db $01, $50, $20
+
     nop                                           ; $419c: $00
     push bc                                       ; $419d: $c5
     ld d, b                                       ; $419e: $50
@@ -359,14 +367,10 @@ jr_028_4199:
 jr_028_41a1:
     or [hl]                                       ; $41a1: $b6
     ld d, c                                       ; $41a2: $51
-    jr nz, jr_028_41a5                            ; $41a3: $20 $00
+    jr nz, @+$02                                  ; $41a3: $20 $00
 
-jr_028_41a5:
-    ld h, b                                       ; $41a5: $60
-    ld d, e                                       ; $41a6: $53
-    jr nz, jr_028_41a9                            ; $41a7: $20 $00
+    db $60, $53, $20, $00
 
-jr_028_41a9:
     add [hl]                                      ; $41a9: $86
     ld d, h                                       ; $41aa: $54
     jr nz, jr_028_41ad                            ; $41ab: $20 $00
@@ -379,24 +383,16 @@ jr_028_41ad:
 jr_028_41b1:
     push af                                       ; $41b1: $f5
     ld d, l                                       ; $41b2: $55
-    jr nz, jr_028_41b5                            ; $41b3: $20 $00
+    jr nz, @+$02                                  ; $41b3: $20 $00
 
-jr_028_41b5:
-    add d                                         ; $41b5: $82
-    ld d, [hl]                                    ; $41b6: $56
-    jr nz, jr_028_41b9                            ; $41b7: $20 $00
+    db $82, $56, $20, $00
 
-jr_028_41b9:
     ld a, [de]                                    ; $41b9: $1a
     ld d, a                                       ; $41ba: $57
-    jr nz, jr_028_41bd                            ; $41bb: $20 $00
+    jr nz, @+$02                                  ; $41bb: $20 $00
 
-jr_028_41bd:
-    or [hl]                                       ; $41bd: $b6
-    ld d, a                                       ; $41be: $57
-    jr nz, jr_028_41c1                            ; $41bf: $20 $00
+    db $b6, $57, $20, $00
 
-jr_028_41c1:
     or [hl]                                       ; $41c1: $b6
     ld d, a                                       ; $41c2: $57
     jr nz, jr_028_41c5                            ; $41c3: $20 $00
@@ -409,14 +405,10 @@ jr_028_41c5:
 jr_028_41c9:
     cp [hl]                                       ; $41c9: $be
     ld e, b                                       ; $41ca: $58
-    jr nz, jr_028_41cd                            ; $41cb: $20 $00
+    jr nz, @+$02                                  ; $41cb: $20 $00
 
-jr_028_41cd:
-    inc a                                         ; $41cd: $3c
-    ld e, c                                       ; $41ce: $59
-    jr nz, jr_028_41d1                            ; $41cf: $20 $00
+    db $3c, $59, $20, $00
 
-jr_028_41d1:
     inc a                                         ; $41d1: $3c
     ld e, c                                       ; $41d2: $59
     jr nz, jr_028_41d5                            ; $41d3: $20 $00
@@ -434,28 +426,21 @@ jr_028_41d9:
 jr_028_41dd:
     add hl, hl                                    ; $41dd: $29
     ld e, d                                       ; $41de: $5a
-    jr nz, jr_028_41e1                            ; $41df: $20 $00
+    jr nz, @+$02                                  ; $41df: $20 $00
 
-jr_028_41e1:
-    ld c, h                                       ; $41e1: $4c
-    ld e, e                                       ; $41e2: $5b
-    jr nz, jr_028_41e5                            ; $41e3: $20 $00
+    db $4c, $5b, $20, $00
 
-jr_028_41e5:
     ld [de], a                                    ; $41e5: $12
     ld e, h                                       ; $41e6: $5c
     jr nz, jr_028_41e9                            ; $41e7: $20 $00
 
 jr_028_41e9:
     add sp, $5c                                   ; $41e9: $e8 $5c
-    jr nz, jr_028_41ed                            ; $41eb: $20 $00
+    jr nz, @+$02                                  ; $41eb: $20 $00
 
-jr_028_41ed:
-    cp [hl]                                       ; $41ed: $be
-    ld e, l                                       ; $41ee: $5d
-    jr nz, jr_028_41f1                            ; $41ef: $20 $00
+    db $be, $5d, $20
 
-jr_028_41f1:
+    nop                                           ; $41f0: $00
     dec sp                                        ; $41f1: $3b
     ld e, a                                       ; $41f2: $5f
     jr nz, jr_028_41f5                            ; $41f3: $20 $00
@@ -474,14 +459,10 @@ jr_028_41fd:
 
 jr_028_4201:
     xor $5f                                       ; $4201: $ee $5f
-    jr nz, jr_028_4205                            ; $4203: $20 $00
+    jr nz, @+$02                                  ; $4203: $20 $00
 
-jr_028_4205:
-    ld d, h                                       ; $4205: $54
-    ld h, c                                       ; $4206: $61
-    jr nz, jr_028_4209                            ; $4207: $20 $00
+    db $54, $61, $20, $00
 
-jr_028_4209:
     add hl, de                                    ; $4209: $19
     ld h, d                                       ; $420a: $62
     jr nz, jr_028_420d                            ; $420b: $20 $00
@@ -519,19 +500,10 @@ jr_028_4221:
 jr_028_4225:
     xor a                                         ; $4225: $af
     ld h, a                                       ; $4226: $67
-    jr nz, jr_028_4229                            ; $4227: $20 $00
+    jr nz, @+$02                                  ; $4227: $20 $00
 
-jr_028_4229:
-    add a                                         ; $4229: $87
-    ld l, b                                       ; $422a: $68
-    jr nz, jr_028_422d                            ; $422b: $20 $00
+    db $87, $68, $20, $00, $87, $68, $20, $00
 
-jr_028_422d:
-    add a                                         ; $422d: $87
-    ld l, b                                       ; $422e: $68
-    jr nz, jr_028_4231                            ; $422f: $20 $00
-
-jr_028_4231:
     add a                                         ; $4231: $87
     ld l, b                                       ; $4232: $68
     jr nz, jr_028_4235                            ; $4233: $20 $00
@@ -539,19 +511,10 @@ jr_028_4231:
 jr_028_4235:
     add a                                         ; $4235: $87
     ld l, b                                       ; $4236: $68
-    jr nz, jr_028_4239                            ; $4237: $20 $00
+    jr nz, @+$02                                  ; $4237: $20 $00
 
-jr_028_4239:
-    ld a, [de]                                    ; $4239: $1a
-    ld l, d                                       ; $423a: $6a
-    jr nz, jr_028_423d                            ; $423b: $20 $00
+    db $1a, $6a, $20, $00, $f1, $6a, $20, $00
 
-jr_028_423d:
-    pop af                                        ; $423d: $f1
-    ld l, d                                       ; $423e: $6a
-    jr nz, jr_028_4241                            ; $423f: $20 $00
-
-jr_028_4241:
     rst $08                                       ; $4241: $cf
     ld l, e                                       ; $4242: $6b
     jr nz, jr_028_4245                            ; $4243: $20 $00
@@ -564,14 +527,10 @@ jr_028_4245:
 jr_028_4249:
     dec sp                                        ; $4249: $3b
     ld l, l                                       ; $424a: $6d
-    jr nz, jr_028_424d                            ; $424b: $20 $00
+    jr nz, @+$02                                  ; $424b: $20 $00
 
-jr_028_424d:
-    ld a, a                                       ; $424d: $7f
-    ld l, [hl]                                    ; $424e: $6e
-    jr nz, jr_028_4251                            ; $424f: $20 $00
+    db $7f, $6e, $20, $00
 
-jr_028_4251:
     ld l, l                                       ; $4251: $6d
     ld l, a                                       ; $4252: $6f
     jr nz, jr_028_4255                            ; $4253: $20 $00
@@ -585,14 +544,10 @@ jr_028_4259:
     ret c                                         ; $4259: $d8
 
     ld [hl], b                                    ; $425a: $70
-    jr nz, jr_028_425d                            ; $425b: $20 $00
+    jr nz, @+$02                                  ; $425b: $20 $00
 
-jr_028_425d:
-    adc d                                         ; $425d: $8a
-    ld [hl], c                                    ; $425e: $71
-    jr nz, jr_028_4261                            ; $425f: $20 $00
+    db $8a, $71, $20, $00
 
-jr_028_4261:
     adc d                                         ; $4261: $8a
     ld [hl], c                                    ; $4262: $71
     jr nz, jr_028_4265                            ; $4263: $20 $00
@@ -775,14 +730,11 @@ jr_028_4301:
 jr_028_4305:
     ld l, a                                       ; $4305: $6f
     ld c, [hl]                                    ; $4306: $4e
-    jr nz, jr_028_4309                            ; $4307: $20 $00
+    jr nz, @+$02                                  ; $4307: $20 $00
 
-jr_028_4309:
-    ld sp, hl                                     ; $4309: $f9
-    ld a, c                                       ; $430a: $79
-    jr nz, jr_028_430d                            ; $430b: $20 $00
+    db $f9, $79, $20
 
-jr_028_430d:
+    nop                                           ; $430c: $00
     ld e, $4f                                     ; $430d: $1e $4f
     jr nz, jr_028_4311                            ; $430f: $20 $00
 
@@ -790,14 +742,8 @@ jr_028_4311:
     ld bc, $2050                                  ; $4311: $01 $50 $20
     nop                                           ; $4314: $00
 
-    db $01, $40, $2a, $29
+    db $01, $40, $2a, $29, $91, $40, $2a, $29, $21, $41, $2a, $29
 
-    sub c                                         ; $4319: $91
-    ld b, b                                       ; $431a: $40
-    ld a, [hl+]                                   ; $431b: $2a
-    add hl, hl                                    ; $431c: $29
-    ld hl, $2a41                                  ; $431d: $21 $41 $2a
-    add hl, hl                                    ; $4320: $29
     or c                                          ; $4321: $b1
     ld b, c                                       ; $4322: $41
     ld a, [hl+]                                   ; $4323: $2a
@@ -915,10 +861,9 @@ jr_028_4311:
     ld d, e                                       ; $43a2: $53
     ld a, [hl+]                                   ; $43a3: $2a
     add hl, hl                                    ; $43a4: $29
-    ld b, c                                       ; $43a5: $41
-    ld d, h                                       ; $43a6: $54
-    ld a, [hl+]                                   ; $43a7: $2a
-    add hl, hl                                    ; $43a8: $29
+
+    db $41, $54, $2a, $29
+
     pop de                                        ; $43a9: $d1
     ld d, h                                       ; $43aa: $54
     ld a, [hl+]                                   ; $43ab: $2a
@@ -927,10 +872,9 @@ jr_028_4311:
     ld d, l                                       ; $43ae: $55
     ld a, [hl+]                                   ; $43af: $2a
     add hl, hl                                    ; $43b0: $29
-    pop af                                        ; $43b1: $f1
-    ld d, l                                       ; $43b2: $55
-    ld a, [hl+]                                   ; $43b3: $2a
-    add hl, hl                                    ; $43b4: $29
+
+    db $f1, $55, $2a, $29
+
     add c                                         ; $43b5: $81
     ld d, [hl]                                    ; $43b6: $56
     ld a, [hl+]                                   ; $43b7: $2a
@@ -941,16 +885,16 @@ jr_028_4311:
     ld d, a                                       ; $43be: $57
     ld a, [hl+]                                   ; $43bf: $2a
     add hl, hl                                    ; $43c0: $29
-    ld sp, $2a58                                  ; $43c1: $31 $58 $2a
-    add hl, hl                                    ; $43c4: $29
+
+    db $31, $58, $2a, $29
+
     pop bc                                        ; $43c5: $c1
     ld e, b                                       ; $43c6: $58
     ld a, [hl+]                                   ; $43c7: $2a
     add hl, hl                                    ; $43c8: $29
-    ld d, c                                       ; $43c9: $51
-    ld e, c                                       ; $43ca: $59
-    ld a, [hl+]                                   ; $43cb: $2a
-    add hl, hl                                    ; $43cc: $29
+
+    db $51, $59, $2a, $29
+
     pop hl                                        ; $43cd: $e1
     ld e, c                                       ; $43ce: $59
     ld a, [hl+]                                   ; $43cf: $2a
@@ -961,10 +905,9 @@ jr_028_4311:
     add hl, hl                                    ; $43d4: $29
     ld bc, $2a5b                                  ; $43d5: $01 $5b $2a
     add hl, hl                                    ; $43d8: $29
-    sub c                                         ; $43d9: $91
-    ld e, e                                       ; $43da: $5b
-    ld a, [hl+]                                   ; $43db: $2a
-    add hl, hl                                    ; $43dc: $29
+
+    db $91, $5b, $2a, $29
+
     ld hl, $2a5c                                  ; $43dd: $21 $5c $2a
     add hl, hl                                    ; $43e0: $29
     or c                                          ; $43e1: $b1
@@ -979,10 +922,9 @@ jr_028_4311:
     ld e, l                                       ; $43ea: $5d
     ld a, [hl+]                                   ; $43eb: $2a
     add hl, hl                                    ; $43ec: $29
-    ld h, c                                       ; $43ed: $61
-    ld e, [hl]                                    ; $43ee: $5e
-    ld a, [hl+]                                   ; $43ef: $2a
-    add hl, hl                                    ; $43f0: $29
+
+    db $61, $5e, $2a, $29
+
     pop af                                        ; $43f1: $f1
     ld e, [hl]                                    ; $43f2: $5e
     ld a, [hl+]                                   ; $43f3: $2a
@@ -991,8 +933,9 @@ jr_028_4311:
     ld e, a                                       ; $43f6: $5f
     ld a, [hl+]                                   ; $43f7: $2a
     add hl, hl                                    ; $43f8: $29
-    ld de, $2a60                                  ; $43f9: $11 $60 $2a
-    add hl, hl                                    ; $43fc: $29
+
+    db $11, $60, $2a, $29
+
     and c                                         ; $43fd: $a1
     ld h, b                                       ; $43fe: $60
     ld a, [hl+]                                   ; $43ff: $2a
@@ -1003,18 +946,17 @@ jr_028_4311:
     ld h, c                                       ; $4406: $61
     ld a, [hl+]                                   ; $4407: $2a
     add hl, hl                                    ; $4408: $29
-    ld d, c                                       ; $4409: $51
-    ld h, d                                       ; $440a: $62
-    ld a, [hl+]                                   ; $440b: $2a
+
+    db $51, $62, $2a
+
     add hl, hl                                    ; $440c: $29
     pop hl                                        ; $440d: $e1
     ld h, d                                       ; $440e: $62
     ld a, [hl+]                                   ; $440f: $2a
     add hl, hl                                    ; $4410: $29
-    ld [hl], c                                    ; $4411: $71
-    ld h, e                                       ; $4412: $63
-    ld a, [hl+]                                   ; $4413: $2a
-    add hl, hl                                    ; $4414: $29
+
+    db $71, $63, $2a, $29
+
     ld bc, $2a64                                  ; $4415: $01 $64 $2a
     add hl, hl                                    ; $4418: $29
     sub c                                         ; $4419: $91
@@ -1044,24 +986,17 @@ jr_028_4311:
     ld a, [hl+]                                   ; $4433: $2a
     add hl, hl                                    ; $4434: $29
 
-    db $81, $68, $2a, $29
+    db $81, $68, $2a, $29, $11, $69, $2a, $29
 
-    ld de, $2a69                                  ; $4439: $11 $69 $2a
-    add hl, hl                                    ; $443c: $29
     and c                                         ; $443d: $a1
     ld l, c                                       ; $443e: $69
     ld a, [hl+]                                   ; $443f: $2a
     add hl, hl                                    ; $4440: $29
     ld sp, $2a6a                                  ; $4441: $31 $6a $2a
     add hl, hl                                    ; $4444: $29
-    pop bc                                        ; $4445: $c1
-    ld l, d                                       ; $4446: $6a
-    ld a, [hl+]                                   ; $4447: $2a
-    add hl, hl                                    ; $4448: $29
-    ld d, c                                       ; $4449: $51
-    ld l, e                                       ; $444a: $6b
-    ld a, [hl+]                                   ; $444b: $2a
-    add hl, hl                                    ; $444c: $29
+
+    db $c1, $6a, $2a, $29, $51, $6b, $2a, $29
+
     pop hl                                        ; $444d: $e1
     ld l, e                                       ; $444e: $6b
     ld a, [hl+]                                   ; $444f: $2a
@@ -1072,10 +1007,9 @@ jr_028_4311:
     add hl, hl                                    ; $4454: $29
     ld bc, $2a6d                                  ; $4455: $01 $6d $2a
     add hl, hl                                    ; $4458: $29
-    sub c                                         ; $4459: $91
-    ld l, l                                       ; $445a: $6d
-    ld a, [hl+]                                   ; $445b: $2a
-    add hl, hl                                    ; $445c: $29
+
+    db $91, $6d, $2a, $29
+
     ld hl, $2a6e                                  ; $445d: $21 $6e $2a
     add hl, hl                                    ; $4460: $29
     or c                                          ; $4461: $b1
@@ -1086,10 +1020,9 @@ jr_028_4311:
     ld l, a                                       ; $4466: $6f
     ld a, [hl+]                                   ; $4467: $2a
     add hl, hl                                    ; $4468: $29
-    pop de                                        ; $4469: $d1
-    ld l, a                                       ; $446a: $6f
-    ld a, [hl+]                                   ; $446b: $2a
-    add hl, hl                                    ; $446c: $29
+
+    db $d1, $6f, $2a, $29
+
     ld h, c                                       ; $446d: $61
     ld [hl], b                                    ; $446e: $70
     ld a, [hl+]                                   ; $446f: $2a
@@ -1337,7 +1270,7 @@ jr_028_4b8f:
     rst $08                                       ; $4bf2: $cf
     jr nc, jr_028_4bfb                            ; $4bf3: $30 $06
 
-    call z, Call_000_0600                         ; $4bf5: $cc $00 $06
+    call z, $0600                                 ; $4bf5: $cc $00 $06
     ld h, b                                       ; $4bf8: $60
     ld d, $ff                                     ; $4bf9: $16 $ff
 
@@ -1523,18 +1456,11 @@ jr_028_4bfb:
     ld a, a                                       ; $4cee: $7f
     rst $38                                       ; $4cef: $ff
     ld a, a                                       ; $4cf0: $7f
-    rst $38                                       ; $4cf1: $ff
-    ld a, a                                       ; $4cf2: $7f
-    ccf                                           ; $4cf3: $3f
-    dec de                                        ; $4cf4: $1b
-    dec a                                         ; $4cf5: $3d
-    dec d                                         ; $4cf6: $15
-    sub d                                         ; $4cf7: $92
-    db $08                                        ; $4cf8: $08
 
-    db $4a, $29, $ff, $7f, $b5, $56, $a4, $14, $4a, $29, $b5, $56, $44, $06, $a4, $14
-    db $42, $01, $ee, $3b, $44, $06, $a4, $14, $4a, $29, $74, $7f, $a9, $7e, $a4, $14
-    db $90, $11, $3f, $23, $a9, $7e, $a4, $14, $00, $00, $4a, $29, $b5, $56, $ff, $7f
+    db $ff, $7f, $3f, $1b, $3d, $15, $92, $08, $4a, $29, $ff, $7f, $b5, $56, $a4, $14
+    db $4a, $29, $b5, $56, $44, $06, $a4, $14, $42, $01, $ee, $3b, $44, $06, $a4, $14
+    db $4a, $29, $74, $7f, $a9, $7e, $a4, $14, $90, $11, $3f, $23, $a9, $7e, $a4, $14
+    db $00, $00, $4a, $29, $b5, $56, $ff, $7f
 
     rst $38                                       ; $4d29: $ff
     ld a, a                                       ; $4d2a: $7f
@@ -1650,12 +1576,8 @@ jr_028_4bfb:
     and h                                         ; $4da7: $a4
     inc d                                         ; $4da8: $14
 
-    db $6d, $4e
+    db $6d, $4e, $ed, $4e, $2d, $4f
 
-    db $ed                                        ; $4dab: $ed
-    ld c, [hl]                                    ; $4dac: $4e
-    dec l                                         ; $4dad: $2d
-    ld c, a                                       ; $4dae: $4f
     ld l, l                                       ; $4daf: $6d
     ld c, a                                       ; $4db0: $4f
     xor l                                         ; $4db1: $ad
@@ -1723,34 +1645,39 @@ jr_028_4bfb:
     ld d, h                                       ; $4dee: $54
     dec l                                         ; $4def: $2d
     ld d, l                                       ; $4df0: $55
-    ld l, l                                       ; $4df1: $6d
-    ld d, l                                       ; $4df2: $55
+
+    db $6d, $55
+
     xor l                                         ; $4df3: $ad
     ld d, l                                       ; $4df4: $55
     db $ed                                        ; $4df5: $ed
     ld d, l                                       ; $4df6: $55
-    dec l                                         ; $4df7: $2d
-    ld d, [hl]                                    ; $4df8: $56
+
+    db $2d, $56
+
     ld l, l                                       ; $4df9: $6d
     ld d, [hl]                                    ; $4dfa: $56
     xor l                                         ; $4dfb: $ad
     ld d, [hl]                                    ; $4dfc: $56
     db $ed                                        ; $4dfd: $ed
     ld d, [hl]                                    ; $4dfe: $56
-    dec l                                         ; $4dff: $2d
-    ld d, a                                       ; $4e00: $57
+
+    db $2d, $57
+
     ld l, l                                       ; $4e01: $6d
     ld d, a                                       ; $4e02: $57
-    xor l                                         ; $4e03: $ad
-    ld d, a                                       ; $4e04: $57
+
+    db $ad, $57
+
     db $ed                                        ; $4e05: $ed
     ld d, a                                       ; $4e06: $57
     dec l                                         ; $4e07: $2d
     ld e, b                                       ; $4e08: $58
     ld l, l                                       ; $4e09: $6d
     ld e, b                                       ; $4e0a: $58
-    xor l                                         ; $4e0b: $ad
-    ld e, b                                       ; $4e0c: $58
+
+    db $ad, $58
+
     db $ed                                        ; $4e0d: $ed
     ld e, b                                       ; $4e0e: $58
     dec l                                         ; $4e0f: $2d
@@ -1759,14 +1686,16 @@ jr_028_4bfb:
     ld e, c                                       ; $4e12: $59
     xor l                                         ; $4e13: $ad
     ld e, c                                       ; $4e14: $59
-    db $ed                                        ; $4e15: $ed
-    ld e, c                                       ; $4e16: $59
+
+    db $ed, $59
+
     dec l                                         ; $4e17: $2d
     ld e, d                                       ; $4e18: $5a
     ld l, l                                       ; $4e19: $6d
     ld e, d                                       ; $4e1a: $5a
-    xor l                                         ; $4e1b: $ad
-    ld e, d                                       ; $4e1c: $5a
+
+    db $ad, $5a
+
     db $ed                                        ; $4e1d: $ed
     ld e, d                                       ; $4e1e: $5a
     dec l                                         ; $4e1f: $2d
@@ -1777,8 +1706,9 @@ jr_028_4bfb:
     ld e, e                                       ; $4e24: $5b
     db $ed                                        ; $4e25: $ed
     ld e, e                                       ; $4e26: $5b
-    dec l                                         ; $4e27: $2d
-    ld e, h                                       ; $4e28: $5c
+
+    db $2d, $5c
+
     ld l, l                                       ; $4e29: $6d
     ld e, h                                       ; $4e2a: $5c
     xor l                                         ; $4e2b: $ad
@@ -1796,34 +1726,33 @@ jr_028_4bfb:
     dec l                                         ; $4e37: $2d
     ld e, [hl]                                    ; $4e38: $5e
 
-    db $6d, $5e
+    db $6d, $5e, $ad, $5e
 
-    xor l                                         ; $4e3b: $ad
-    ld e, [hl]                                    ; $4e3c: $5e
     db $ed                                        ; $4e3d: $ed
     ld e, [hl]                                    ; $4e3e: $5e
     dec l                                         ; $4e3f: $2d
     ld e, a                                       ; $4e40: $5f
-    ld l, l                                       ; $4e41: $6d
-    ld e, a                                       ; $4e42: $5f
-    xor l                                         ; $4e43: $ad
-    ld e, a                                       ; $4e44: $5f
+
+    db $6d, $5f, $ad, $5f
+
     db $ed                                        ; $4e45: $ed
     ld e, a                                       ; $4e46: $5f
     dec l                                         ; $4e47: $2d
     ld h, b                                       ; $4e48: $60
     ld l, l                                       ; $4e49: $6d
     ld h, b                                       ; $4e4a: $60
-    xor l                                         ; $4e4b: $ad
-    ld h, b                                       ; $4e4c: $60
+
+    db $ad, $60
+
     db $ed                                        ; $4e4d: $ed
     ld h, b                                       ; $4e4e: $60
     dec l                                         ; $4e4f: $2d
     ld h, c                                       ; $4e50: $61
     ld l, l                                       ; $4e51: $6d
     ld h, c                                       ; $4e52: $61
-    xor l                                         ; $4e53: $ad
-    ld h, c                                       ; $4e54: $61
+
+    db $ad, $61
+
     db $ed                                        ; $4e55: $ed
     ld h, c                                       ; $4e56: $61
     dec l                                         ; $4e57: $2d
@@ -1946,52 +1875,11 @@ jr_028_4bfb:
     ld d, [hl]                                    ; $4efa: $56
     nop                                           ; $4efb: $00
     nop                                           ; $4efc: $00
-    ld de, $ff16                                  ; $4efd: $11 $16 $ff
-    ld a, a                                       ; $4f00: $7f
-    sbc a                                         ; $4f01: $9f
-    ld e, a                                       ; $4f02: $5f
-    and h                                         ; $4f03: $a4
-    inc d                                         ; $4f04: $14
-    db $ed                                        ; $4f05: $ed
-    dec a                                         ; $4f06: $3d
-    rst $38                                       ; $4f07: $ff
-    ld a, a                                       ; $4f08: $7f
-    ei                                            ; $4f09: $fb
-    ld a, e                                       ; $4f0a: $7b
-    and h                                         ; $4f0b: $a4
-    inc d                                         ; $4f0c: $14
-    ld c, d                                       ; $4f0d: $4a
-    add hl, hl                                    ; $4f0e: $29
-    rst $38                                       ; $4f0f: $ff
-    ld a, a                                       ; $4f10: $7f
-    or l                                          ; $4f11: $b5
-    ld d, [hl]                                    ; $4f12: $56
-    nop                                           ; $4f13: $00
-    nop                                           ; $4f14: $00
-    ld c, d                                       ; $4f15: $4a
-    add hl, hl                                    ; $4f16: $29
-    rst $38                                       ; $4f17: $ff
-    ld a, a                                       ; $4f18: $7f
-    or l                                          ; $4f19: $b5
-    ld d, [hl]                                    ; $4f1a: $56
-    nop                                           ; $4f1b: $00
-    nop                                           ; $4f1c: $00
-    ld c, d                                       ; $4f1d: $4a
-    add hl, hl                                    ; $4f1e: $29
-    rst $38                                       ; $4f1f: $ff
-    ld a, a                                       ; $4f20: $7f
-    or l                                          ; $4f21: $b5
-    ld d, [hl]                                    ; $4f22: $56
-    nop                                           ; $4f23: $00
-    nop                                           ; $4f24: $00
-    ld c, d                                       ; $4f25: $4a
-    add hl, hl                                    ; $4f26: $29
-    rst $38                                       ; $4f27: $ff
-    ld a, a                                       ; $4f28: $7f
-    or l                                          ; $4f29: $b5
-    ld d, [hl]                                    ; $4f2a: $56
-    nop                                           ; $4f2b: $00
-    nop                                           ; $4f2c: $00
+
+    db $11, $16, $ff, $7f, $9f, $5f, $a4, $14, $ed, $3d, $ff, $7f, $fb, $7b, $a4, $14
+    db $4a, $29, $ff, $7f, $b5, $56, $00, $00, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+    db $4a, $29, $ff, $7f, $b5, $56, $00, $00, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     rst $38                                       ; $4f2d: $ff
     ld a, a                                       ; $4f2e: $7f
     rst $38                                       ; $4f2f: $ff
@@ -2008,54 +1896,11 @@ jr_028_4bfb:
     ld d, [hl]                                    ; $4f3a: $56
     nop                                           ; $4f3b: $00
     nop                                           ; $4f3c: $00
-    ld a, [bc]                                    ; $4f3d: $0a
-    ld a, [bc]                                    ; $4f3e: $0a
-    rst $38                                       ; $4f3f: $ff
-    ld a, a                                       ; $4f40: $7f
-    ld d, b                                       ; $4f41: $50
-    rra                                           ; $4f42: $1f
-    and h                                         ; $4f43: $a4
-    inc d                                         ; $4f44: $14
-    rst $28                                       ; $4f45: $ef
-    dec d                                         ; $4f46: $15
-    rst $38                                       ; $4f47: $ff
-    ld a, a                                       ; $4f48: $7f
-    rst $30                                       ; $4f49: $f7
-    ld [hl+], a                                   ; $4f4a: $22
-    and h                                         ; $4f4b: $a4
-    inc d                                         ; $4f4c: $14
-    ld c, l                                       ; $4f4d: $4d
-    dec c                                         ; $4f4e: $0d
-    rst $38                                       ; $4f4f: $ff
-    ld a, a                                       ; $4f50: $7f
-    rst $28                                       ; $4f51: $ef
-    dec d                                         ; $4f52: $15
-    and h                                         ; $4f53: $a4
-    inc d                                         ; $4f54: $14
-    rst $28                                       ; $4f55: $ef
-    dec d                                         ; $4f56: $15
-    rst $38                                       ; $4f57: $ff
-    ld a, a                                       ; $4f58: $7f
-    ld a, [bc]                                    ; $4f59: $0a
-    ld a, [bc]                                    ; $4f5a: $0a
-    and h                                         ; $4f5b: $a4
-    inc d                                         ; $4f5c: $14
-    ld c, d                                       ; $4f5d: $4a
-    add hl, hl                                    ; $4f5e: $29
-    rst $38                                       ; $4f5f: $ff
-    ld a, a                                       ; $4f60: $7f
-    or l                                          ; $4f61: $b5
-    ld d, [hl]                                    ; $4f62: $56
-    nop                                           ; $4f63: $00
-    nop                                           ; $4f64: $00
-    ld c, d                                       ; $4f65: $4a
-    add hl, hl                                    ; $4f66: $29
-    rst $38                                       ; $4f67: $ff
-    ld a, a                                       ; $4f68: $7f
-    or l                                          ; $4f69: $b5
-    ld d, [hl]                                    ; $4f6a: $56
-    nop                                           ; $4f6b: $00
-    nop                                           ; $4f6c: $00
+
+    db $0a, $0a, $ff, $7f, $50, $1f, $a4, $14, $ef, $15, $ff, $7f, $f7, $22, $a4, $14
+    db $4d, $0d, $ff, $7f, $ef, $15, $a4, $14, $ef, $15, $ff, $7f, $0a, $0a, $a4, $14
+    db $4a, $29, $ff, $7f, $b5, $56, $00, $00, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     rst $38                                       ; $4f6d: $ff
     ld a, a                                       ; $4f6e: $7f
     rst $38                                       ; $4f6f: $ff
@@ -3498,54 +3343,11 @@ jr_028_54b2:
     ld d, [hl]                                    ; $557a: $56
     nop                                           ; $557b: $00
     nop                                           ; $557c: $00
-    ld l, b                                       ; $557d: $68
-    ld e, l                                       ; $557e: $5d
-    rst $38                                       ; $557f: $ff
-    ld a, a                                       ; $5580: $7f
-    dec l                                         ; $5581: $2d
-    ld a, [hl]                                    ; $5582: $7e
-    and h                                         ; $5583: $a4
-    inc d                                         ; $5584: $14
-    push bc                                       ; $5585: $c5
-    dec e                                         ; $5586: $1d
-    rst $38                                       ; $5587: $ff
-    ld a, a                                       ; $5588: $7f
-    add hl, hl                                    ; $5589: $29
-    inc sp                                        ; $558a: $33
-    and h                                         ; $558b: $a4
-    inc d                                         ; $558c: $14
-    ld l, b                                       ; $558d: $68
-    ld e, l                                       ; $558e: $5d
-    rst $38                                       ; $558f: $ff
-    ld a, a                                       ; $5590: $7f
-    sub l                                         ; $5591: $95
-    ld [hl-], a                                   ; $5592: $32
-    and h                                         ; $5593: $a4
-    inc d                                         ; $5594: $14
-    xor e                                         ; $5595: $ab
-    dec a                                         ; $5596: $3d
-    rst $38                                       ; $5597: $ff
-    ld a, a                                       ; $5598: $7f
-    sub l                                         ; $5599: $95
-    ld [hl-], a                                   ; $559a: $32
-    and h                                         ; $559b: $a4
-    inc d                                         ; $559c: $14
-    xor e                                         ; $559d: $ab
-    dec a                                         ; $559e: $3d
-    rst $38                                       ; $559f: $ff
-    ld a, a                                       ; $55a0: $7f
-    dec l                                         ; $55a1: $2d
-    ld a, [hl]                                    ; $55a2: $7e
-    and h                                         ; $55a3: $a4
-    inc d                                         ; $55a4: $14
-    ld c, d                                       ; $55a5: $4a
-    add hl, hl                                    ; $55a6: $29
-    rst $38                                       ; $55a7: $ff
-    ld a, a                                       ; $55a8: $7f
-    or l                                          ; $55a9: $b5
-    ld d, [hl]                                    ; $55aa: $56
-    nop                                           ; $55ab: $00
-    nop                                           ; $55ac: $00
+
+    db $68, $5d, $ff, $7f, $2d, $7e, $a4, $14, $c5, $1d, $ff, $7f, $29, $33, $a4, $14
+    db $68, $5d, $ff, $7f, $95, $32, $a4, $14, $ab, $3d, $ff, $7f, $95, $32, $a4, $14
+    db $ab, $3d, $ff, $7f, $2d, $7e, $a4, $14, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     and h                                         ; $55ad: $a4
     inc d                                         ; $55ae: $14
     and h                                         ; $55af: $a4
@@ -3688,52 +3490,11 @@ jr_028_54b2:
     ld d, [hl]                                    ; $563a: $56
     nop                                           ; $563b: $00
     nop                                           ; $563c: $00
-    adc c                                         ; $563d: $89
-    add hl, de                                    ; $563e: $19
-    rst $38                                       ; $563f: $ff
-    ld a, a                                       ; $5640: $7f
-    adc h                                         ; $5641: $8c
-    ld e, $a4                                     ; $5642: $1e $a4
-    inc d                                         ; $5644: $14
-    xor d                                         ; $5645: $aa
-    ld a, l                                       ; $5646: $7d
-    rst $38                                       ; $5647: $ff
-    ld a, a                                       ; $5648: $7f
-    add h                                         ; $5649: $84
-    ld a, $a4                                     ; $564a: $3e $a4
-    inc d                                         ; $564c: $14
-    db $e3                                        ; $564d: $e3
-    ld [hl], h                                    ; $564e: $74
-    rst $38                                       ; $564f: $ff
-    ld a, a                                       ; $5650: $7f
-    xor d                                         ; $5651: $aa
-    ld a, l                                       ; $5652: $7d
-    and h                                         ; $5653: $a4
-    inc d                                         ; $5654: $14
-    ld c, d                                       ; $5655: $4a
-    add hl, hl                                    ; $5656: $29
-    rst $38                                       ; $5657: $ff
-    ld a, a                                       ; $5658: $7f
-    or l                                          ; $5659: $b5
-    ld d, [hl]                                    ; $565a: $56
-    nop                                           ; $565b: $00
-    nop                                           ; $565c: $00
-    ld c, d                                       ; $565d: $4a
-    add hl, hl                                    ; $565e: $29
-    rst $38                                       ; $565f: $ff
-    ld a, a                                       ; $5660: $7f
-    or l                                          ; $5661: $b5
-    ld d, [hl]                                    ; $5662: $56
-    nop                                           ; $5663: $00
-    nop                                           ; $5664: $00
-    ld c, d                                       ; $5665: $4a
-    add hl, hl                                    ; $5666: $29
-    rst $38                                       ; $5667: $ff
-    ld a, a                                       ; $5668: $7f
-    or l                                          ; $5669: $b5
-    ld d, [hl]                                    ; $566a: $56
-    nop                                           ; $566b: $00
-    nop                                           ; $566c: $00
+
+    db $89, $19, $ff, $7f, $8c, $1e, $a4, $14, $aa, $7d, $ff, $7f, $84, $3e, $a4, $14
+    db $e3, $74, $ff, $7f, $aa, $7d, $a4, $14, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+    db $4a, $29, $ff, $7f, $b5, $56, $00, $00, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     rst $38                                       ; $566d: $ff
     ld a, a                                       ; $566e: $7f
     rst $38                                       ; $566f: $ff
@@ -3925,54 +3686,13 @@ jr_028_54b2:
     nop                                           ; $573a: $00
     nop                                           ; $573b: $00
     nop                                           ; $573c: $00
-    rst $28                                       ; $573d: $ef
-    add hl, sp                                    ; $573e: $39
-    rst $38                                       ; $573f: $ff
-    ld a, a                                       ; $5740: $7f
-    jr jr_028_57b2                                ; $5741: $18 $6f
 
-    and h                                         ; $5743: $a4
-    inc d                                         ; $5744: $14
-    jr nc, jr_028_57a9                            ; $5745: $30 $62
+    db $ef, $39, $ff, $7f, $18, $6f, $a4, $14, $30, $62, $ff, $7f, $18, $6f, $0a, $00
+    db $30, $62, $ff, $7f, $18, $6f, $a4, $14, $10, $42, $ff, $7f, $18, $6f, $a4, $14
+    db $00, $00, $00, $00, $00, $00, $00, $00, $ff, $03, $39, $03, $52, $02, $29, $01
 
-    rst $38                                       ; $5747: $ff
-    ld a, a                                       ; $5748: $7f
-    jr jr_028_57ba                                ; $5749: $18 $6f
-
-    ld a, [bc]                                    ; $574b: $0a
-    nop                                           ; $574c: $00
-    jr nc, jr_028_57b1                            ; $574d: $30 $62
-
-    rst $38                                       ; $574f: $ff
-    ld a, a                                       ; $5750: $7f
-    jr jr_028_57c2                                ; $5751: $18 $6f
-
-    and h                                         ; $5753: $a4
-    inc d                                         ; $5754: $14
-    db $10                                        ; $5755: $10
-    ld b, d                                       ; $5756: $42
-    rst $38                                       ; $5757: $ff
-    ld a, a                                       ; $5758: $7f
-    jr jr_028_57ca                                ; $5759: $18 $6f
-
-    and h                                         ; $575b: $a4
-    inc d                                         ; $575c: $14
-    nop                                           ; $575d: $00
-    nop                                           ; $575e: $00
-    nop                                           ; $575f: $00
-    nop                                           ; $5760: $00
-    nop                                           ; $5761: $00
-    nop                                           ; $5762: $00
-    nop                                           ; $5763: $00
-    nop                                           ; $5764: $00
-    rst $38                                       ; $5765: $ff
-    inc bc                                        ; $5766: $03
-    add hl, sp                                    ; $5767: $39
-    inc bc                                        ; $5768: $03
-    ld d, d                                       ; $5769: $52
-    ld [bc], a                                    ; $576a: $02
-    add hl, hl                                    ; $576b: $29
-    ld bc, $294a                                  ; $576c: $01 $4a $29
+    ld c, d                                       ; $576d: $4a
+    add hl, hl                                    ; $576e: $29
     rst $38                                       ; $576f: $ff
     ld a, a                                       ; $5770: $7f
     or l                                          ; $5771: $b5
@@ -4029,8 +3749,6 @@ jr_028_54b2:
     nop                                           ; $57a6: $00
     ld c, d                                       ; $57a7: $4a
     add hl, hl                                    ; $57a8: $29
-
-jr_028_57a9:
     or l                                          ; $57a9: $b5
     ld d, [hl]                                    ; $57aa: $56
     rst $38                                       ; $57ab: $ff
@@ -4039,11 +3757,7 @@ jr_028_57a9:
     ld a, a                                       ; $57ae: $7f
     rst $38                                       ; $57af: $ff
     ld a, a                                       ; $57b0: $7f
-
-jr_028_57b1:
     or l                                          ; $57b1: $b5
-
-jr_028_57b2:
     ld d, [hl]                                    ; $57b2: $56
     and h                                         ; $57b3: $a4
     inc d                                         ; $57b4: $14
@@ -4052,61 +3766,14 @@ jr_028_57b2:
     rst $38                                       ; $57b7: $ff
     ld a, a                                       ; $57b8: $7f
     or l                                          ; $57b9: $b5
-
-jr_028_57ba:
     ld d, [hl]                                    ; $57ba: $56
     and h                                         ; $57bb: $a4
     inc d                                         ; $57bc: $14
-    add hl, hl                                    ; $57bd: $29
-    ld h, c                                       ; $57be: $61
-    rst $38                                       ; $57bf: $ff
 
-jr_028_57c0:
-    ld a, a                                       ; $57c0: $7f
-    ld c, [hl]                                    ; $57c1: $4e
+    db $29, $61, $ff, $7f, $4e, $76, $a4, $14, $cc, $0d, $ff, $7f, $15, $0f, $a4, $14
+    db $4a, $29, $ff, $7f, $15, $0f, $a4, $14, $7a, $0c, $ff, $7f, $4e, $76, $a4, $14
+    db $cc, $0d, $ff, $7f, $7a, $0c, $a4, $14, $4a, $29, $ff, $7f, $b5, $56, $a4, $14
 
-jr_028_57c2:
-    db $76                                        ; $57c2: $76
-    and h                                         ; $57c3: $a4
-    inc d                                         ; $57c4: $14
-    call z, $ff0d                                 ; $57c5: $cc $0d $ff
-    ld a, a                                       ; $57c8: $7f
-    dec d                                         ; $57c9: $15
-
-jr_028_57ca:
-    rrca                                          ; $57ca: $0f
-    and h                                         ; $57cb: $a4
-    inc d                                         ; $57cc: $14
-    ld c, d                                       ; $57cd: $4a
-    add hl, hl                                    ; $57ce: $29
-    rst $38                                       ; $57cf: $ff
-    ld a, a                                       ; $57d0: $7f
-    dec d                                         ; $57d1: $15
-    rrca                                          ; $57d2: $0f
-    and h                                         ; $57d3: $a4
-    inc d                                         ; $57d4: $14
-    ld a, d                                       ; $57d5: $7a
-    inc c                                         ; $57d6: $0c
-    rst $38                                       ; $57d7: $ff
-    ld a, a                                       ; $57d8: $7f
-    ld c, [hl]                                    ; $57d9: $4e
-    db $76                                        ; $57da: $76
-    and h                                         ; $57db: $a4
-    inc d                                         ; $57dc: $14
-    call z, $ff0d                                 ; $57dd: $cc $0d $ff
-    ld a, a                                       ; $57e0: $7f
-    ld a, d                                       ; $57e1: $7a
-    inc c                                         ; $57e2: $0c
-    and h                                         ; $57e3: $a4
-    inc d                                         ; $57e4: $14
-    ld c, d                                       ; $57e5: $4a
-    add hl, hl                                    ; $57e6: $29
-    rst $38                                       ; $57e7: $ff
-    ld a, a                                       ; $57e8: $7f
-    or l                                          ; $57e9: $b5
-    ld d, [hl]                                    ; $57ea: $56
-    and h                                         ; $57eb: $a4
-    inc d                                         ; $57ec: $14
     rst $38                                       ; $57ed: $ff
     ld a, a                                       ; $57ee: $7f
     rst $38                                       ; $57ef: $ff
@@ -4149,7 +3816,7 @@ jr_028_57ca:
     rst $38                                       ; $5817: $ff
     ld a, a                                       ; $5818: $7f
     sub c                                         ; $5819: $91
-    jr nz, jr_028_57c0                            ; $581a: $20 $a4
+    jr nz, @-$5a                                  ; $581a: $20 $a4
 
     inc d                                         ; $581c: $14
     rst $08                                       ; $581d: $cf
@@ -4308,57 +3975,11 @@ jr_028_57ca:
     ld d, [hl]                                    ; $58ba: $56
     nop                                           ; $58bb: $00
     nop                                           ; $58bc: $00
-    nop                                           ; $58bd: $00
-    ld c, [hl]                                    ; $58be: $4e
-    rst $38                                       ; $58bf: $ff
-    ld a, a                                       ; $58c0: $7f
-    ret                                           ; $58c1: $c9
 
+    db $00, $4e, $ff, $7f, $c9, $6a, $a4, $14, $6e, $0a, $ff, $7f, $56, $37, $a4, $14
+    db $ca, $39, $ff, $7f, $56, $37, $a4, $14, $00, $4e, $ff, $7f, $56, $37, $a4, $14
+    db $56, $37, $ff, $7f, $c9, $6a, $a4, $14, $4a, $29, $ff, $7f, $b5, $56, $00, $00
 
-    ld l, d                                       ; $58c2: $6a
-    and h                                         ; $58c3: $a4
-    inc d                                         ; $58c4: $14
-    ld l, [hl]                                    ; $58c5: $6e
-    ld a, [bc]                                    ; $58c6: $0a
-    rst $38                                       ; $58c7: $ff
-    ld a, a                                       ; $58c8: $7f
-    ld d, [hl]                                    ; $58c9: $56
-    scf                                           ; $58ca: $37
-    and h                                         ; $58cb: $a4
-    inc d                                         ; $58cc: $14
-    jp z, $ff39                                   ; $58cd: $ca $39 $ff
-
-    ld a, a                                       ; $58d0: $7f
-    ld d, [hl]                                    ; $58d1: $56
-    scf                                           ; $58d2: $37
-    and h                                         ; $58d3: $a4
-    inc d                                         ; $58d4: $14
-    nop                                           ; $58d5: $00
-    ld c, [hl]                                    ; $58d6: $4e
-    rst $38                                       ; $58d7: $ff
-    ld a, a                                       ; $58d8: $7f
-    ld d, [hl]                                    ; $58d9: $56
-    scf                                           ; $58da: $37
-    and h                                         ; $58db: $a4
-    inc d                                         ; $58dc: $14
-    ld d, [hl]                                    ; $58dd: $56
-    scf                                           ; $58de: $37
-    rst $38                                       ; $58df: $ff
-    ld a, a                                       ; $58e0: $7f
-    ret                                           ; $58e1: $c9
-
-
-    ld l, d                                       ; $58e2: $6a
-    and h                                         ; $58e3: $a4
-    inc d                                         ; $58e4: $14
-    ld c, d                                       ; $58e5: $4a
-    add hl, hl                                    ; $58e6: $29
-    rst $38                                       ; $58e7: $ff
-    ld a, a                                       ; $58e8: $7f
-    or l                                          ; $58e9: $b5
-    ld d, [hl]                                    ; $58ea: $56
-    nop                                           ; $58eb: $00
-    nop                                           ; $58ec: $00
     rst $38                                       ; $58ed: $ff
     ld a, a                                       ; $58ee: $7f
     rst $38                                       ; $58ef: $ff
@@ -4627,50 +4248,11 @@ jr_028_57ca:
     ld d, [hl]                                    ; $59fa: $56
     nop                                           ; $59fb: $00
     nop                                           ; $59fc: $00
-    dec bc                                        ; $59fd: $0b
-    ld b, [hl]                                    ; $59fe: $46
-    rst $38                                       ; $59ff: $ff
-    ld a, a                                       ; $5a00: $7f
-    adc [hl]                                      ; $5a01: $8e
-    ld [hl], e                                    ; $5a02: $73
-    and h                                         ; $5a03: $a4
-    inc d                                         ; $5a04: $14
-    ld [hl], e                                    ; $5a05: $73
-    add hl, bc                                    ; $5a06: $09
-    rst $38                                       ; $5a07: $ff
-    ld a, a                                       ; $5a08: $7f
-    rst $38                                       ; $5a09: $ff
-    ld d, $a4                                     ; $5a0a: $16 $a4
-    inc d                                         ; $5a0c: $14
-    ld a, $21                                     ; $5a0d: $3e $21
-    rst $38                                       ; $5a0f: $ff
-    ld a, a                                       ; $5a10: $7f
-    adc [hl]                                      ; $5a11: $8e
-    ld [hl], e                                    ; $5a12: $73
-    and h                                         ; $5a13: $a4
-    inc d                                         ; $5a14: $14
-    ld [hl], e                                    ; $5a15: $73
-    add hl, bc                                    ; $5a16: $09
-    rst $38                                       ; $5a17: $ff
-    ld a, a                                       ; $5a18: $7f
-    ld a, $21                                     ; $5a19: $3e $21
-    and h                                         ; $5a1b: $a4
-    inc d                                         ; $5a1c: $14
-    dec bc                                        ; $5a1d: $0b
-    ld b, [hl]                                    ; $5a1e: $46
-    rst $38                                       ; $5a1f: $ff
-    ld a, a                                       ; $5a20: $7f
-    ld a, $21                                     ; $5a21: $3e $21
-    and h                                         ; $5a23: $a4
-    inc d                                         ; $5a24: $14
-    ld c, d                                       ; $5a25: $4a
-    add hl, hl                                    ; $5a26: $29
-    rst $38                                       ; $5a27: $ff
-    ld a, a                                       ; $5a28: $7f
-    or l                                          ; $5a29: $b5
-    ld d, [hl]                                    ; $5a2a: $56
-    nop                                           ; $5a2b: $00
-    nop                                           ; $5a2c: $00
+
+    db $0b, $46, $ff, $7f, $8e, $73, $a4, $14, $73, $09, $ff, $7f, $ff, $16, $a4, $14
+    db $3e, $21, $ff, $7f, $8e, $73, $a4, $14, $73, $09, $ff, $7f, $3e, $21, $a4, $14
+    db $0b, $46, $ff, $7f, $3e, $21, $a4, $14, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     rst $38                                       ; $5a2d: $ff
     ld a, a                                       ; $5a2e: $7f
     rst $38                                       ; $5a2f: $ff
@@ -4808,54 +4390,11 @@ jr_028_57ca:
     ld d, [hl]                                    ; $5aba: $56
     nop                                           ; $5abb: $00
     nop                                           ; $5abc: $00
-    ccf                                           ; $5abd: $3f
-    dec a                                         ; $5abe: $3d
-    rst $38                                       ; $5abf: $ff
-    ld a, a                                       ; $5ac0: $7f
-    di                                            ; $5ac1: $f3
-    inc h                                         ; $5ac2: $24
-    and h                                         ; $5ac3: $a4
-    inc d                                         ; $5ac4: $14
-    push bc                                       ; $5ac5: $c5
-    ld c, [hl]                                    ; $5ac6: $4e
-    rst $38                                       ; $5ac7: $ff
-    ld a, a                                       ; $5ac8: $7f
-    sub e                                         ; $5ac9: $93
-    ld l, e                                       ; $5aca: $6b
-    and h                                         ; $5acb: $a4
-    inc d                                         ; $5acc: $14
-    ccf                                           ; $5acd: $3f
-    dec a                                         ; $5ace: $3d
-    rst $38                                       ; $5acf: $ff
-    ld a, a                                       ; $5ad0: $7f
-    push bc                                       ; $5ad1: $c5
-    ld c, [hl]                                    ; $5ad2: $4e
-    and h                                         ; $5ad3: $a4
-    inc d                                         ; $5ad4: $14
-    ccf                                           ; $5ad5: $3f
-    dec a                                         ; $5ad6: $3d
-    rst $38                                       ; $5ad7: $ff
-    ld a, a                                       ; $5ad8: $7f
-    sub e                                         ; $5ad9: $93
-    ld l, e                                       ; $5ada: $6b
-    and h                                         ; $5adb: $a4
-    inc d                                         ; $5adc: $14
-    ld c, d                                       ; $5add: $4a
-    add hl, hl                                    ; $5ade: $29
-    rst $38                                       ; $5adf: $ff
-    ld a, a                                       ; $5ae0: $7f
-    or l                                          ; $5ae1: $b5
-    ld d, [hl]                                    ; $5ae2: $56
-    nop                                           ; $5ae3: $00
-    nop                                           ; $5ae4: $00
-    ld c, d                                       ; $5ae5: $4a
-    add hl, hl                                    ; $5ae6: $29
-    rst $38                                       ; $5ae7: $ff
-    ld a, a                                       ; $5ae8: $7f
-    or l                                          ; $5ae9: $b5
-    ld d, [hl]                                    ; $5aea: $56
-    nop                                           ; $5aeb: $00
-    nop                                           ; $5aec: $00
+
+    db $3f, $3d, $ff, $7f, $f3, $24, $a4, $14, $c5, $4e, $ff, $7f, $93, $6b, $a4, $14
+    db $3f, $3d, $ff, $7f, $c5, $4e, $a4, $14, $3f, $3d, $ff, $7f, $93, $6b, $a4, $14
+    db $4a, $29, $ff, $7f, $b5, $56, $00, $00, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     rst $10                                       ; $5aed: $d7
     ld c, d                                       ; $5aee: $4a
     ld d, e                                       ; $5aef: $53
@@ -5178,50 +4717,11 @@ jr_028_57ca:
     ld d, [hl]                                    ; $5c3a: $56
     nop                                           ; $5c3b: $00
     nop                                           ; $5c3c: $00
-    rst $20                                       ; $5c3d: $e7
-    dec b                                         ; $5c3e: $05
-    rst $38                                       ; $5c3f: $ff
-    ld a, a                                       ; $5c40: $7f
-    ld d, l                                       ; $5c41: $55
-    ld e, $a4                                     ; $5c42: $1e $a4
-    inc d                                         ; $5c44: $14
-    rst $20                                       ; $5c45: $e7
-    dec b                                         ; $5c46: $05
-    rst $38                                       ; $5c47: $ff
-    ld a, a                                       ; $5c48: $7f
-    db $eb                                        ; $5c49: $eb
-    ld d, $a4                                     ; $5c4a: $16 $a4
-    inc d                                         ; $5c4c: $14
-    ld l, e                                       ; $5c4d: $6b
-    ld c, [hl]                                    ; $5c4e: $4e
-    rst $38                                       ; $5c4f: $ff
-    ld a, a                                       ; $5c50: $7f
-    ld d, e                                       ; $5c51: $53
-    ld l, e                                       ; $5c52: $6b
-    and h                                         ; $5c53: $a4
-    inc d                                         ; $5c54: $14
-    ld d, l                                       ; $5c55: $55
-    ld e, $ff                                     ; $5c56: $1e $ff
-    ld a, a                                       ; $5c58: $7f
-    ld d, e                                       ; $5c59: $53
-    ld l, e                                       ; $5c5a: $6b
-    and h                                         ; $5c5b: $a4
-    inc d                                         ; $5c5c: $14
-    db $fc                                        ; $5c5d: $fc
-    inc e                                         ; $5c5e: $1c
-    rst $38                                       ; $5c5f: $ff
-    ld a, a                                       ; $5c60: $7f
-    ld d, l                                       ; $5c61: $55
-    ld e, $a4                                     ; $5c62: $1e $a4
-    inc d                                         ; $5c64: $14
-    ld c, d                                       ; $5c65: $4a
-    add hl, hl                                    ; $5c66: $29
-    rst $38                                       ; $5c67: $ff
-    ld a, a                                       ; $5c68: $7f
-    or l                                          ; $5c69: $b5
-    ld d, [hl]                                    ; $5c6a: $56
-    nop                                           ; $5c6b: $00
-    nop                                           ; $5c6c: $00
+
+    db $e7, $05, $ff, $7f, $55, $1e, $a4, $14, $e7, $05, $ff, $7f, $eb, $16, $a4, $14
+    db $6b, $4e, $ff, $7f, $53, $6b, $a4, $14, $55, $1e, $ff, $7f, $53, $6b, $a4, $14
+    db $fc, $1c, $ff, $7f, $55, $1e, $a4, $14, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     rst $38                                       ; $5c6d: $ff
     ld a, a                                       ; $5c6e: $7f
     rst $38                                       ; $5c6f: $ff
@@ -5745,54 +5245,11 @@ jr_028_57ca:
     ld d, [hl]                                    ; $5eba: $56
     nop                                           ; $5ebb: $00
     nop                                           ; $5ebc: $00
-    xor c                                         ; $5ebd: $a9
-    dec a                                         ; $5ebe: $3d
-    rst $38                                       ; $5ebf: $ff
-    ld a, a                                       ; $5ec0: $7f
-    dec sp                                        ; $5ec1: $3b
-    dec c                                         ; $5ec2: $0d
-    and h                                         ; $5ec3: $a4
-    inc d                                         ; $5ec4: $14
-    xor c                                         ; $5ec5: $a9
-    dec a                                         ; $5ec6: $3d
-    rst $38                                       ; $5ec7: $ff
-    ld a, a                                       ; $5ec8: $7f
-    cpl                                           ; $5ec9: $2f
-    ld d, a                                       ; $5eca: $57
-    and h                                         ; $5ecb: $a4
-    inc d                                         ; $5ecc: $14
-    dec sp                                        ; $5ecd: $3b
-    dec c                                         ; $5ece: $0d
-    rst $38                                       ; $5ecf: $ff
-    ld a, a                                       ; $5ed0: $7f
-    ld a, d                                       ; $5ed1: $7a
-    ld [bc], a                                    ; $5ed2: $02
-    and h                                         ; $5ed3: $a4
-    inc d                                         ; $5ed4: $14
-    xor c                                         ; $5ed5: $a9
-    dec a                                         ; $5ed6: $3d
-    rst $38                                       ; $5ed7: $ff
-    ld a, a                                       ; $5ed8: $7f
-    ld a, d                                       ; $5ed9: $7a
-    ld [bc], a                                    ; $5eda: $02
-    and h                                         ; $5edb: $a4
-    inc d                                         ; $5edc: $14
-    ld a, d                                       ; $5edd: $7a
-    ld [bc], a                                    ; $5ede: $02
-    rst $38                                       ; $5edf: $ff
-    ld a, a                                       ; $5ee0: $7f
-    sbc a                                         ; $5ee1: $9f
-    ccf                                           ; $5ee2: $3f
-    and h                                         ; $5ee3: $a4
-    inc d                                         ; $5ee4: $14
-    nop                                           ; $5ee5: $00
-    nop                                           ; $5ee6: $00
-    nop                                           ; $5ee7: $00
-    nop                                           ; $5ee8: $00
-    nop                                           ; $5ee9: $00
-    nop                                           ; $5eea: $00
-    nop                                           ; $5eeb: $00
-    nop                                           ; $5eec: $00
+
+    db $a9, $3d, $ff, $7f, $3b, $0d, $a4, $14, $a9, $3d, $ff, $7f, $2f, $57, $a4, $14
+    db $3b, $0d, $ff, $7f, $7a, $02, $a4, $14, $a9, $3d, $ff, $7f, $7a, $02, $a4, $14
+    db $7a, $02, $ff, $7f, $9f, $3f, $a4, $14, $00, $00, $00, $00, $00, $00, $00, $00
+
     rst $38                                       ; $5eed: $ff
     ld a, a                                       ; $5eee: $7f
     rst $38                                       ; $5eef: $ff
@@ -5926,43 +5383,14 @@ jr_028_57ca:
     ld d, d                                       ; $5f79: $52
     ld [bc], a                                    ; $5f7a: $02
     add hl, hl                                    ; $5f7b: $29
-    ld bc, $31c7                                  ; $5f7c: $01 $c7 $31
-    rst $38                                       ; $5f7f: $ff
-    ld a, a                                       ; $5f80: $7f
-    rrca                                          ; $5f81: $0f
-    ld d, a                                       ; $5f82: $57
-    and h                                         ; $5f83: $a4
-    inc d                                         ; $5f84: $14
-    call $ff10                                    ; $5f85: $cd $10 $ff
-    ld a, a                                       ; $5f88: $7f
-    sbc b                                         ; $5f89: $98
-    ld sp, $14a4                                  ; $5f8a: $31 $a4 $14
-    adc h                                         ; $5f8d: $8c
-    add hl, hl                                    ; $5f8e: $29
-    rst $38                                       ; $5f8f: $ff
-    ld a, a                                       ; $5f90: $7f
-    ld sp, $a446                                  ; $5f91: $31 $46 $a4
-    inc d                                         ; $5f94: $14
-    rst $38                                       ; $5f95: $ff
-    inc bc                                        ; $5f96: $03
-    add hl, sp                                    ; $5f97: $39
-    inc bc                                        ; $5f98: $03
-    ld d, d                                       ; $5f99: $52
-    ld [bc], a                                    ; $5f9a: $02
-    add hl, hl                                    ; $5f9b: $29
-    ld bc, $03ff                                  ; $5f9c: $01 $ff $03
-    add hl, sp                                    ; $5f9f: $39
-    inc bc                                        ; $5fa0: $03
-    ld d, d                                       ; $5fa1: $52
-    ld [bc], a                                    ; $5fa2: $02
-    add hl, hl                                    ; $5fa3: $29
-    ld bc, $03ff                                  ; $5fa4: $01 $ff $03
-    add hl, sp                                    ; $5fa7: $39
-    inc bc                                        ; $5fa8: $03
-    ld d, d                                       ; $5fa9: $52
-    ld [bc], a                                    ; $5faa: $02
-    add hl, hl                                    ; $5fab: $29
-    ld bc, $7fff                                  ; $5fac: $01 $ff $7f
+    db $01                                        ; $5f7c: $01
+
+    db $c7, $31, $ff, $7f, $0f, $57, $a4, $14, $cd, $10, $ff, $7f, $98, $31, $a4, $14
+    db $8c, $29, $ff, $7f, $31, $46, $a4, $14, $ff, $03, $39, $03, $52, $02, $29, $01
+    db $ff, $03, $39, $03, $52, $02, $29, $01, $ff, $03, $39, $03, $52, $02, $29, $01
+
+    rst $38                                       ; $5fad: $ff
+    ld a, a                                       ; $5fae: $7f
     add hl, sp                                    ; $5faf: $39
     inc bc                                        ; $5fb0: $03
     ld d, d                                       ; $5fb1: $52
@@ -5974,52 +5402,12 @@ jr_028_57ca:
     ld d, d                                       ; $5fb9: $52
     ld [bc], a                                    ; $5fba: $02
     add hl, hl                                    ; $5fbb: $29
-    ld bc, $518e                                  ; $5fbc: $01 $8e $51
-    rst $38                                       ; $5fbf: $ff
-    ld a, a                                       ; $5fc0: $7f
-    ld [hl], e                                    ; $5fc1: $73
-    ld l, d                                       ; $5fc2: $6a
-    and h                                         ; $5fc3: $a4
-    inc d                                         ; $5fc4: $14
-    adc $49                                       ; $5fc5: $ce $49
-    rst $38                                       ; $5fc7: $ff
-    ld a, a                                       ; $5fc8: $7f
-    ld d, h                                       ; $5fc9: $54
-    ld l, e                                       ; $5fca: $6b
-    and h                                         ; $5fcb: $a4
-    inc d                                         ; $5fcc: $14
-    adc d                                         ; $5fcd: $8a
-    ld b, c                                       ; $5fce: $41
-    rst $38                                       ; $5fcf: $ff
-    ld a, a                                       ; $5fd0: $7f
-    db $ec                                        ; $5fd1: $ec
-    ld d, c                                       ; $5fd2: $51
-    and h                                         ; $5fd3: $a4
-    inc d                                         ; $5fd4: $14
-    ld a, a                                       ; $5fd5: $7f
-    db $10                                        ; $5fd6: $10
-    rst $38                                       ; $5fd7: $ff
-    ld a, a                                       ; $5fd8: $7f
-    ld [hl], e                                    ; $5fd9: $73
-    ld l, d                                       ; $5fda: $6a
-    and h                                         ; $5fdb: $a4
-    inc d                                         ; $5fdc: $14
-    nop                                           ; $5fdd: $00
-    nop                                           ; $5fde: $00
-    ld c, d                                       ; $5fdf: $4a
-    add hl, hl                                    ; $5fe0: $29
-    or l                                          ; $5fe1: $b5
-    ld d, [hl]                                    ; $5fe2: $56
-    rst $38                                       ; $5fe3: $ff
-    ld a, a                                       ; $5fe4: $7f
-    nop                                           ; $5fe5: $00
-    nop                                           ; $5fe6: $00
-    ld c, d                                       ; $5fe7: $4a
-    add hl, hl                                    ; $5fe8: $29
-    or l                                          ; $5fe9: $b5
-    ld d, [hl]                                    ; $5fea: $56
-    rst $38                                       ; $5feb: $ff
-    ld a, a                                       ; $5fec: $7f
+    db $01                                        ; $5fbc: $01
+
+    db $8e, $51, $ff, $7f, $73, $6a, $a4, $14, $ce, $49, $ff, $7f, $54, $6b, $a4, $14
+    db $8a, $41, $ff, $7f, $ec, $51, $a4, $14, $7f, $10, $ff, $7f, $73, $6a, $a4, $14
+    db $00, $00, $4a, $29, $b5, $56, $ff, $7f, $00, $00, $4a, $29, $b5, $56, $ff, $7f
+
     rst $38                                       ; $5fed: $ff
     ld a, a                                       ; $5fee: $7f
     nop                                           ; $5fef: $00
@@ -6220,54 +5608,11 @@ Jump_028_607f:
     ld d, [hl]                                    ; $60ba: $56
     nop                                           ; $60bb: $00
     nop                                           ; $60bc: $00
-    ld l, b                                       ; $60bd: $68
-    ld a, [hl-]                                   ; $60be: $3a
-    rst $38                                       ; $60bf: $ff
-    ld a, a                                       ; $60c0: $7f
-    rst $28                                       ; $60c1: $ef
-    ld h, e                                       ; $60c2: $63
-    and h                                         ; $60c3: $a4
-    inc d                                         ; $60c4: $14
-    or h                                          ; $60c5: $b4
-    ld e, h                                       ; $60c6: $5c
-    rst $38                                       ; $60c7: $ff
-    ld a, a                                       ; $60c8: $7f
-    ld a, h                                       ; $60c9: $7c
-    ld a, l                                       ; $60ca: $7d
-    and h                                         ; $60cb: $a4
-    inc d                                         ; $60cc: $14
-    or h                                          ; $60cd: $b4
-    ld e, h                                       ; $60ce: $5c
-    rst $38                                       ; $60cf: $ff
-    ld a, a                                       ; $60d0: $7f
-    rst $28                                       ; $60d1: $ef
-    ld h, e                                       ; $60d2: $63
-    and h                                         ; $60d3: $a4
-    inc d                                         ; $60d4: $14
-    or h                                          ; $60d5: $b4
-    ld e, h                                       ; $60d6: $5c
-    rst $38                                       ; $60d7: $ff
-    ld a, a                                       ; $60d8: $7f
-    ld l, b                                       ; $60d9: $68
-    ld a, [hl-]                                   ; $60da: $3a
-    and h                                         ; $60db: $a4
-    inc d                                         ; $60dc: $14
-    ld c, d                                       ; $60dd: $4a
-    add hl, hl                                    ; $60de: $29
-    rst $38                                       ; $60df: $ff
-    ld a, a                                       ; $60e0: $7f
-    or l                                          ; $60e1: $b5
-    ld d, [hl]                                    ; $60e2: $56
-    nop                                           ; $60e3: $00
-    nop                                           ; $60e4: $00
-    ld c, d                                       ; $60e5: $4a
-    add hl, hl                                    ; $60e6: $29
-    rst $38                                       ; $60e7: $ff
-    ld a, a                                       ; $60e8: $7f
-    or l                                          ; $60e9: $b5
-    ld d, [hl]                                    ; $60ea: $56
-    nop                                           ; $60eb: $00
-    nop                                           ; $60ec: $00
+
+    db $68, $3a, $ff, $7f, $ef, $63, $a4, $14, $b4, $5c, $ff, $7f, $7c, $7d, $a4, $14
+    db $b4, $5c, $ff, $7f, $ef, $63, $a4, $14, $b4, $5c, $ff, $7f, $68, $3a, $a4, $14
+    db $4a, $29, $ff, $7f, $b5, $56, $00, $00, $4a, $29, $ff, $7f, $b5, $56, $00, $00
+
     nop                                           ; $60ed: $00
     nop                                           ; $60ee: $00
     nop                                           ; $60ef: $00
@@ -6456,46 +5801,11 @@ Jump_028_607f:
     ld d, [hl]                                    ; $61ba: $56
     and h                                         ; $61bb: $a4
     inc d                                         ; $61bc: $14
-    dec bc                                        ; $61bd: $0b
-    dec d                                         ; $61be: $15
-    rst $38                                       ; $61bf: $ff
-    ld a, a                                       ; $61c0: $7f
-    ld [hl], e                                    ; $61c1: $73
-    ld de, $14a4                                  ; $61c2: $11 $a4 $14
-    ld [hl], e                                    ; $61c5: $73
-    ld de, $7fff                                  ; $61c6: $11 $ff $7f
-    dec a                                         ; $61c9: $3d
-    rrca                                          ; $61ca: $0f
-    and h                                         ; $61cb: $a4
-    inc d                                         ; $61cc: $14
-    ld [hl], e                                    ; $61cd: $73
-    ld de, $7fff                                  ; $61ce: $11 $ff $7f
-    sbc e                                         ; $61d1: $9b
-    inc c                                         ; $61d2: $0c
-    and h                                         ; $61d3: $a4
-    inc d                                         ; $61d4: $14
-    dec bc                                        ; $61d5: $0b
-    dec d                                         ; $61d6: $15
-    rst $38                                       ; $61d7: $ff
-    ld a, a                                       ; $61d8: $7f
-    xor a                                         ; $61d9: $af
-    ld c, d                                       ; $61da: $4a
-    and h                                         ; $61db: $a4
-    inc d                                         ; $61dc: $14
-    ld [hl], e                                    ; $61dd: $73
-    ld de, $7fff                                  ; $61de: $11 $ff $7f
-    ld [hl], a                                    ; $61e1: $77
-    dec hl                                        ; $61e2: $2b
-    and h                                         ; $61e3: $a4
-    inc d                                         ; $61e4: $14
-    rst $38                                       ; $61e5: $ff
-    ld a, a                                       ; $61e6: $7f
-    rst $38                                       ; $61e7: $ff
-    ld a, a                                       ; $61e8: $7f
-    ld c, d                                       ; $61e9: $4a
-    add hl, hl                                    ; $61ea: $29
-    and h                                         ; $61eb: $a4
-    inc d                                         ; $61ec: $14
+
+    db $0b, $15, $ff, $7f, $73, $11, $a4, $14, $73, $11, $ff, $7f, $3d, $0f, $a4, $14
+    db $73, $11, $ff, $7f, $9b, $0c, $a4, $14, $0b, $15, $ff, $7f, $af, $4a, $a4, $14
+    db $73, $11, $ff, $7f, $77, $2b, $a4, $14, $ff, $7f, $ff, $7f, $4a, $29, $a4, $14
+
     ld c, d                                       ; $61ed: $4a
     add hl, hl                                    ; $61ee: $29
     rst $38                                       ; $61ef: $ff
@@ -7243,34 +6553,39 @@ jr_028_6430:
     ld h, l                                       ; $64f2: $65
     ld [hl], e                                    ; $64f3: $73
     ld h, [hl]                                    ; $64f4: $66
-    or e                                          ; $64f5: $b3
-    ld h, [hl]                                    ; $64f6: $66
+
+    db $b3, $66
+
     di                                            ; $64f7: $f3
     ld h, [hl]                                    ; $64f8: $66
     inc sp                                        ; $64f9: $33
     ld h, a                                       ; $64fa: $67
-    ld [hl], e                                    ; $64fb: $73
-    ld h, a                                       ; $64fc: $67
+
+    db $73, $67
+
     or e                                          ; $64fd: $b3
     ld h, a                                       ; $64fe: $67
     di                                            ; $64ff: $f3
     ld h, a                                       ; $6500: $67
     inc sp                                        ; $6501: $33
     ld l, b                                       ; $6502: $68
-    ld [hl], e                                    ; $6503: $73
-    ld l, b                                       ; $6504: $68
+
+    db $73, $68
+
     or e                                          ; $6505: $b3
     ld l, b                                       ; $6506: $68
-    di                                            ; $6507: $f3
-    ld l, b                                       ; $6508: $68
+
+    db $f3, $68
+
     di                                            ; $6509: $f3
     ld l, b                                       ; $650a: $68
     di                                            ; $650b: $f3
     ld l, b                                       ; $650c: $68
     or e                                          ; $650d: $b3
     ld l, c                                       ; $650e: $69
-    di                                            ; $650f: $f3
-    ld l, c                                       ; $6510: $69
+
+    db $f3, $69
+
     inc sp                                        ; $6511: $33
     ld l, d                                       ; $6512: $6a
     ld [hl], e                                    ; $6513: $73
@@ -7279,14 +6594,16 @@ jr_028_6430:
     ld l, d                                       ; $6516: $6a
     di                                            ; $6517: $f3
     ld l, d                                       ; $6518: $6a
-    inc sp                                        ; $6519: $33
-    ld l, e                                       ; $651a: $6b
+
+    db $33, $6b
+
     ld [hl], e                                    ; $651b: $73
     ld l, e                                       ; $651c: $6b
     or e                                          ; $651d: $b3
     ld l, e                                       ; $651e: $6b
-    di                                            ; $651f: $f3
-    ld l, e                                       ; $6520: $6b
+
+    db $f3, $6b
+
     inc sp                                        ; $6521: $33
     ld l, h                                       ; $6522: $6c
     ld [hl], e                                    ; $6523: $73
@@ -7297,8 +6614,9 @@ jr_028_6430:
     ld l, h                                       ; $6528: $6c
     inc sp                                        ; $6529: $33
     ld l, l                                       ; $652a: $6d
-    ld [hl], e                                    ; $652b: $73
-    ld l, l                                       ; $652c: $6d
+
+    db $73, $6d
+
     or e                                          ; $652d: $b3
     ld l, l                                       ; $652e: $6d
     di                                            ; $652f: $f3
@@ -7315,34 +6633,34 @@ jr_028_6430:
     ld l, a                                       ; $653a: $6f
     ld [hl], e                                    ; $653b: $73
     ld l, a                                       ; $653c: $6f
-    or e                                          ; $653d: $b3
-    ld l, a                                       ; $653e: $6f
-    di                                            ; $653f: $f3
-    ld l, a                                       ; $6540: $6f
+
+    db $b3, $6f, $f3, $6f
+
     inc sp                                        ; $6541: $33
     ld [hl], b                                    ; $6542: $70
     ld [hl], e                                    ; $6543: $73
     ld [hl], b                                    ; $6544: $70
-    or e                                          ; $6545: $b3
-    ld [hl], b                                    ; $6546: $70
-    di                                            ; $6547: $f3
-    ld [hl], b                                    ; $6548: $70
+
+    db $b3, $70, $f3, $70
+
     inc sp                                        ; $6549: $33
     ld [hl], c                                    ; $654a: $71
     ld [hl], e                                    ; $654b: $73
     ld [hl], c                                    ; $654c: $71
     or e                                          ; $654d: $b3
     ld [hl], c                                    ; $654e: $71
-    di                                            ; $654f: $f3
-    ld [hl], c                                    ; $6550: $71
+
+    db $f3, $71
+
     inc sp                                        ; $6551: $33
     ld [hl], d                                    ; $6552: $72
     ld [hl], e                                    ; $6553: $73
     ld [hl], d                                    ; $6554: $72
     or e                                          ; $6555: $b3
     ld [hl], d                                    ; $6556: $72
-    di                                            ; $6557: $f3
-    ld [hl], d                                    ; $6558: $72
+
+    db $f3, $72
+
     inc sp                                        ; $6559: $33
     ld [hl], e                                    ; $655a: $73
     ld [hl], e                                    ; $655b: $73
@@ -7427,8 +6745,9 @@ jr_028_6430:
     ld a, l                                       ; $65aa: $7d
     ld [hl], e                                    ; $65ab: $73
     ld a, l                                       ; $65ac: $7d
-    or e                                          ; $65ad: $b3
-    ld a, l                                       ; $65ae: $7d
+
+    db $b3, $7d
+
     di                                            ; $65af: $f3
     ld a, l                                       ; $65b0: $7d
     inc sp                                        ; $65b1: $33
@@ -7663,30 +6982,19 @@ jr_028_6697:
     ld d, [hl]                                    ; $66a8: $56
     rst $38                                       ; $66a9: $ff
     ld a, a                                       ; $66aa: $7f
-
-jr_028_66ab:
     nop                                           ; $66ab: $00
     nop                                           ; $66ac: $00
-    ld c, d                                       ; $66ad: $4a
-    add hl, hl                                    ; $66ae: $29
+
+    db $4a, $29
+
     or l                                          ; $66af: $b5
     ld d, [hl]                                    ; $66b0: $56
     rst $38                                       ; $66b1: $ff
     ld a, a                                       ; $66b2: $7f
-    rst $28                                       ; $66b3: $ef
-    dec a                                         ; $66b4: $3d
-    sub h                                         ; $66b5: $94
-    ld a, [hl]                                    ; $66b6: $7e
-    ld c, d                                       ; $66b7: $4a
-    ld c, c                                       ; $66b8: $49
-    ld b, b                                       ; $66b9: $40
-    jr nz, jr_028_66ab                            ; $66ba: $20 $ef
 
-    dec a                                         ; $66bc: $3d
-    ldh a, [rSCX]                                 ; $66bd: $f0 $43
-    and $19                                       ; $66bf: $e6 $19
-    jp nz, RST_08                                 ; $66c1: $c2 $08 $00
+    db $ef, $3d, $94, $7e, $4a, $49, $40, $20, $ef, $3d, $f0, $43, $e6, $19, $c2, $08
 
+    nop                                           ; $66c3: $00
     nop                                           ; $66c4: $00
     ld c, d                                       ; $66c5: $4a
     add hl, hl                                    ; $66c6: $29
@@ -7858,21 +7166,9 @@ jr_028_6704:
     ld d, [hl]                                    ; $6770: $56
     rst $38                                       ; $6771: $ff
     ld a, a                                       ; $6772: $7f
-    rst $28                                       ; $6773: $ef
-    dec a                                         ; $6774: $3d
-    db $f4                                        ; $6775: $f4
-    rla                                           ; $6776: $17
-    ld [bc], a                                    ; $6777: $02
-    ld [bc], a                                    ; $6778: $02
-    jp nz, RST_00                                 ; $6779: $c2 $00 $00
 
-    nop                                           ; $677c: $00
-    ld c, d                                       ; $677d: $4a
-    add hl, hl                                    ; $677e: $29
-    or l                                          ; $677f: $b5
-    ld d, [hl]                                    ; $6780: $56
-    rst $38                                       ; $6781: $ff
-    ld a, a                                       ; $6782: $7f
+    db $ef, $3d, $f4, $17, $02, $02, $c2, $00, $00, $00, $4a, $29, $b5, $56, $ff, $7f
+
     nop                                           ; $6783: $00
     nop                                           ; $6784: $00
     ld c, d                                       ; $6785: $4a
@@ -8114,19 +7410,9 @@ jr_028_680b:
     ld d, [hl]                                    ; $6870: $56
     rst $38                                       ; $6871: $ff
     ld a, a                                       ; $6872: $7f
-    rst $28                                       ; $6873: $ef
-    dec a                                         ; $6874: $3d
-    ldh a, [$7e]                                  ; $6875: $f0 $7e
-    xor b                                         ; $6877: $a8
-    ld e, c                                       ; $6878: $59
-    dec b                                         ; $6879: $05
-    inc [hl]                                      ; $687a: $34
-    rst $28                                       ; $687b: $ef
-    dec a                                         ; $687c: $3d
-    ccf                                           ; $687d: $3f
-    inc bc                                        ; $687e: $03
-    sbc c                                         ; $687f: $99
-    ld bc, $000d                                  ; $6880: $01 $0d $00
+
+    db $ef, $3d, $f0, $7e, $a8, $59, $05, $34, $ef, $3d, $3f, $03, $99, $01, $0d, $00
+
     nop                                           ; $6883: $00
     nop                                           ; $6884: $00
     ld c, d                                       ; $6885: $4a
@@ -8239,22 +7525,10 @@ jr_028_680b:
     ld d, [hl]                                    ; $68f0: $56
     rst $38                                       ; $68f1: $ff
     ld a, a                                       ; $68f2: $7f
-    rst $28                                       ; $68f3: $ef
-    dec a                                         ; $68f4: $3d
-    rra                                           ; $68f5: $1f
-    inc bc                                        ; $68f6: $03
-    add hl, de                                    ; $68f7: $19
-    ld bc, $000a                                  ; $68f8: $01 $0a $00
-    rst $28                                       ; $68fb: $ef
-    dec a                                         ; $68fc: $3d
-    ld l, [hl]                                    ; $68fd: $6e
-    ld a, a                                       ; $68fe: $7f
-    add l                                         ; $68ff: $85
-    ld d, l                                       ; $6900: $55
-    ld b, b                                       ; $6901: $40
-    jr z, jr_028_6904                             ; $6902: $28 $00
 
-jr_028_6904:
+    db $ef, $3d, $1f, $03, $19, $01, $0a, $00, $ef, $3d, $6e, $7f, $85, $55, $40, $28
+
+    nop                                           ; $6903: $00
     nop                                           ; $6904: $00
     ld c, d                                       ; $6905: $4a
     add hl, hl                                    ; $6906: $29
@@ -8488,20 +7762,9 @@ jr_028_6904:
     ld d, [hl]                                    ; $69f0: $56
     rst $38                                       ; $69f1: $ff
     ld a, a                                       ; $69f2: $7f
-    rst $28                                       ; $69f3: $ef
-    dec a                                         ; $69f4: $3d
-    ccf                                           ; $69f5: $3f
-    dec hl                                        ; $69f6: $2b
-    ld de, $1201                                  ; $69f7: $11 $01 $12
-    nop                                           ; $69fa: $00
-    rst $28                                       ; $69fb: $ef
-    dec a                                         ; $69fc: $3d
-    db $d3                                        ; $69fd: $d3
-    ld d, [hl]                                    ; $69fe: $56
-    ld b, l                                       ; $69ff: $45
-    ld c, l                                       ; $6a00: $4d
-    nop                                           ; $6a01: $00
-    inc e                                         ; $6a02: $1c
+
+    db $ef, $3d, $3f, $2b, $11, $01, $12, $00, $ef, $3d, $d3, $56, $45, $4d, $00, $1c
+
     nop                                           ; $6a03: $00
     nop                                           ; $6a04: $00
     ld c, d                                       ; $6a05: $4a
@@ -8798,17 +8061,9 @@ jr_028_6904:
     ld d, [hl]                                    ; $6b30: $56
     rst $38                                       ; $6b31: $ff
     ld a, a                                       ; $6b32: $7f
-    rst $28                                       ; $6b33: $ef
-    dec a                                         ; $6b34: $3d
-    sbc a                                         ; $6b35: $9f
-    ld c, e                                       ; $6b36: $4b
-    ld [hl], b                                    ; $6b37: $70
-    dec e                                         ; $6b38: $1d
-    and a                                         ; $6b39: $a7
-    ld [$3def], sp                                ; $6b3a: $08 $ef $3d
-    ld e, a                                       ; $6b3d: $5f
-    ld bc, $0011                                  ; $6b3e: $01 $11 $00
-    ld h, $0c                                     ; $6b41: $26 $0c
+
+    db $ef, $3d, $9f, $4b, $70, $1d, $a7, $08, $ef, $3d, $5f, $01, $11, $00, $26, $0c
+
     nop                                           ; $6b43: $00
     nop                                           ; $6b44: $00
     ld c, d                                       ; $6b45: $4a
@@ -8972,8 +8227,6 @@ jr_028_6904:
     ld d, [hl]                                    ; $6be8: $56
     rst $38                                       ; $6be9: $ff
     ld a, a                                       ; $6bea: $7f
-
-jr_028_6beb:
     nop                                           ; $6beb: $00
     nop                                           ; $6bec: $00
     ld c, d                                       ; $6bed: $4a
@@ -8982,22 +8235,9 @@ jr_028_6beb:
     ld d, [hl]                                    ; $6bf0: $56
     rst $38                                       ; $6bf1: $ff
     ld a, a                                       ; $6bf2: $7f
-    rst $28                                       ; $6bf3: $ef
-    dec a                                         ; $6bf4: $3d
-    db $eb                                        ; $6bf5: $eb
-    ld a, d                                       ; $6bf6: $7a
-    ld h, b                                       ; $6bf7: $60
-    ld d, c                                       ; $6bf8: $51
-    and b                                         ; $6bf9: $a0
-    jr nc, jr_028_6beb                            ; $6bfa: $30 $ef
 
-    dec a                                         ; $6bfc: $3d
-    rst $18                                       ; $6bfd: $df
-    ld e, h                                       ; $6bfe: $5c
-    inc d                                         ; $6bff: $14
-    jr nc, jr_028_6c6b                            ; $6c00: $30 $69
+    db $ef, $3d, $eb, $7a, $60, $51, $a0, $30, $ef, $3d, $df, $5c, $14, $30, $69, $00
 
-    nop                                           ; $6c02: $00
     nop                                           ; $6c03: $00
     nop                                           ; $6c04: $00
     ld c, d                                       ; $6c05: $4a
@@ -9382,21 +8622,9 @@ jr_028_6d3a:
     ld d, [hl]                                    ; $6d70: $56
     rst $38                                       ; $6d71: $ff
     ld a, a                                       ; $6d72: $7f
-    rst $28                                       ; $6d73: $ef
-    dec a                                         ; $6d74: $3d
-    sbc a                                         ; $6d75: $9f
-    ld c, e                                       ; $6d76: $4b
-    ld [hl], b                                    ; $6d77: $70
-    add hl, de                                    ; $6d78: $19
-    and a                                         ; $6d79: $a7
-    ld [$3def], sp                                ; $6d7a: $08 $ef $3d
-    ret nz                                        ; $6d7d: $c0
 
-    ld a, a                                       ; $6d7e: $7f
-    ld h, b                                       ; $6d7f: $60
-    ld e, c                                       ; $6d80: $59
-    add b                                         ; $6d81: $80
-    inc [hl]                                      ; $6d82: $34
+    db $ef, $3d, $9f, $4b, $70, $19, $a7, $08, $ef, $3d, $c0, $7f, $60, $59, $80, $34
+
     nop                                           ; $6d83: $00
     nop                                           ; $6d84: $00
     ld c, d                                       ; $6d85: $4a
@@ -9944,18 +9172,9 @@ jr_028_6f2b:
     ld d, [hl]                                    ; $6fb0: $56
     rst $38                                       ; $6fb1: $ff
     ld a, a                                       ; $6fb2: $7f
-    rst $28                                       ; $6fb3: $ef
-    dec a                                         ; $6fb4: $3d
-    rra                                           ; $6fb5: $1f
-    ld bc, $000f                                  ; $6fb6: $01 $0f $00
-    ld b, a                                       ; $6fb9: $47
-    nop                                           ; $6fba: $00
-    rst $28                                       ; $6fbb: $ef
-    dec a                                         ; $6fbc: $3d
-    ccf                                           ; $6fbd: $3f
-    daa                                           ; $6fbe: $27
-    dec l                                         ; $6fbf: $2d
-    ld de, $0065                                  ; $6fc0: $11 $65 $00
+
+    db $ef, $3d, $1f, $01, $0f, $00, $47, $00, $ef, $3d, $3f, $27, $2d, $11, $65, $00
+
     nop                                           ; $6fc3: $00
     nop                                           ; $6fc4: $00
     ld c, d                                       ; $6fc5: $4a
@@ -10004,18 +9223,9 @@ jr_028_6f2b:
     ld d, [hl]                                    ; $6ff0: $56
     rst $38                                       ; $6ff1: $ff
     ld a, a                                       ; $6ff2: $7f
-    rst $28                                       ; $6ff3: $ef
-    dec a                                         ; $6ff4: $3d
-    rra                                           ; $6ff5: $1f
-    ld bc, $000f                                  ; $6ff6: $01 $0f $00
-    ld b, a                                       ; $6ff9: $47
-    nop                                           ; $6ffa: $00
-    rst $28                                       ; $6ffb: $ef
-    dec a                                         ; $6ffc: $3d
-    ccf                                           ; $6ffd: $3f
-    daa                                           ; $6ffe: $27
-    dec l                                         ; $6fff: $2d
-    ld de, $0065                                  ; $7000: $11 $65 $00
+
+    db $ef, $3d, $1f, $01, $0f, $00, $47, $00, $ef, $3d, $3f, $27, $2d, $11, $65, $00
+
     nop                                           ; $7003: $00
     nop                                           ; $7004: $00
     ld c, d                                       ; $7005: $4a
@@ -10184,19 +9394,11 @@ jr_028_6f2b:
     ld d, [hl]                                    ; $70b0: $56
     rst $38                                       ; $70b1: $ff
     ld a, a                                       ; $70b2: $7f
-    rst $28                                       ; $70b3: $ef
-    dec a                                         ; $70b4: $3d
-    sbc a                                         ; $70b5: $9f
-    ld c, e                                       ; $70b6: $4b
-    ld [hl], b                                    ; $70b7: $70
-    add hl, de                                    ; $70b8: $19
-    and a                                         ; $70b9: $a7
-    ld [$3def], sp                                ; $70ba: $08 $ef $3d
-    and h                                         ; $70bd: $a4
-    inc bc                                        ; $70be: $03
-    jp nz, $e001                                  ; $70bf: $c2 $01 $e0
 
-    ld [$0000], sp                                ; $70c2: $08 $00 $00
+    db $ef, $3d, $9f, $4b, $70, $19, $a7, $08, $ef, $3d, $a4, $03, $c2, $01, $e0, $08
+
+    nop                                           ; $70c3: $00
+    nop                                           ; $70c4: $00
     ld c, d                                       ; $70c5: $4a
     add hl, hl                                    ; $70c6: $29
     or l                                          ; $70c7: $b5
@@ -10243,19 +9445,11 @@ jr_028_6f2b:
     ld d, [hl]                                    ; $70f0: $56
     rst $38                                       ; $70f1: $ff
     ld a, a                                       ; $70f2: $7f
-    rst $28                                       ; $70f3: $ef
-    dec a                                         ; $70f4: $3d
-    sbc a                                         ; $70f5: $9f
-    ld c, e                                       ; $70f6: $4b
-    ld [hl], b                                    ; $70f7: $70
-    add hl, de                                    ; $70f8: $19
-    and a                                         ; $70f9: $a7
-    ld [$3def], sp                                ; $70fa: $08 $ef $3d
-    and h                                         ; $70fd: $a4
-    inc bc                                        ; $70fe: $03
-    jp nz, $e001                                  ; $70ff: $c2 $01 $e0
 
-    ld [$0000], sp                                ; $7102: $08 $00 $00
+    db $ef, $3d, $9f, $4b, $70, $19, $a7, $08, $ef, $3d, $a4, $03, $c2, $01, $e0, $08
+
+    nop                                           ; $7103: $00
+    nop                                           ; $7104: $00
     ld c, d                                       ; $7105: $4a
     add hl, hl                                    ; $7106: $29
     or l                                          ; $7107: $b5
@@ -10489,24 +9683,10 @@ jr_028_71c4:
     ld d, [hl]                                    ; $71f0: $56
     rst $38                                       ; $71f1: $ff
     ld a, a                                       ; $71f2: $7f
-    rst $28                                       ; $71f3: $ef
-    dec a                                         ; $71f4: $3d
-    sbc a                                         ; $71f5: $9f
-    ld d, e                                       ; $71f6: $53
-    or b                                          ; $71f7: $b0
-    dec e                                         ; $71f8: $1d
-    and [hl]                                      ; $71f9: $a6
-    inc c                                         ; $71fa: $0c
-    rst $28                                       ; $71fb: $ef
-    dec a                                         ; $71fc: $3d
-    adc [hl]                                      ; $71fd: $8e
-    ld a, a                                       ; $71fe: $7f
-    ld l, h                                       ; $71ff: $6c
-    ld [hl], b                                    ; $7200: $70
-    inc b                                         ; $7201: $04
-    jr z, jr_028_7204                             ; $7202: $28 $00
 
-jr_028_7204:
+    db $ef, $3d, $9f, $53, $b0, $1d, $a6, $0c, $ef, $3d, $8e, $7f, $6c, $70, $04, $28
+
+    nop                                           ; $7203: $00
     nop                                           ; $7204: $00
     ld c, d                                       ; $7205: $4a
     add hl, hl                                    ; $7206: $29
@@ -10696,7 +9876,7 @@ jr_028_726b:
     dec a                                         ; $72bc: $3d
     ld [hl], e                                    ; $72bd: $73
     ld a, a                                       ; $72be: $7f
-    jr z, jr_028_72f6                             ; $72bf: $28 $35
+    jr z, @+$37                                   ; $72bf: $28 $35
 
     ld b, b                                       ; $72c1: $40
     inc h                                         ; $72c2: $24
@@ -10748,24 +9928,10 @@ jr_028_726b:
     ld d, [hl]                                    ; $72f0: $56
     rst $38                                       ; $72f1: $ff
     ld a, a                                       ; $72f2: $7f
-    rst $28                                       ; $72f3: $ef
-    dec a                                         ; $72f4: $3d
-    sbc a                                         ; $72f5: $9f
 
-jr_028_72f6:
-    inc bc                                        ; $72f6: $03
-    ld [hl], h                                    ; $72f7: $74
-    ld bc, $0044                                  ; $72f8: $01 $44 $00
-    rst $28                                       ; $72fb: $ef
-    dec a                                         ; $72fc: $3d
-    sbc h                                         ; $72fd: $9c
-    ld a, a                                       ; $72fe: $7f
-    adc h                                         ; $72ff: $8c
-    dec a                                         ; $7300: $3d
-    ld h, e                                       ; $7301: $63
-    jr jr_028_7304                                ; $7302: $18 $00
+    db $ef, $3d, $9f, $03, $74, $01, $44, $00, $ef, $3d, $9c, $7f, $8c, $3d, $63, $18
 
-jr_028_7304:
+    nop                                           ; $7303: $00
     nop                                           ; $7304: $00
     ld c, d                                       ; $7305: $4a
     add hl, hl                                    ; $7306: $29
@@ -11679,7 +10845,7 @@ jr_028_7684:
     rla                                           ; $76b6: $17
     ld [bc], a                                    ; $76b7: $02
     ld [bc], a                                    ; $76b8: $02
-    jp nz, RST_00                                 ; $76b9: $c2 $00 $00
+    jp nz, $0000                                  ; $76b9: $c2 $00 $00
 
     nop                                           ; $76bc: $00
     ld c, d                                       ; $76bd: $4a
@@ -12178,7 +11344,7 @@ jr_028_7884:
     rla                                           ; $78b6: $17
     ld [bc], a                                    ; $78b7: $02
     ld [bc], a                                    ; $78b8: $02
-    jp nz, RST_00                                 ; $78b9: $c2 $00 $00
+    jp nz, $0000                                  ; $78b9: $c2 $00 $00
 
     nop                                           ; $78bc: $00
     ld c, d                                       ; $78bd: $4a
@@ -12677,7 +11843,7 @@ jr_028_7a84:
     rla                                           ; $7ab6: $17
     ld [bc], a                                    ; $7ab7: $02
     ld [bc], a                                    ; $7ab8: $02
-    jp nz, RST_00                                 ; $7ab9: $c2 $00 $00
+    jp nz, $0000                                  ; $7ab9: $c2 $00 $00
 
     nop                                           ; $7abc: $00
     ld c, d                                       ; $7abd: $4a
@@ -13176,7 +12342,7 @@ jr_028_7c84:
     rla                                           ; $7cb6: $17
     ld [bc], a                                    ; $7cb7: $02
     ld [bc], a                                    ; $7cb8: $02
-    jp nz, RST_00                                 ; $7cb9: $c2 $00 $00
+    jp nz, $0000                                  ; $7cb9: $c2 $00 $00
 
     nop                                           ; $7cbc: $00
     ld c, d                                       ; $7cbd: $4a
@@ -13416,22 +12582,9 @@ jr_028_7c84:
     ld d, [hl]                                    ; $7db0: $56
     rst $38                                       ; $7db1: $ff
     ld a, a                                       ; $7db2: $7f
-    adc l                                         ; $7db3: $8d
-    add hl, hl                                    ; $7db4: $29
-    rst $38                                       ; $7db5: $ff
-    ld a, a                                       ; $7db6: $7f
-    and b                                         ; $7db7: $a0
-    ld a, [hl]                                    ; $7db8: $7e
-    and h                                         ; $7db9: $a4
-    inc d                                         ; $7dba: $14
-    nop                                           ; $7dbb: $00
-    nop                                           ; $7dbc: $00
-    nop                                           ; $7dbd: $00
-    nop                                           ; $7dbe: $00
-    nop                                           ; $7dbf: $00
-    nop                                           ; $7dc0: $00
-    nop                                           ; $7dc1: $00
-    nop                                           ; $7dc2: $00
+
+    db $8d, $29, $ff, $7f, $a0, $7e, $a4, $14, $00, $00, $00, $00, $00, $00, $00, $00
+
     rst $38                                       ; $7dc3: $ff
     ld a, a                                       ; $7dc4: $7f
     rst $38                                       ; $7dc5: $ff

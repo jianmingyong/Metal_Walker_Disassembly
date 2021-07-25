@@ -5,19 +5,22 @@
 
 SECTION "ROM Bank $018", ROMX[$4000], BANK[$18]
 
-    db $18
+    db $18, $04
 
-    inc b                                         ; $4001: $04
     nop                                           ; $4002: $00
-    ld bc, $0002                                  ; $4003: $01 $02 $00
-    inc bc                                        ; $4006: $03
+
+    db $01, $02, $00, $03
+
     nop                                           ; $4007: $00
-    inc c                                         ; $4008: $0c
-    ld a, [bc]                                    ; $4009: $0a
-    dec bc                                        ; $400a: $0b
-    add hl, bc                                    ; $400b: $09
+
+    db $0c, $0a, $0b, $09
+
     nop                                           ; $400c: $00
-    ld [$0000], sp                                ; $400d: $08 $00 $00
+
+    db $08
+
+    nop                                           ; $400e: $00
+    nop                                           ; $400f: $00
     dec d                                         ; $4010: $15
     nop                                           ; $4011: $00
     nop                                           ; $4012: $00
@@ -158,11 +161,13 @@ jr_018_4088:
     nop                                           ; $409b: $00
     sub b                                         ; $409c: $90
     sub c                                         ; $409d: $91
-    sub d                                         ; $409e: $92
+
+    db $92
+
     nop                                           ; $409f: $00
-    sub l                                         ; $40a0: $95
-    sub h                                         ; $40a1: $94
-    sub e                                         ; $40a2: $93
+
+    db $95, $94, $93
+
     sub [hl]                                      ; $40a3: $96
     sub a                                         ; $40a4: $97
     sbc c                                         ; $40a5: $99
@@ -182,19 +187,29 @@ jr_018_4088:
     nop                                           ; $40b3: $00
     and d                                         ; $40b4: $a2
     nop                                           ; $40b5: $00
-    ld bc, $0302                                  ; $40b6: $01 $02 $03
-    inc b                                         ; $40b9: $04
+    db $01                                        ; $40b6: $01
+
+    db $02
+
+    inc bc                                        ; $40b8: $03
+
+    db $04
+
     dec b                                         ; $40ba: $05
     ld b, $07                                     ; $40bb: $06 $07
     ld [$0a09], sp                                ; $40bd: $08 $09 $0a
     dec bc                                        ; $40c0: $0b
     inc c                                         ; $40c1: $0c
-    dec c                                         ; $40c2: $0d
+
+    db $0d
+
     ld c, $0f                                     ; $40c3: $0e $0f
     db $10                                        ; $40c5: $10
     ld de, $1312                                  ; $40c6: $11 $12 $13
     inc d                                         ; $40c9: $14
-    dec d                                         ; $40ca: $15
+
+    db $15
+
     ld d, $17                                     ; $40cb: $16 $17
     jr jr_018_40e8                                ; $40cd: $18 $19
 
@@ -207,16 +222,23 @@ jr_018_4088:
     inc e                                         ; $40d6: $1c
     dec e                                         ; $40d7: $1d
     rra                                           ; $40d8: $1f
-    ld hl, $2236                                  ; $40d9: $21 $36 $22
+    db $21                                        ; $40d9: $21
+    db $36                                        ; $40da: $36
+
+    db $22
+
     inc hl                                        ; $40dc: $23
-    inc h                                         ; $40dd: $24
+
+    db $24
+
     dec h                                         ; $40de: $25
     ld h, $27                                     ; $40df: $26 $27
     jr z, jr_018_410c                             ; $40e1: $28 $29
 
     ld a, [hl+]                                   ; $40e3: $2a
-    ld b, b                                       ; $40e4: $40
-    ld b, c                                       ; $40e5: $41
+
+    db $40, $41
+
     ld b, d                                       ; $40e6: $42
     ld b, e                                       ; $40e7: $43
 
@@ -233,21 +255,25 @@ jr_018_40e8:
     ld [hl-], a                                   ; $40f1: $32
     ld sp, $2f30                                  ; $40f2: $31 $30 $2f
     nop                                           ; $40f5: $00
-    ld l, $50                                     ; $40f6: $2e $50
+    db $2e                                        ; $40f6: $2e
+
+    db $50
+
     ld d, c                                       ; $40f8: $51
     inc sp                                        ; $40f9: $33
     dec [hl]                                      ; $40fa: $35
     inc [hl]                                      ; $40fb: $34
-    ld c, a                                       ; $40fc: $4f
+
+    db $4f
+
     adc e                                         ; $40fd: $8b
     adc h                                         ; $40fe: $8c
     adc l                                         ; $40ff: $8d
     adc [hl]                                      ; $4100: $8e
     adc a                                         ; $4101: $8f
     adc d                                         ; $4102: $8a
-    nop                                           ; $4103: $00
 
-    db $00, $00, $00
+    db $00, $00, $00, $00
 
     nop                                           ; $4107: $00
     nop                                           ; $4108: $00
@@ -311,21 +337,23 @@ jr_018_410c:
     nop                                           ; $4140: $00
     nop                                           ; $4141: $00
     nop                                           ; $4142: $00
-    rla                                           ; $4143: $17
+
+    db $17
+
     rla                                           ; $4144: $17
-    rla                                           ; $4145: $17
-    rla                                           ; $4146: $17
-    rla                                           ; $4147: $17
-    rla                                           ; $4148: $17
-    jr jr_018_4163                                ; $4149: $18 $18
 
-    jr jr_018_4165                                ; $414b: $18 $18
+    db $17, $17, $17, $17
 
-    jr jr_018_4167                                ; $414d: $18 $18
+    db $18                                        ; $4149: $18
 
-    jr jr_018_4169                                ; $414f: $18 $18
+    db $18, $18, $18, $18
 
-    add hl, de                                    ; $4151: $19
+    db $18                                        ; $414e: $18
+
+    db $18
+
+    jr jr_018_416b                                ; $4150: $18 $19
+
     add hl, de                                    ; $4152: $19
     add hl, de                                    ; $4153: $19
     add hl, de                                    ; $4154: $19
@@ -347,18 +375,16 @@ jr_018_410c:
 jr_018_4163:
     ld a, [de]                                    ; $4163: $1a
     ld a, [de]                                    ; $4164: $1a
-
-jr_018_4165:
     ld a, [de]                                    ; $4165: $1a
     dec de                                        ; $4166: $1b
-
-jr_018_4167:
     dec de                                        ; $4167: $1b
-    dec de                                        ; $4168: $1b
 
-jr_018_4169:
+jr_018_4168:
+    dec de                                        ; $4168: $1b
     dec de                                        ; $4169: $1b
     dec de                                        ; $416a: $1b
+
+jr_018_416b:
     dec de                                        ; $416b: $1b
     dec de                                        ; $416c: $1b
     dec de                                        ; $416d: $1b
@@ -475,9 +501,14 @@ jr_018_41cf:
     inc h                                         ; $41dd: $24
     dec h                                         ; $41de: $25
     dec h                                         ; $41df: $25
-    ld h, $26                                     ; $41e0: $26 $26
-    ld h, $26                                     ; $41e2: $26 $26
-    ld h, $27                                     ; $41e4: $26 $27
+
+    db $26
+
+    db $26                                        ; $41e1: $26
+
+    db $26, $26, $26
+
+    daa                                           ; $41e5: $27
     daa                                           ; $41e6: $27
     jr z, jr_018_4211                             ; $41e7: $28 $28
 
@@ -496,15 +527,18 @@ jr_018_41cf:
     inc l                                         ; $41f5: $2c
     inc l                                         ; $41f6: $2c
     inc l                                         ; $41f7: $2c
-    ld c, b                                       ; $41f8: $48
+
+    db $48
+
     ld c, b                                       ; $41f9: $48
-    ld c, b                                       ; $41fa: $48
-    ld c, b                                       ; $41fb: $48
-    ld c, b                                       ; $41fc: $48
-    ld c, b                                       ; $41fd: $48
+
+    db $48, $48, $48, $48
+
     dec d                                         ; $41fe: $15
     dec d                                         ; $41ff: $15
-    dec d                                         ; $4200: $15
+
+    db $15
+
     dec d                                         ; $4201: $15
     dec d                                         ; $4202: $15
     dec d                                         ; $4203: $15
@@ -661,7 +695,9 @@ jr_018_4213:
     ld c, [hl]                                    ; $4296: $4e
     ld c, [hl]                                    ; $4297: $4e
     ld c, [hl]                                    ; $4298: $4e
-    ld c, [hl]                                    ; $4299: $4e
+
+    db $4e
+
     ccf                                           ; $429a: $3f
     ccf                                           ; $429b: $3f
     ccf                                           ; $429c: $3f
@@ -684,58 +720,6 @@ jr_018_4213:
 
     INCBIN "gfx/image_018_42ad.2bpp"
 
-    rst $38                                       ; $43ad: $ff
-    nop                                           ; $43ae: $00
-    rst $38                                       ; $43af: $ff
-    nop                                           ; $43b0: $00
-    rst $38                                       ; $43b1: $ff
-    ld a, h                                       ; $43b2: $7c
-    rst $38                                       ; $43b3: $ff
-    add h                                         ; $43b4: $84
-    rst $38                                       ; $43b5: $ff
-    add h                                         ; $43b6: $84
-    rst $38                                       ; $43b7: $ff
-    ld a, h                                       ; $43b8: $7c
-    rst $38                                       ; $43b9: $ff
-    inc b                                         ; $43ba: $04
-    rst $38                                       ; $43bb: $ff
-    inc b                                         ; $43bc: $04
-
-    INCBIN "gfx/image_018_43bd.2bpp"
-
-    rst $38                                       ; $444d: $ff
-    db $10                                        ; $444e: $10
-    rst $38                                       ; $444f: $ff
-    db $10                                        ; $4450: $10
-    rst $38                                       ; $4451: $ff
-    db $10                                        ; $4452: $10
-    rst $38                                       ; $4453: $ff
-    cp $ff                                        ; $4454: $fe $ff
-    db $10                                        ; $4456: $10
-    rst $38                                       ; $4457: $ff
-    db $10                                        ; $4458: $10
-    rst $38                                       ; $4459: $ff
-    db $10                                        ; $445a: $10
-    rst $38                                       ; $445b: $ff
-    nop                                           ; $445c: $00
-    rst $38                                       ; $445d: $ff
-    nop                                           ; $445e: $00
-    rst $38                                       ; $445f: $ff
-    nop                                           ; $4460: $00
-    rst $38                                       ; $4461: $ff
-    nop                                           ; $4462: $00
-    rst $38                                       ; $4463: $ff
-    cp $ff                                        ; $4464: $fe $ff
-    nop                                           ; $4466: $00
-    rst $38                                       ; $4467: $ff
-    nop                                           ; $4468: $00
-    rst $38                                       ; $4469: $ff
-    nop                                           ; $446a: $00
-    rst $38                                       ; $446b: $ff
-    nop                                           ; $446c: $00
-
-    INCBIN "gfx/image_018_446d.2bpp"
-
     rst $38                                       ; $44ad: $ff
     add d                                         ; $44ae: $82
     rst $38                                       ; $44af: $ff
@@ -752,25 +736,6 @@ jr_018_4213:
     nop                                           ; $44bc: $00
 
     INCBIN "gfx/image_018_44bd.2bpp"
-
-    rst $38                                       ; $44dd: $ff
-    add b                                         ; $44de: $80
-    rst $38                                       ; $44df: $ff
-    add b                                         ; $44e0: $80
-    rst $38                                       ; $44e1: $ff
-    nop                                           ; $44e2: $00
-    rst $38                                       ; $44e3: $ff
-    ld b, d                                       ; $44e4: $42
-    rst $38                                       ; $44e5: $ff
-    ld b, d                                       ; $44e6: $42
-    rst $38                                       ; $44e7: $ff
-    inc h                                         ; $44e8: $24
-    rst $38                                       ; $44e9: $ff
-    jr @+$01                                      ; $44ea: $18 $ff
-
-    nop                                           ; $44ec: $00
-
-    INCBIN "gfx/image_018_44ed.2bpp"
 
     rst $38                                       ; $44fd: $ff
     nop                                           ; $44fe: $00
@@ -1846,45 +1811,7 @@ jr_018_4213:
 
     INCBIN "gfx/image_018_498d.2bpp"
 
-    rst $38                                       ; $49ad: $ff
-    nop                                           ; $49ae: $00
-    rst $38                                       ; $49af: $ff
-    nop                                           ; $49b0: $00
-    rst $38                                       ; $49b1: $ff
-    nop                                           ; $49b2: $00
-    rst $38                                       ; $49b3: $ff
-    sub d                                         ; $49b4: $92
-    rst $38                                       ; $49b5: $ff
-    nop                                           ; $49b6: $00
-    rst $38                                       ; $49b7: $ff
-    nop                                           ; $49b8: $00
-    rst $38                                       ; $49b9: $ff
-    nop                                           ; $49ba: $00
-    rst $38                                       ; $49bb: $ff
-    nop                                           ; $49bc: $00
-
-    INCBIN "gfx/image_018_49bd.2bpp"
-
-    INCBIN "gfx/image_018_4abd.2bpp"
-
-    rst $38                                       ; $4b0d: $ff
-    add d                                         ; $4b0e: $82
-    rst $38                                       ; $4b0f: $ff
-    add d                                         ; $4b10: $82
-    rst $38                                       ; $4b11: $ff
-    ld b, h                                       ; $4b12: $44
-    rst $38                                       ; $4b13: $ff
-    ld b, h                                       ; $4b14: $44
-    rst $38                                       ; $4b15: $ff
-    jr z, @+$01                                   ; $4b16: $28 $ff
-
-    jr z, @+$01                                   ; $4b18: $28 $ff
-
-    db $10                                        ; $4b1a: $10
-    rst $38                                       ; $4b1b: $ff
-    nop                                           ; $4b1c: $00
-
-    INCBIN "gfx/image_018_4b1d.2bpp"
+    INCBIN "gfx/image_018_4a8d.2bpp"
 
     rst $38                                       ; $4b5d: $ff
     nop                                           ; $4b5e: $00
@@ -1928,61 +1855,6 @@ jr_018_4213:
 
     INCBIN "gfx/image_018_4b8d.2bpp"
 
-    rst $38                                       ; $4bbd: $ff
-    inc e                                         ; $4bbe: $1c
-    rst $38                                       ; $4bbf: $ff
-    inc e                                         ; $4bc0: $1c
-    rst $38                                       ; $4bc1: $ff
-    inc e                                         ; $4bc2: $1c
-    rst $38                                       ; $4bc3: $ff
-    ld a, a                                       ; $4bc4: $7f
-    rst $38                                       ; $4bc5: $ff
-    ld a, $ff                                     ; $4bc6: $3e $ff
-    inc e                                         ; $4bc8: $1c
-    rst $38                                       ; $4bc9: $ff
-    ld [$00ff], sp                                ; $4bca: $08 $ff $00
-    rst $38                                       ; $4bcd: $ff
-    db $10                                        ; $4bce: $10
-    rst $38                                       ; $4bcf: $ff
-    jr nc, @+$01                                  ; $4bd0: $30 $ff
-
-    ld a, [hl]                                    ; $4bd2: $7e
-    rst $38                                       ; $4bd3: $ff
-    cp $ff                                        ; $4bd4: $fe $ff
-    ld a, [hl]                                    ; $4bd6: $7e
-    rst $38                                       ; $4bd7: $ff
-    jr nc, @+$01                                  ; $4bd8: $30 $ff
-
-    db $10                                        ; $4bda: $10
-    rst $38                                       ; $4bdb: $ff
-    nop                                           ; $4bdc: $00
-    rst $38                                       ; $4bdd: $ff
-    ld [$0cff], sp                                ; $4bde: $08 $ff $0c
-    rst $38                                       ; $4be1: $ff
-    ld a, [hl]                                    ; $4be2: $7e
-    rst $38                                       ; $4be3: $ff
-    ld a, a                                       ; $4be4: $7f
-    rst $38                                       ; $4be5: $ff
-    ld a, [hl]                                    ; $4be6: $7e
-    rst $38                                       ; $4be7: $ff
-    inc c                                         ; $4be8: $0c
-    rst $38                                       ; $4be9: $ff
-    ld [$00ff], sp                                ; $4bea: $08 $ff $00
-    rst $38                                       ; $4bed: $ff
-    db $10                                        ; $4bee: $10
-    rst $38                                       ; $4bef: $ff
-    db $10                                        ; $4bf0: $10
-    rst $38                                       ; $4bf1: $ff
-    db $10                                        ; $4bf2: $10
-    rst $38                                       ; $4bf3: $ff
-    cp $ff                                        ; $4bf4: $fe $ff
-    db $10                                        ; $4bf6: $10
-    rst $38                                       ; $4bf7: $ff
-    db $10                                        ; $4bf8: $10
-    rst $38                                       ; $4bf9: $ff
-    db $10                                        ; $4bfa: $10
-    rst $38                                       ; $4bfb: $ff
-    nop                                           ; $4bfc: $00
     rst $38                                       ; $4bfd: $ff
     ld c, $ff                                     ; $4bfe: $0e $ff
     ld [$08ff], sp                                ; $4c00: $08 $ff $08
@@ -2012,28 +1884,43 @@ jr_018_4213:
 
     INCBIN "gfx/image_018_4c1d.2bpp"
 
-    INCBIN "gfx/image_018_611d.2bpp"
+    INCBIN "gfx/image_018_4d1d.2bpp"
+
+    rst $38                                       ; $4d5d: $ff
+    ld a, h                                       ; $4d5e: $7c
+    rst $38                                       ; $4d5f: $ff
+    db $10                                        ; $4d60: $10
+    rst $38                                       ; $4d61: $ff
+    db $10                                        ; $4d62: $10
+    rst $38                                       ; $4d63: $ff
+
+    db $10
+
+    INCBIN "gfx/image_018_4d65.2bpp"
+
+    INCBIN "gfx/image_018_5165.2bpp"
+
+    rst $38                                       ; $5185: $ff
+
+    db $00
+
+    INCBIN "gfx/image_018_5187.2bpp"
+
+    INCBIN "gfx/image_018_6087.2bpp"
+
+    rst $38                                       ; $6127: $ff
+    db $10                                        ; $6128: $10
+    rst $38                                       ; $6129: $ff
+    db $10                                        ; $612a: $10
+    rst $38                                       ; $612b: $ff
+    nop                                           ; $612c: $00
 
     db $d6, $01, $ff, $7f, $7f, $2f, $a4, $14, $00, $00, $4a, $29, $b5, $56, $ff, $7f
     db $00, $00, $4a, $29, $b5, $56, $ff, $7f, $00, $00, $4a, $29, $b5, $56, $ff, $7f
     db $00, $00, $4a, $29, $b5, $56, $ff, $7f, $00, $00, $4a, $29, $b5, $56, $ff, $7f
     db $00, $00, $4a, $29, $b5, $56, $ff, $7f, $c0, $7d, $ff, $7f, $ed, $7f, $a4, $14
     db $c0, $7d, $ff, $7f, $ed, $7f, $a4, $14, $1e, $7c, $ff, $7f, $3e, $7e, $a4, $14
-
-    ld e, $00                                     ; $617d: $1e $00
-    rst $38                                       ; $617f: $ff
-    ld a, a                                       ; $6180: $7f
-    ld a, $02                                     ; $6181: $3e $02
-    and h                                         ; $6183: $a4
-    inc d                                         ; $6184: $14
-    rst $38                                       ; $6185: $ff
-    ld a, a                                       ; $6186: $7f
-    db $ec                                        ; $6187: $ec
-    ld a, a                                       ; $6188: $7f
-    rst $00                                       ; $6189: $c7
-    ld d, l                                       ; $618a: $55
-    and h                                         ; $618b: $a4
-    inc d                                         ; $618c: $14
+    db $1e, $00, $ff, $7f, $3e, $02, $a4, $14, $ff, $7f, $ec, $7f, $c7, $55, $a4, $14
 
     INCBIN "gfx/image_018_618d.2bpp"
 
