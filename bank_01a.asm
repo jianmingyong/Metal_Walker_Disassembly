@@ -109,10 +109,9 @@ SECTION "ROM Bank $01a", ROMX[$4000], BANK[$1a]
     ld a, e                                       ; $406a: $7b
     ld a, [de]                                    ; $406b: $1a
     nop                                           ; $406c: $00
-    db $eb                                        ; $406d: $eb
-    ld a, l                                       ; $406e: $7d
-    add hl, de                                    ; $406f: $19
-    nop                                           ; $4070: $00
+
+    db $eb, $7d, $19, $00
+
     ret z                                         ; $4071: $c8
 
     ld a, l                                       ; $4072: $7d
@@ -507,7 +506,9 @@ SECTION "ROM Bank $01a", ROMX[$4000], BANK[$1a]
     ld l, l                                       ; $421c: $6d
     adc [hl]                                      ; $421d: $8e
     ld l, l                                       ; $421e: $6d
-    ld c, $6d                                     ; $421f: $0e $6d
+
+    db $0e, $6d
+
     ld c, [hl]                                    ; $4221: $4e
     ld l, l                                       ; $4222: $6d
     adc [hl]                                      ; $4223: $8e
@@ -757,9 +758,9 @@ SECTION "ROM Bank $01a", ROMX[$4000], BANK[$1a]
     ld h, l                                       ; $4346: $65
     ld a, [de]                                    ; $4347: $1a
     nop                                           ; $4348: $00
-    sub $65                                       ; $4349: $d6 $65
-    ld a, [de]                                    ; $434b: $1a
-    nop                                           ; $434c: $00
+
+    db $d6, $65, $1a, $00
+
     ld h, h                                       ; $434d: $64
     ld h, [hl]                                    ; $434e: $66
     ld a, [de]                                    ; $434f: $1a

@@ -104,11 +104,7 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
 
     nop                                           ; $40b4: $00
 
-    db $95, $51, $07, $00, $49, $53, $07
-
-    nop                                           ; $40bc: $00
-
-    db $91, $54, $07
+    db $95, $51, $07, $00, $49, $53, $07, $00, $91, $54, $07
 
     nop                                           ; $40c0: $00
 
@@ -116,11 +112,7 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
 
     nop                                           ; $40c4: $00
 
-    db $29, $56, $07, $00, $41, $57, $07
-
-    nop                                           ; $40cc: $00
-
-    db $99, $58, $07
+    db $29, $56, $07, $00, $41, $57, $07, $00, $99, $58, $07
 
     nop                                           ; $40d0: $00
 
@@ -238,10 +230,9 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
     ld h, l                                       ; $4162: $65
     add hl, bc                                    ; $4163: $09
     nop                                           ; $4164: $00
-    inc hl                                        ; $4165: $23
-    ld h, [hl]                                    ; $4166: $66
-    add hl, bc                                    ; $4167: $09
-    nop                                           ; $4168: $00
+
+    db $23, $66, $09, $00
+
     db $db                                        ; $4169: $db
     ld h, [hl]                                    ; $416a: $66
     add hl, bc                                    ; $416b: $09
@@ -371,8 +362,9 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
     ld l, [hl]                                    ; $4238: $6e
     xor l                                         ; $4239: $ad
     ld l, [hl]                                    ; $423a: $6e
-    or l                                          ; $423b: $b5
-    ld l, [hl]                                    ; $423c: $6e
+
+    db $b5, $6e
+
     cp l                                          ; $423d: $bd
     ld l, [hl]                                    ; $423e: $6e
     push bc                                       ; $423f: $c5
@@ -542,11 +534,7 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
 
     nop                                           ; $4300: $00
 
-    db $de, $7c, $1c, $00, $1d, $63, $08
-
-    nop                                           ; $4308: $00
-
-    db $d2, $64, $08
+    db $de, $7c, $1c, $00, $1d, $63, $08, $00, $d2, $64, $08
 
     nop                                           ; $430c: $00
 
@@ -554,11 +542,7 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
 
     nop                                           ; $4310: $00
 
-    db $0d, $67, $08, $00, $97, $67, $08
-
-    nop                                           ; $4318: $00
-
-    db $b2, $68, $08
+    db $0d, $67, $08, $00, $97, $67, $08, $00, $b2, $68, $08
 
     nop                                           ; $431c: $00
 
@@ -674,10 +658,9 @@ SECTION "ROM Bank $01c", ROMX[$4000], BANK[$1c]
     ld e, [hl]                                    ; $43ae: $5e
     dec e                                         ; $43af: $1d
     nop                                           ; $43b0: $00
-    ld e, l                                       ; $43b1: $5d
-    ld e, a                                       ; $43b2: $5f
-    dec e                                         ; $43b3: $1d
-    nop                                           ; $43b4: $00
+
+    db $5d, $5f, $1d, $00
+
     ccf                                           ; $43b5: $3f
     ld h, b                                       ; $43b6: $60
     dec e                                         ; $43b7: $1d
@@ -7962,13 +7945,9 @@ Call_01c_6b00:
     jp c, Jump_000_0016                           ; $6eb1: $da $16 $00
 
     nop                                           ; $6eb4: $00
-    rst $38                                       ; $6eb5: $ff
-    ld a, a                                       ; $6eb6: $7f
-    cp a                                          ; $6eb7: $bf
-    ld h, e                                       ; $6eb8: $63
-    ld a, d                                       ; $6eb9: $7a
-    ld c, $00                                     ; $6eba: $0e $00
-    nop                                           ; $6ebc: $00
+
+    db $ff, $7f, $bf, $63, $7a, $0e, $00, $00
+
     ld c, d                                       ; $6ebd: $4a
     add hl, hl                                    ; $6ebe: $29
     ld e, a                                       ; $6ebf: $5f
