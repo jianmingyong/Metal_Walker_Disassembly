@@ -2366,7 +2366,7 @@ jr_004_4df4:
     ld a, $ff                                     ; $4e75: $3e $ff
     ld hl, $b000                                  ; $4e77: $21 $00 $b0
     ld bc, $0064                                  ; $4e7a: $01 $64 $00
-    call Call_000_0b16                            ; $4e7d: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $4e7d: $cd $16 $0b
     ld de, $b000                                  ; $4e80: $11 $00 $b0
     ld a, $60                                     ; $4e83: $3e $60
     ld [de], a                                    ; $4e85: $12
@@ -2413,13 +2413,13 @@ jr_004_4e96:
     xor a                                         ; $4eca: $af
     ld hl, $9800                                  ; $4ecb: $21 $00 $98
     ld bc, $02c0                                  ; $4ece: $01 $c0 $02
-    call Call_000_0b16                            ; $4ed1: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $4ed1: $cd $16 $0b
     xor a                                         ; $4ed4: $af
     ldh [rVBK], a                                 ; $4ed5: $e0 $4f
     ld a, $e3                                     ; $4ed7: $3e $e3
     ld hl, $9800                                  ; $4ed9: $21 $00 $98
     ld bc, $02c0                                  ; $4edc: $01 $c0 $02
-    call Call_000_0b16                            ; $4edf: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $4edf: $cd $16 $0b
     ld hl, $9991                                  ; $4ee2: $21 $91 $99
     ld a, $e8                                     ; $4ee5: $3e $e8
     ld [hl], a                                    ; $4ee7: $77
@@ -4401,7 +4401,7 @@ Call_004_5c12:
     ld hl, $cf19                                  ; $5c12: $21 $19 $cf
     ld bc, $004c                                  ; $5c15: $01 $4c $00
     ld a, $e3                                     ; $5c18: $3e $e3
-    call Call_000_0b16                            ; $5c1a: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $5c1a: $cd $16 $0b
     ret                                           ; $5c1d: $c9
 
 
@@ -4682,7 +4682,7 @@ jr_004_5e12:
     ld bc, $000d                                  ; $5e13: $01 $0d $00
     push hl                                       ; $5e16: $e5
     push de                                       ; $5e17: $d5
-    call Call_000_0b16                            ; $5e18: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $5e18: $cd $16 $0b
     pop de                                        ; $5e1b: $d1
     pop hl                                        ; $5e1c: $e1
     ld a, $20                                     ; $5e1d: $3e $20
@@ -4702,7 +4702,7 @@ jr_004_5e2d:
     ld bc, $0008                                  ; $5e2e: $01 $08 $00
     push hl                                       ; $5e31: $e5
     push de                                       ; $5e32: $d5
-    call Call_000_0b16                            ; $5e33: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $5e33: $cd $16 $0b
     pop de                                        ; $5e36: $d1
     pop hl                                        ; $5e37: $e1
     ld a, $20                                     ; $5e38: $3e $20
@@ -6240,23 +6240,23 @@ jr_004_690a:
     ld a, $e3                                     ; $6a65: $3e $e3
     ld hl, $9843                                  ; $6a67: $21 $43 $98
     ld bc, $0008                                  ; $6a6a: $01 $08 $00
-    call Call_000_0b16                            ; $6a6d: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $6a6d: $cd $16 $0b
     ld a, $e3                                     ; $6a70: $3e $e3
     ld hl, $9863                                  ; $6a72: $21 $63 $98
     ld bc, $0008                                  ; $6a75: $01 $08 $00
-    call Call_000_0b16                            ; $6a78: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $6a78: $cd $16 $0b
     ld a, $e3                                     ; $6a7b: $3e $e3
     ld hl, $9883                                  ; $6a7d: $21 $83 $98
     ld bc, $0008                                  ; $6a80: $01 $08 $00
-    call Call_000_0b16                            ; $6a83: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $6a83: $cd $16 $0b
     ld a, $e3                                     ; $6a86: $3e $e3
     ld hl, $98a3                                  ; $6a88: $21 $a3 $98
     ld bc, $0008                                  ; $6a8b: $01 $08 $00
-    call Call_000_0b16                            ; $6a8e: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $6a8e: $cd $16 $0b
     ld a, $e3                                     ; $6a91: $3e $e3
     ld hl, $98c3                                  ; $6a93: $21 $c3 $98
     ld bc, $0008                                  ; $6a96: $01 $08 $00
-    call Call_000_0b16                            ; $6a99: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $6a99: $cd $16 $0b
     ld de, $6b14                                  ; $6a9c: $11 $14 $6b
     ld a, $04                                     ; $6a9f: $3e $04
     ldh [$a7], a                                  ; $6aa1: $e0 $a7

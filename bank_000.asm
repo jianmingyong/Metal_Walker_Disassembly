@@ -1780,7 +1780,7 @@ jr_000_0b0a:
     ret                                           ; $0b15: $c9
 
 
-Call_000_0b16:
+WriteToRegisterHLFromA::
     ld d, a                                       ; $0b16: $57
 
 .loop:
@@ -2443,11 +2443,11 @@ Call_000_0de6:
     ld hl, $c0ab                                  ; $0de6: $21 $ab $c0
     ld bc, $0040                                  ; $0de9: $01 $40 $00
     ld a, $ff                                     ; $0dec: $3e $ff
-    call Call_000_0b16                            ; $0dee: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $0dee: $cd $16 $0b
     ld hl, $c0eb                                  ; $0df1: $21 $eb $c0
     ld bc, $0040                                  ; $0df4: $01 $40 $00
     ld a, $ff                                     ; $0df7: $3e $ff
-    call Call_000_0b16                            ; $0df9: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $0df9: $cd $16 $0b
     ld a, [$c0aa]                                 ; $0dfc: $fa $aa $c0
     or $03                                        ; $0dff: $f6 $03
     ld [$c0aa], a                                 ; $0e01: $ea $aa $c0
@@ -7423,7 +7423,7 @@ Jump_000_2801:
     ld hl, $c1b6                                  ; $2807: $21 $b6 $c1
     ld bc, $0010                                  ; $280a: $01 $10 $00
     ld a, $00                                     ; $280d: $3e $00
-    call Call_000_0b16                            ; $280f: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $280f: $cd $16 $0b
     call Call_000_2be0                            ; $2812: $cd $e0 $2b
     ldh [$9c], a                                  ; $2815: $e0 $9c
     ld l, $11                                     ; $2817: $2e $11
@@ -8010,7 +8010,7 @@ Call_000_2be0:
     ld hl, $c6bd                                  ; $2be0: $21 $bd $c6
     ld bc, $0020                                  ; $2be3: $01 $20 $00
     xor a                                         ; $2be6: $af
-    call Call_000_0b16                            ; $2be7: $cd $16 $0b
+    call WriteToRegisterHLFromA                   ; $2be7: $cd $16 $0b
     ld a, [$c662]                                 ; $2bea: $fa $62 $c6
     ld l, a                                       ; $2bed: $6f
     ld a, [$c663]                                 ; $2bee: $fa $63 $c6
