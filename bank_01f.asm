@@ -6148,7 +6148,7 @@ jr_01f_5fb8:
     ld a, $05                                     ; $602c: $3e $05
     ld bc, $0004                                  ; $602e: $01 $04 $00
     ld de, $c997                                  ; $6031: $11 $97 $c9
-    call Call_000_0b43                            ; $6034: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6034: $cd $43 $0b
     ld hl, $c997                                  ; $6037: $21 $97 $c9
     ld a, [hl+]                                   ; $603a: $2a
     ld de, $c806                                  ; $603b: $11 $06 $c8
@@ -6185,12 +6185,12 @@ jr_01f_5fb8:
     ld a, $18                                     ; $6077: $3e $18
     ld bc, $0500                                  ; $6079: $01 $00 $05
     ld de, $8800                                  ; $607c: $11 $00 $88
-    call Call_000_0b43                            ; $607f: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $607f: $cd $43 $0b
     ld hl, $54dd                                  ; $6082: $21 $dd $54
     ld a, $18                                     ; $6085: $3e $18
     ld bc, $0600                                  ; $6087: $01 $00 $06
     ld de, $8000                                  ; $608a: $11 $00 $80
-    call Call_000_0b43                            ; $608d: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $608d: $cd $43 $0b
     ldh [$9c], a                                  ; $6090: $e0 $9c
     ld l, $41                                     ; $6092: $2e $41
     ld h, $7f                                     ; $6094: $26 $7f
@@ -6209,7 +6209,7 @@ jr_01f_5fb8:
     ld de, $8d00                                  ; $60b2: $11 $00 $8d
     ld bc, $0100                                  ; $60b5: $01 $00 $01
     ld a, $18                                     ; $60b8: $3e $18
-    call Call_000_0b43                            ; $60ba: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $60ba: $cd $43 $0b
     ld a, [$c949]                                 ; $60bd: $fa $49 $c9
     ld bc, $98c0                                  ; $60c0: $01 $c0 $98
     ldh [$9c], a                                  ; $60c3: $e0 $9c
@@ -6267,17 +6267,17 @@ jr_01f_5fb8:
     ld a, $18                                     ; $612d: $3e $18
     ld bc, $0200                                  ; $612f: $01 $00 $02
     ld de, $9600                                  ; $6132: $11 $00 $96
-    call Call_000_0b43                            ; $6135: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6135: $cd $43 $0b
     ld hl, $4edd                                  ; $6138: $21 $dd $4e
     ld a, $18                                     ; $613b: $3e $18
     ld bc, $0500                                  ; $613d: $01 $00 $05
     ld de, $8800                                  ; $6140: $11 $00 $88
-    call Call_000_0b43                            ; $6143: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6143: $cd $43 $0b
     ld hl, $53dd                                  ; $6146: $21 $dd $53
     ld a, $18                                     ; $6149: $3e $18
     ld bc, $0100                                  ; $614b: $01 $00 $01
     ld de, $8d00                                  ; $614e: $11 $00 $8d
-    call Call_000_0b43                            ; $6151: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6151: $cd $43 $0b
     ld a, $c3                                     ; $6154: $3e $c3
     ld [$c0a2], a                                 ; $6156: $ea $a2 $c0
     xor a                                         ; $6159: $af
@@ -6628,17 +6628,17 @@ jr_01f_63aa:
     ld de, $8d00                                  ; $63af: $11 $00 $8d
     ld bc, $0100                                  ; $63b2: $01 $00 $01
     ld a, $18                                     ; $63b5: $3e $18
-    call Call_000_0b43                            ; $63b7: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $63b7: $cd $43 $0b
     ld hl, $545d                                  ; $63ba: $21 $5d $54
     ld a, $18                                     ; $63bd: $3e $18
     ld bc, $0010                                  ; $63bf: $01 $10 $00
     ld de, $8cc0                                  ; $63c2: $11 $c0 $8c
-    call Call_000_0b43                            ; $63c5: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $63c5: $cd $43 $0b
     ld hl, $544d                                  ; $63c8: $21 $4d $54
     ld a, $18                                     ; $63cb: $3e $18
     ld bc, $0010                                  ; $63cd: $01 $10 $00
     ld de, $8cf0                                  ; $63d0: $11 $f0 $8c
-    call Call_000_0b43                            ; $63d3: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $63d3: $cd $43 $0b
     ld a, [$c949]                                 ; $63d6: $fa $49 $c9
     ld bc, $98c0                                  ; $63d9: $01 $c0 $98
     ldh [$9c], a                                  ; $63dc: $e0 $9c
@@ -6747,7 +6747,7 @@ Jump_01f_645a:
     ld de, $8d00                                  ; $64a6: $11 $00 $8d
     ld bc, $0100                                  ; $64a9: $01 $00 $01
     ld a, $18                                     ; $64ac: $3e $18
-    call Call_000_0b43                            ; $64ae: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $64ae: $cd $43 $0b
     ld a, [$c949]                                 ; $64b1: $fa $49 $c9
     ld bc, $9880                                  ; $64b4: $01 $80 $98
     ldh [$9c], a                                  ; $64b7: $e0 $9c
@@ -7075,17 +7075,17 @@ Jump_01f_6558:
     ld a, $18                                     ; $669c: $3e $18
     ld bc, $0200                                  ; $669e: $01 $00 $02
     ld de, $9600                                  ; $66a1: $11 $00 $96
-    call Call_000_0b43                            ; $66a4: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $66a4: $cd $43 $0b
     ld hl, $4edd                                  ; $66a7: $21 $dd $4e
     ld a, $18                                     ; $66aa: $3e $18
     ld bc, $0500                                  ; $66ac: $01 $00 $05
     ld de, $8800                                  ; $66af: $11 $00 $88
-    call Call_000_0b43                            ; $66b2: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $66b2: $cd $43 $0b
     ld hl, $53dd                                  ; $66b5: $21 $dd $53
     ld a, $18                                     ; $66b8: $3e $18
     ld bc, $0100                                  ; $66ba: $01 $00 $01
     ld de, $8d00                                  ; $66bd: $11 $00 $8d
-    call Call_000_0b43                            ; $66c0: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $66c0: $cd $43 $0b
     xor a                                         ; $66c3: $af
     ld [$c950], a                                 ; $66c4: $ea $50 $c9
     ld [$c9bc], a                                 ; $66c7: $ea $bc $c9
@@ -7104,7 +7104,7 @@ Jump_01f_6558:
     ld de, $8d00                                  ; $66e6: $11 $00 $8d
     ld bc, $0100                                  ; $66e9: $01 $00 $01
     ld a, $18                                     ; $66ec: $3e $18
-    call Call_000_0b43                            ; $66ee: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $66ee: $cd $43 $0b
     ld a, [$c949]                                 ; $66f1: $fa $49 $c9
     ld bc, $9860                                  ; $66f4: $01 $60 $98
     ldh [$9c], a                                  ; $66f7: $e0 $9c
@@ -7128,7 +7128,7 @@ jr_01f_670d:
     ld bc, $0002                                  ; $6713: $01 $02 $00
     ld de, $c993                                  ; $6716: $11 $93 $c9
     ld a, $0a                                     ; $6719: $3e $0a
-    call Call_000_0b43                            ; $671b: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $671b: $cd $43 $0b
     ld a, $02                                     ; $671e: $3e $02
     ld [$c8a8], a                                 ; $6720: $ea $a8 $c8
     ld de, $67b2                                  ; $6723: $11 $b2 $67
@@ -7275,17 +7275,17 @@ jr_01f_670d:
     ld a, $18                                     ; $6907: $3e $18
     ld bc, $0200                                  ; $6909: $01 $00 $02
     ld de, $9600                                  ; $690c: $11 $00 $96
-    call Call_000_0b43                            ; $690f: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $690f: $cd $43 $0b
     ld hl, $4edd                                  ; $6912: $21 $dd $4e
     ld a, $18                                     ; $6915: $3e $18
     ld bc, $0500                                  ; $6917: $01 $00 $05
     ld de, $8800                                  ; $691a: $11 $00 $88
-    call Call_000_0b43                            ; $691d: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $691d: $cd $43 $0b
     ld hl, $53dd                                  ; $6920: $21 $dd $53
     ld a, $18                                     ; $6923: $3e $18
     ld bc, $0100                                  ; $6925: $01 $00 $01
     ld de, $8d00                                  ; $6928: $11 $00 $8d
-    call Call_000_0b43                            ; $692b: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $692b: $cd $43 $0b
     ld a, $c3                                     ; $692e: $3e $c3
     ld [$c0a2], a                                 ; $6930: $ea $a2 $c0
     ld a, $02                                     ; $6933: $3e $02
@@ -7379,7 +7379,7 @@ jr_01f_69f2:
     ld a, $0a                                     ; $69f8: $3e $0a
     ld bc, $0002                                  ; $69fa: $01 $02 $00
     ld de, $c993                                  ; $69fd: $11 $93 $c9
-    call Call_000_0b43                            ; $6a00: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6a00: $cd $43 $0b
     ld hl, $c993                                  ; $6a03: $21 $93 $c9
     ld a, [hl+]                                   ; $6a06: $2a
     ld h, [hl]                                    ; $6a07: $66
@@ -7393,7 +7393,7 @@ jr_01f_69f2:
     ld bc, $000a                                  ; $6a11: $01 $0a $00
     ld de, $c997                                  ; $6a14: $11 $97 $c9
     ld a, $0a                                     ; $6a17: $3e $0a
-    call Call_000_0b43                            ; $6a19: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6a19: $cd $43 $0b
     ld de, $c997                                  ; $6a1c: $11 $97 $c9
     push de                                       ; $6a1f: $d5
     ld a, $89                                     ; $6a20: $3e $89
@@ -7504,7 +7504,7 @@ jr_01f_6ad2:
     ld a, $05                                     ; $6aee: $3e $05
     ld bc, $0004                                  ; $6af0: $01 $04 $00
     ld de, $c997                                  ; $6af3: $11 $97 $c9
-    call Call_000_0b43                            ; $6af6: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6af6: $cd $43 $0b
     ld hl, $c997                                  ; $6af9: $21 $97 $c9
     ld a, [hl+]                                   ; $6afc: $2a
     ld e, a                                       ; $6afd: $5f
@@ -7698,7 +7698,7 @@ jr_01f_6c33:
     ld a, $18                                     ; $6c43: $3e $18
     ld bc, $0100                                  ; $6c45: $01 $00 $01
     ld de, $8d00                                  ; $6c48: $11 $00 $8d
-    call Call_000_0b43                            ; $6c4b: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6c4b: $cd $43 $0b
     ld a, $01                                     ; $6c4e: $3e $01
     ldh [rVBK], a                                 ; $6c50: $e0 $4f
     ld hl, $4c18                                  ; $6c52: $21 $18 $4c
@@ -7711,7 +7711,7 @@ jr_01f_6c33:
     ld a, $05                                     ; $6c5d: $3e $05
     ld bc, $0004                                  ; $6c5f: $01 $04 $00
     ld de, $c997                                  ; $6c62: $11 $97 $c9
-    call Call_000_0b43                            ; $6c65: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6c65: $cd $43 $0b
     ld hl, $c997                                  ; $6c68: $21 $97 $c9
     ld a, [hl+]                                   ; $6c6b: $2a
     ld e, a                                       ; $6c6c: $5f
@@ -8079,17 +8079,17 @@ jr_01f_6efc:
     ld a, $18                                     ; $6f2c: $3e $18
     ld bc, $0200                                  ; $6f2e: $01 $00 $02
     ld de, $9600                                  ; $6f31: $11 $00 $96
-    call Call_000_0b43                            ; $6f34: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6f34: $cd $43 $0b
     ld hl, $4edd                                  ; $6f37: $21 $dd $4e
     ld a, $18                                     ; $6f3a: $3e $18
     ld bc, $0500                                  ; $6f3c: $01 $00 $05
     ld de, $8800                                  ; $6f3f: $11 $00 $88
-    call Call_000_0b43                            ; $6f42: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6f42: $cd $43 $0b
     ld hl, $53dd                                  ; $6f45: $21 $dd $53
     ld a, $18                                     ; $6f48: $3e $18
     ld bc, $0100                                  ; $6f4a: $01 $00 $01
     ld de, $8d00                                  ; $6f4d: $11 $00 $8d
-    call Call_000_0b43                            ; $6f50: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6f50: $cd $43 $0b
     ld hl, $4001                                  ; $6f53: $21 $01 $40
     ld a, [$c949]                                 ; $6f56: $fa $49 $c9
     add a                                         ; $6f59: $87
@@ -8106,7 +8106,7 @@ jr_01f_6f5d:
     ld a, $0a                                     ; $6f63: $3e $0a
     ld bc, $0002                                  ; $6f65: $01 $02 $00
     ld de, $c993                                  ; $6f68: $11 $93 $c9
-    call Call_000_0b43                            ; $6f6b: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6f6b: $cd $43 $0b
     ld hl, $c993                                  ; $6f6e: $21 $93 $c9
     ld a, [hl+]                                   ; $6f71: $2a
     ld h, [hl]                                    ; $6f72: $66
@@ -8120,7 +8120,7 @@ jr_01f_6f5d:
     ld bc, $000a                                  ; $6f7c: $01 $0a $00
     ld de, $c997                                  ; $6f7f: $11 $97 $c9
     ld a, $0a                                     ; $6f82: $3e $0a
-    call Call_000_0b43                            ; $6f84: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $6f84: $cd $43 $0b
     ld hl, $c997                                  ; $6f87: $21 $97 $c9
     push hl                                       ; $6f8a: $e5
     ld a, $09                                     ; $6f8b: $3e $09
@@ -8297,7 +8297,7 @@ jr_01f_70cd:
     ld a, $0a                                     ; $70d3: $3e $0a
     ld bc, $0002                                  ; $70d5: $01 $02 $00
     ld de, $c993                                  ; $70d8: $11 $93 $c9
-    call Call_000_0b43                            ; $70db: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $70db: $cd $43 $0b
     ld hl, $c993                                  ; $70de: $21 $93 $c9
     ld a, [hl+]                                   ; $70e1: $2a
     ld h, [hl]                                    ; $70e2: $66
@@ -8489,17 +8489,17 @@ jr_01f_724c:
     ld a, $18                                     ; $7261: $3e $18
     ld bc, $0200                                  ; $7263: $01 $00 $02
     ld de, $9600                                  ; $7266: $11 $00 $96
-    call Call_000_0b43                            ; $7269: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7269: $cd $43 $0b
     ld hl, $4edd                                  ; $726c: $21 $dd $4e
     ld a, $18                                     ; $726f: $3e $18
     ld bc, $0500                                  ; $7271: $01 $00 $05
     ld de, $8800                                  ; $7274: $11 $00 $88
-    call Call_000_0b43                            ; $7277: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7277: $cd $43 $0b
     ld hl, $53dd                                  ; $727a: $21 $dd $53
     ld a, $18                                     ; $727d: $3e $18
     ld bc, $0100                                  ; $727f: $01 $00 $01
     ld de, $8d00                                  ; $7282: $11 $00 $8d
-    call Call_000_0b43                            ; $7285: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7285: $cd $43 $0b
     ld a, $c3                                     ; $7288: $3e $c3
     ld [$c0a2], a                                 ; $728a: $ea $a2 $c0
     ld a, $01                                     ; $728d: $3e $01
@@ -8541,7 +8541,7 @@ jr_01f_72cd:
     ld a, $0a                                     ; $72d3: $3e $0a
     ld bc, $0002                                  ; $72d5: $01 $02 $00
     ld de, $c993                                  ; $72d8: $11 $93 $c9
-    call Call_000_0b43                            ; $72db: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $72db: $cd $43 $0b
     ld hl, $c993                                  ; $72de: $21 $93 $c9
     ld a, [hl+]                                   ; $72e1: $2a
     ld h, [hl]                                    ; $72e2: $66
@@ -8741,12 +8741,12 @@ jr_01f_74b6:
     ld a, $18                                     ; $74d9: $3e $18
     ld bc, $0200                                  ; $74db: $01 $00 $02
     ld de, $9600                                  ; $74de: $11 $00 $96
-    call Call_000_0b43                            ; $74e1: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $74e1: $cd $43 $0b
     ld hl, $4edd                                  ; $74e4: $21 $dd $4e
     ld a, $18                                     ; $74e7: $3e $18
     ld bc, $0500                                  ; $74e9: $01 $00 $05
     ld de, $8800                                  ; $74ec: $11 $00 $88
-    call Call_000_0b43                            ; $74ef: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $74ef: $cd $43 $0b
     ldh [$9c], a                                  ; $74f2: $e0 $9c
     ld l, $86                                     ; $74f4: $2e $86
     ld h, $41                                     ; $74f6: $26 $41
@@ -8813,7 +8813,7 @@ jr_01f_74b6:
     ld de, $9080                                  ; $758e: $11 $80 $90
     ld bc, $0020                                  ; $7591: $01 $20 $00
     ld a, $1f                                     ; $7594: $3e $1f
-    call Call_000_0b43                            ; $7596: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7596: $cd $43 $0b
     xor a                                         ; $7599: $af
     ldh [rIF], a                                  ; $759a: $e0 $0f
     call Call_000_0af9                            ; $759c: $cd $f9 $0a
@@ -8990,12 +8990,12 @@ jr_01f_76d6:
     ld a, $18                                     ; $76e9: $3e $18
     ld bc, $0200                                  ; $76eb: $01 $00 $02
     ld de, $9600                                  ; $76ee: $11 $00 $96
-    call Call_000_0b43                            ; $76f1: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $76f1: $cd $43 $0b
     ld hl, $4edd                                  ; $76f4: $21 $dd $4e
     ld a, $18                                     ; $76f7: $3e $18
     ld bc, $0500                                  ; $76f9: $01 $00 $05
     ld de, $8800                                  ; $76fc: $11 $00 $88
-    call Call_000_0b43                            ; $76ff: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $76ff: $cd $43 $0b
     ldh [$9c], a                                  ; $7702: $e0 $9c
     ld l, $86                                     ; $7704: $2e $86
     ld h, $41                                     ; $7706: $26 $41
@@ -9066,7 +9066,7 @@ jr_01f_7734:
     ld de, $9080                                  ; $778b: $11 $80 $90
     ld bc, $0020                                  ; $778e: $01 $20 $00
     ld a, $1f                                     ; $7791: $3e $1f
-    call Call_000_0b43                            ; $7793: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7793: $cd $43 $0b
     xor a                                         ; $7796: $af
     ldh [rIF], a                                  ; $7797: $e0 $0f
     call Call_000_0af9                            ; $7799: $cd $f9 $0a
@@ -9338,12 +9338,12 @@ jr_01f_795d:
     ld a, $18                                     ; $7969: $3e $18
     ld bc, $0200                                  ; $796b: $01 $00 $02
     ld de, $9600                                  ; $796e: $11 $00 $96
-    call Call_000_0b43                            ; $7971: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7971: $cd $43 $0b
     ld hl, $4edd                                  ; $7974: $21 $dd $4e
     ld a, $18                                     ; $7977: $3e $18
     ld bc, $0500                                  ; $7979: $01 $00 $05
     ld de, $8800                                  ; $797c: $11 $00 $88
-    call Call_000_0b43                            ; $797f: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $797f: $cd $43 $0b
     ldh [$9c], a                                  ; $7982: $e0 $9c
     ld l, $86                                     ; $7984: $2e $86
     ld h, $41                                     ; $7986: $26 $41
@@ -9443,7 +9443,7 @@ jr_01f_7a4a:
     ld de, $9080                                  ; $7a5a: $11 $80 $90
     ld bc, $0020                                  ; $7a5d: $01 $20 $00
     ld a, $1f                                     ; $7a60: $3e $1f
-    call Call_000_0b43                            ; $7a62: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7a62: $cd $43 $0b
     xor a                                         ; $7a65: $af
     ldh [rIF], a                                  ; $7a66: $e0 $0f
     call Call_000_0af9                            ; $7a68: $cd $f9 $0a

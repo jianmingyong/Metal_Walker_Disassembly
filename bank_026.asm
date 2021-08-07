@@ -123,7 +123,7 @@ jr_026_406c:
     ld a, $18                                     ; $40e1: $3e $18
     ld bc, $0150                                  ; $40e3: $01 $50 $01
     ld de, $8c80                                  ; $40e6: $11 $80 $8c
-    call Call_000_0b43                            ; $40e9: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $40e9: $cd $43 $0b
     ld a, $01                                     ; $40ec: $3e $01
     ldh [rVBK], a                                 ; $40ee: $e0 $4f
     ld de, $7174                                  ; $40f0: $11 $74 $71
@@ -176,7 +176,7 @@ jr_026_410e:
     ld a, $18                                     ; $4159: $3e $18
     ld bc, $0150                                  ; $415b: $01 $50 $01
     ld de, $8c80                                  ; $415e: $11 $80 $8c
-    call Call_000_0b43                            ; $4161: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $4161: $cd $43 $0b
     ld a, $01                                     ; $4164: $3e $01
     ldh [rVBK], a                                 ; $4166: $e0 $4f
     ld de, $5c2e                                  ; $4168: $11 $2e $5c
@@ -447,7 +447,7 @@ jr_026_4332:
     ld bc, $0016                                  ; $4335: $01 $16 $00
     ld de, $c997                                  ; $4338: $11 $97 $c9
     ld a, $26                                     ; $433b: $3e $26
-    call Call_000_0b43                            ; $433d: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $433d: $cd $43 $0b
     ld hl, $c997                                  ; $4340: $21 $97 $c9
     ld a, [hl+]                                   ; $4343: $2a
     inc hl                                        ; $4344: $23

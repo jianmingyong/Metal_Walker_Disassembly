@@ -11536,7 +11536,7 @@ jr_003_7dd9:
     ld de, $cbaa                                  ; $7e37: $11 $aa $cb
     ld bc, $000a                                  ; $7e3a: $01 $0a $00
     ld a, $0a                                     ; $7e3d: $3e $0a
-    call Call_000_0b43                            ; $7e3f: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $7e3f: $cd $43 $0b
     ldh [$9c], a                                  ; $7e42: $e0 $9c
     ld l, $dd                                     ; $7e44: $2e $dd
     ld h, $49                                     ; $7e46: $26 $49

@@ -1840,7 +1840,7 @@ WriteToRegisterHLFromDE::
     ret                                           ; $0b42: $c9
 
 
-Call_000_0b43:
+SwapBankFromRegisterA_WriteToRegisterDEFromHL::
     push hl                                       ; $0b43: $e5
     ld l, a                                       ; $0b44: $6f
     ld a, [$4000]                                 ; $0b45: $fa $00 $40
@@ -6610,7 +6610,7 @@ jr_000_22b0:
     ld de, $c143                                  ; $22c2: $11 $43 $c1
     ld bc, $0030                                  ; $22c5: $01 $30 $00
     ld a, $2f                                     ; $22c8: $3e $2f
-    call Call_000_0b43                            ; $22ca: $cd $43 $0b
+    call SwapBankFromRegisterA_WriteToRegisterDEFromHL; $22ca: $cd $43 $0b
     ret                                           ; $22cd: $c9
 
 
