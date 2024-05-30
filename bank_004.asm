@@ -3565,9 +3565,9 @@ jr_004_5666:
     ld c, a                                       ; $5677: $4f
     ld a, [$c9dd]                                 ; $5678: $fa $dd $c9
     ld b, a                                       ; $567b: $47
-    ld a, [$c1e3]                                 ; $567c: $fa $e3 $c1
+    ld a, [wPlayerMoneyLsb]                                 ; $567c: $fa $e3 $c1
     ld [$c9b3], a                                 ; $567f: $ea $b3 $c9
-    ld a, [$c1e4]                                 ; $5682: $fa $e4 $c1
+    ld a, [wPlayerMoneyMsb]                                 ; $5682: $fa $e4 $c1
     ld [$c9b4], a                                 ; $5685: $ea $b4 $c9
     ldh [$9c], a                                  ; $5688: $e0 $9c
     ld l, $be                                     ; $568a: $2e $be

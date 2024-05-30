@@ -397,9 +397,9 @@ jr_001_4326:
     ld de, $c6a6                                  ; $4326: $11 $a6 $c6
     ld bc, $0007                                  ; $4329: $01 $07 $00
     call WriteToRegisterHLFromDE                  ; $432c: $cd $3a $0b
-    ld a, [$c1e3]                                 ; $432f: $fa $e3 $c1
+    ld a, [wPlayerMoneyLsb]                                 ; $432f: $fa $e3 $c1
     ld [hl+], a                                   ; $4332: $22
-    ld a, [$c1e4]                                 ; $4333: $fa $e4 $c1
+    ld a, [wPlayerMoneyMsb]                                 ; $4333: $fa $e4 $c1
     ld [hl+], a                                   ; $4336: $22
     ld a, [$c1e6]                                 ; $4337: $fa $e6 $c1
     ld [hl+], a                                   ; $433a: $22
@@ -618,9 +618,9 @@ jr_001_44c5:
     ld bc, $0007                                  ; $44fe: $01 $07 $00
     call WriteToRegisterDEFromHL                  ; $4501: $cd $31 $0b
     ld a, [hl+]                                   ; $4504: $2a
-    ld [$c1e3], a                                 ; $4505: $ea $e3 $c1
+    ld [wPlayerMoneyLsb], a                                 ; $4505: $ea $e3 $c1
     ld a, [hl+]                                   ; $4508: $2a
-    ld [$c1e4], a                                 ; $4509: $ea $e4 $c1
+    ld [wPlayerMoneyMsb], a                                 ; $4509: $ea $e4 $c1
     ld a, [hl+]                                   ; $450c: $2a
     ld [$c1e6], a                                 ; $450d: $ea $e6 $c1
     ld a, [hl+]                                   ; $4510: $2a
@@ -768,8 +768,8 @@ jr_001_44c5:
     ld a, $16                                     ; $4648: $3e $16
     call WriteToRegisterHLFromA                   ; $464a: $cd $16 $0b
     ld a, $ff                                     ; $464d: $3e $ff
-    ld [$c1e3], a                                 ; $464f: $ea $e3 $c1
-    ld [$c1e4], a                                 ; $4652: $ea $e4 $c1
+    ld [wPlayerMoneyLsb], a                                 ; $464f: $ea $e3 $c1
+    ld [wPlayerMoneyMsb], a                                 ; $4652: $ea $e4 $c1
     ld a, $03                                     ; $4655: $3e $03
     ld [$c1e6], a                                 ; $4657: $ea $e6 $c1
     ld [$c1e7], a                                 ; $465a: $ea $e7 $c1
@@ -5609,9 +5609,9 @@ jr_001_6496:
     or a                                          ; $64c6: $b7
     ret nz                                        ; $64c7: $c0
 
-    ld a, [$c1e3]                                 ; $64c8: $fa $e3 $c1
+    ld a, [wPlayerMoneyLsb]                                 ; $64c8: $fa $e3 $c1
     ld c, a                                       ; $64cb: $4f
-    ld a, [$c1e4]                                 ; $64cc: $fa $e4 $c1
+    ld a, [wPlayerMoneyMsb]                                 ; $64cc: $fa $e4 $c1
     ld b, a                                       ; $64cf: $47
     ld hl, $ce89                                  ; $64d0: $21 $89 $ce
     ld a, [hl+]                                   ; $64d3: $2a
@@ -5634,9 +5634,9 @@ jr_001_6496:
 
 jr_001_64ee:
     ld a, l                                       ; $64ee: $7d
-    ld [$c1e3], a                                 ; $64ef: $ea $e3 $c1
+    ld [wPlayerMoneyLsb], a                                 ; $64ef: $ea $e3 $c1
     ld a, h                                       ; $64f2: $7c
-    ld [$c1e4], a                                 ; $64f3: $ea $e4 $c1
+    ld [wPlayerMoneyMsb], a                                 ; $64f3: $ea $e4 $c1
     ld a, [$ce89]                                 ; $64f6: $fa $89 $ce
     ld c, a                                       ; $64f9: $4f
     ld a, [$ce8a]                                 ; $64fa: $fa $8a $ce

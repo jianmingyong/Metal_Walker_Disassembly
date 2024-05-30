@@ -4,8 +4,8 @@
 ; https://github.com/mattcurrie/mgbdis
 
 INCLUDE "hardware.inc"
-INCLUDE "wram_000.asm"
-INCLUDE "sram_000.asm"
+INCLUDE "wram.asm"
+INCLUDE "sram.asm"
 INCLUDE "bank_000.asm"
 INCLUDE "bank_001.asm"
 INCLUDE "bank_002.asm"

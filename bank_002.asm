@@ -291,9 +291,9 @@ Call_002_41d5:
 
 
 Call_002_420a:
-    ld a, [$c1e3]                                 ; $420a: $fa $e3 $c1
+    ld a, [wPlayerMoneyLsb]                                 ; $420a: $fa $e3 $c1
     ld c, a                                       ; $420d: $4f
-    ld a, [$c1e4]                                 ; $420e: $fa $e4 $c1
+    ld a, [wPlayerMoneyMsb]                                 ; $420e: $fa $e4 $c1
     ld b, a                                       ; $4211: $47
     ld hl, $cb8c                                  ; $4212: $21 $8c $cb
     call Call_000_2f54                            ; $4215: $cd $54 $2f
@@ -1830,13 +1830,13 @@ jr_002_4c51:
     ret                                           ; $4c67: $c9
 
 
-    ld a, [$c1e3]                                 ; $4c68: $fa $e3 $c1
+    ld a, [wPlayerMoneyLsb]                                 ; $4c68: $fa $e3 $c1
     ld b, a                                       ; $4c6b: $47
     ld a, [$cbc4]                                 ; $4c6c: $fa $c4 $cb
     cp b                                          ; $4c6f: $b8
     jr nz, jr_002_4c7b                            ; $4c70: $20 $09
 
-    ld a, [$c1e4]                                 ; $4c72: $fa $e4 $c1
+    ld a, [wPlayerMoneyMsb]                                 ; $4c72: $fa $e4 $c1
     ld b, a                                       ; $4c75: $47
     ld a, [$cbc5]                                 ; $4c76: $fa $c5 $cb
     cp b                                          ; $4c79: $b8
@@ -1845,12 +1845,12 @@ jr_002_4c51:
 jr_002_4c7b:
     ld a, [$cbc4]                                 ; $4c7b: $fa $c4 $cb
     ld b, a                                       ; $4c7e: $47
-    ld a, [$c1e3]                                 ; $4c7f: $fa $e3 $c1
+    ld a, [wPlayerMoneyLsb]                                 ; $4c7f: $fa $e3 $c1
     sub b                                         ; $4c82: $90
     ld e, a                                       ; $4c83: $5f
     ld a, [$cbc5]                                 ; $4c84: $fa $c5 $cb
     ld b, a                                       ; $4c87: $47
-    ld a, [$c1e4]                                 ; $4c88: $fa $e4 $c1
+    ld a, [wPlayerMoneyMsb]                                 ; $4c88: $fa $e4 $c1
     sbc b                                         ; $4c8b: $98
     ld d, a                                       ; $4c8c: $57
     sra d                                         ; $4c8d: $cb $2a
