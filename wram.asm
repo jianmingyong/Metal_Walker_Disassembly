@@ -1,7 +1,6 @@
 SECTION "GameVariables", WRAM0[$c000]
 
-wUnknown_c000:: ds $a2
-wUnknown_c0a2:: ds $5
+wUnknown_c000:: ds $a7
 
 wGameState:: db ; $c0a7
 
