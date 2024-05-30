@@ -6088,7 +6088,7 @@ jr_01f_5f3d:
     ld [$c9bc], a                                 ; $5fb5: $ea $bc $c9
 
 jr_01f_5fb8:
-    ld a, [wPlayer_Facing]                                 ; $5fb8: $fa $de $c1
+    ld a, [wPlayerFacing]                                 ; $5fb8: $fa $de $c1
     ld [$c9c0], a                                 ; $5fbb: $ea $c0 $c9
     ld a, [$c811]                                 ; $5fbe: $fa $11 $c8
     ldh [$9c], a                                  ; $5fc1: $e0 $9c

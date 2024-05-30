@@ -12,22 +12,22 @@ wGameState::                    ; $c0a7
 wUnknown_c0a8::                 ; $c0a8
     ds $12f
 
-wMap_Position_x::               ; $c1d7
+wMapPositionX::               ; $c1d7
     db
 
-wMap_Position_y::               ; $c1d8
+wMapPositionY::               ; $c1d8
     db
 
 wUnknown_c1d9::
     ds $3
 
-wPlayer_Position_x::            ; $c1dc
+wPlayerPositionX::            ; $c1dc
     db
 
-wPlayer_Position_y::            ; $c1dd
+wPlayerPositionY::            ; $c1dd
     db
 
-wPlayer_Facing::                ; $c1de
+wPlayerFacing::                ; $c1de
     db
 
 wUnknown_c1df::                 ; $c1df

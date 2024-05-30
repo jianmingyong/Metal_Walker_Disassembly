@@ -4724,7 +4724,7 @@ jr_004_5e2d:
     ld h, $41                                     ; $5e50: $26 $41
     ld a, $05                                     ; $5e52: $3e $05
     call Call_000_0a5e                            ; $5e54: $cd $5e $0a
-    ld a, [wPlayer_Facing]                                 ; $5e57: $fa $de $c1
+    ld a, [wPlayerFacing]                                 ; $5e57: $fa $de $c1
     ld [$c9c0], a                                 ; $5e5a: $ea $c0 $c9
     ld a, [$c811]                                 ; $5e5d: $fa $11 $c8
     ldh [$9c], a                                  ; $5e60: $e0 $9c
@@ -6095,12 +6095,12 @@ jr_004_690a:
     ld l, a                                       ; $6927: $6f
     push hl                                       ; $6928: $e5
     ld bc, $1018                                  ; $6929: $01 $18 $10
-    ld a, [wMap_Position_x]                                 ; $692c: $fa $d7 $c1
+    ld a, [wMapPositionX]                                 ; $692c: $fa $d7 $c1
     ld c, $04                                     ; $692f: $0e $04
     call Call_000_0758                            ; $6931: $cd $58 $07
     ld a, l                                       ; $6934: $7d
     ldh [$a7], a                                  ; $6935: $e0 $a7
-    ld a, [wMap_Position_y]                                 ; $6937: $fa $d8 $c1
+    ld a, [wMapPositionY]                                 ; $6937: $fa $d8 $c1
     ld c, $03                                     ; $693a: $0e $03
     call Call_000_0758                            ; $693c: $cd $58 $07
     ldh a, [$a7]                                  ; $693f: $f0 $a7
@@ -6123,7 +6123,7 @@ jr_004_690a:
     ld [$c9bf], a                                 ; $695c: $ea $bf $c9
     ld [$c9c1], a                                 ; $695f: $ea $c1 $c9
     ld [$c9bc], a                                 ; $6962: $ea $bc $c9
-    ld a, [wPlayer_Facing]                                 ; $6965: $fa $de $c1
+    ld a, [wPlayerFacing]                                 ; $6965: $fa $de $c1
     ld [$c9c0], a                                 ; $6968: $ea $c0 $c9
     ldh a, [rIE]                                  ; $696b: $f0 $ff
     push af                                       ; $696d: $f5

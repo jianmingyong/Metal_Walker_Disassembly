@@ -234,14 +234,14 @@ jr_001_41e1:
 jr_001_41e6:
     push bc                                       ; $41e6: $c5
     ld a, $03                                     ; $41e7: $3e $03
-    ld [$4000], a                                 ; $41e9: $ea $00 $40
+    ld [rRAMB], a                                 ; $41e9: $ea $00 $40
     push hl                                       ; $41ec: $e5
     ld de, $cd79                                  ; $41ed: $11 $79 $cd
     ld bc, $0080                                  ; $41f0: $01 $80 $00
     call WriteToRegisterDEFromHL                  ; $41f3: $cd $31 $0b
     pop de                                        ; $41f6: $d1
     ld a, $01                                     ; $41f7: $3e $01
-    ld [$4000], a                                 ; $41f9: $ea $00 $40
+    ld [rRAMB], a                                 ; $41f9: $ea $00 $40
     ld hl, $cd79                                  ; $41fc: $21 $79 $cd
     ld bc, $0080                                  ; $41ff: $01 $80 $00
     call WriteToRegisterDEFromHL                  ; $4202: $cd $31 $0b
@@ -294,14 +294,14 @@ SaveFileHeader::
 .loop:
     push bc                                       ; $4259: $c5
     ld a, $01                                     ; $425a: $3e $01
-    ld [$4000], a                                 ; $425c: $ea $00 $40
+    ld [rRAMB], a                                 ; $425c: $ea $00 $40
     push hl                                       ; $425f: $e5
     ld de, $cd79                                  ; $4260: $11 $79 $cd
     ld bc, $0080                                  ; $4263: $01 $80 $00
     call WriteToRegisterDEFromHL                  ; $4266: $cd $31 $0b
     pop de                                        ; $4269: $d1
     ld a, $03                                     ; $426a: $3e $03
-    ld [$4000], a                                 ; $426c: $ea $00 $40
+    ld [rRAMB], a                                 ; $426c: $ea $00 $40
     ld hl, $cd79                                  ; $426f: $21 $79 $cd
     ld bc, $0080                                  ; $4272: $01 $80 $00
     call WriteToRegisterDEFromHL                  ; $4275: $cd $31 $0b
@@ -312,19 +312,19 @@ SaveFileHeader::
     jr nz, .loop                                  ; $427c: $20 $db
 
     ld a, $01                                     ; $427e: $3e $01
-    ld [$4000], a                                 ; $4280: $ea $00 $40
+    ld [rRAMB], a                                 ; $4280: $ea $00 $40
     push hl                                       ; $4283: $e5
     ld de, $cd79                                  ; $4284: $11 $79 $cd
     ld bc, $0010                                  ; $4287: $01 $10 $00
     call WriteToRegisterDEFromHL                  ; $428a: $cd $31 $0b
     pop de                                        ; $428d: $d1
     ld a, $03                                     ; $428e: $3e $03
-    ld [$4000], a                                 ; $4290: $ea $00 $40
+    ld [rRAMB], a                                 ; $4290: $ea $00 $40
     ld hl, $cd79                                  ; $4293: $21 $79 $cd
     ld bc, $0010                                  ; $4296: $01 $10 $00
     call WriteToRegisterDEFromHL                  ; $4299: $cd $31 $0b
     ld a, $03                                     ; $429c: $3e $03
-    ld [$4000], a                                 ; $429e: $ea $00 $40
+    ld [rRAMB], a                                 ; $429e: $ea $00 $40
     ld hl, $a000                                  ; $42a1: $21 $00 $a0
     ld bc, $1818                                  ; $42a4: $01 $18 $18
     call CalculateSaveChecksum                    ; $42a7: $cd $0f $42
@@ -378,19 +378,19 @@ SaveFileHeader::
 jr_001_4306:
     ld a, [$c1d6]                                 ; $4306: $fa $d6 $c1
     ld [hl+], a                                   ; $4309: $22
-    ld a, [wMap_Position_x]                                 ; $430a: $fa $d7 $c1
+    ld a, [wMapPositionX]                                 ; $430a: $fa $d7 $c1
     ld [hl+], a                                   ; $430d: $22
-    ld a, [wMap_Position_y]                                 ; $430e: $fa $d8 $c1
+    ld a, [wMapPositionY]                                 ; $430e: $fa $d8 $c1
     ld [hl+], a                                   ; $4311: $22
-    ld a, [wPlayer_Position_x]                                 ; $4312: $fa $dc $c1
+    ld a, [wPlayerPositionX]                                 ; $4312: $fa $dc $c1
     sub $08                                       ; $4315: $d6 $08
     swap a                                        ; $4317: $cb $37
     ld [hl+], a                                   ; $4319: $22
-    ld a, [wPlayer_Position_y]                                 ; $431a: $fa $dd $c1
+    ld a, [wPlayerPositionY]                                 ; $431a: $fa $dd $c1
     sub $0f                                       ; $431d: $d6 $0f
     swap a                                        ; $431f: $cb $37
     ld [hl+], a                                   ; $4321: $22
-    ld a, [wPlayer_Facing]                                 ; $4322: $fa $de $c1
+    ld a, [wPlayerFacing]                                 ; $4322: $fa $de $c1
     ld [hl+], a                                   ; $4325: $22
 
 jr_001_4326:
@@ -537,14 +537,14 @@ jr_001_4326:
 jr_001_4450:
     push bc                                       ; $4450: $c5
     ld a, $01                                     ; $4451: $3e $01
-    ld [$4000], a                                 ; $4453: $ea $00 $40
+    ld [rRAMB], a                                 ; $4453: $ea $00 $40
     push hl                                       ; $4456: $e5
     ld de, $cd79                                  ; $4457: $11 $79 $cd
     ld bc, $0080                                  ; $445a: $01 $80 $00
     call WriteToRegisterDEFromHL                  ; $445d: $cd $31 $0b
     pop de                                        ; $4460: $d1
     ld a, $03                                     ; $4461: $3e $03
-    ld [$4000], a                                 ; $4463: $ea $00 $40
+    ld [rRAMB], a                                 ; $4463: $ea $00 $40
     ld hl, $cd79                                  ; $4466: $21 $79 $cd
     ld bc, $0080                                  ; $4469: $01 $80 $00
     call WriteToRegisterDEFromHL                  ; $446c: $cd $31 $0b
@@ -598,21 +598,21 @@ jr_001_44c5:
     ld a, [hl+]                                   ; $44d2: $2a
     ld [$c1d6], a                                 ; $44d3: $ea $d6 $c1
     ld a, [hl+]                                   ; $44d6: $2a
-    ld [wMap_Position_x], a                                 ; $44d7: $ea $d7 $c1
+    ld [wMapPositionX], a                                 ; $44d7: $ea $d7 $c1
     ld a, [hl+]                                   ; $44da: $2a
-    ld [wMap_Position_y], a                                 ; $44db: $ea $d8 $c1
+    ld [wMapPositionY], a                                 ; $44db: $ea $d8 $c1
     ld a, [hl+]                                   ; $44de: $2a
     swap a                                        ; $44df: $cb $37
     add $08                                       ; $44e1: $c6 $08
-    ld [wPlayer_Position_x], a                                 ; $44e3: $ea $dc $c1
+    ld [wPlayerPositionX], a                                 ; $44e3: $ea $dc $c1
     ld [$c6b8], a                                 ; $44e6: $ea $b8 $c6
     ld a, [hl+]                                   ; $44e9: $2a
     swap a                                        ; $44ea: $cb $37
     add $0f                                       ; $44ec: $c6 $0f
-    ld [wPlayer_Position_y], a                                 ; $44ee: $ea $dd $c1
+    ld [wPlayerPositionY], a                                 ; $44ee: $ea $dd $c1
     ld [$c6b9], a                                 ; $44f1: $ea $b9 $c6
     ld a, [hl+]                                   ; $44f4: $2a
-    ld [wPlayer_Facing], a                                 ; $44f5: $ea $de $c1
+    ld [wPlayerFacing], a                                 ; $44f5: $ea $de $c1
     ld [$c6ba], a                                 ; $44f8: $ea $ba $c6
     ld de, $c6a6                                  ; $44fb: $11 $a6 $c6
     ld bc, $0007                                  ; $44fe: $01 $07 $00
@@ -839,7 +839,7 @@ jr_001_44c5:
     jr jr_001_47af                                ; $47a6: $18 $07
 
 jr_001_47a8:
-    ld a, [wPlayer_Position_y]                                 ; $47a8: $fa $dd $c1
+    ld a, [wPlayerPositionY]                                 ; $47a8: $fa $dd $c1
     cp $58                                        ; $47ab: $fe $58
     jr nc, jr_001_47be                            ; $47ad: $30 $0f
 
@@ -912,7 +912,7 @@ jr_001_4801:
     inc hl                                        ; $4814: $23
     ld b, [hl]                                    ; $4815: $46
     inc hl                                        ; $4816: $23
-    ld a, [$4000]                                 ; $4817: $fa $00 $40
+    ld a, [rRAMB]                                 ; $4817: $fa $00 $40
     ldh [$ad], a                                  ; $481a: $e0 $ad
     ld a, l                                       ; $481c: $7d
     ld [$c593], a                                 ; $481d: $ea $93 $c5
@@ -1064,7 +1064,7 @@ jr_001_4896:
     ld bc, $c604                                  ; $48fc: $01 $04 $c6
     ld a, $01                                     ; $48ff: $3e $01
     ldh [$ac], a                                  ; $4901: $e0 $ac
-    ld a, [$4000]                                 ; $4903: $fa $00 $40
+    ld a, [rRAMB]                                 ; $4903: $fa $00 $40
     ldh [$ad], a                                  ; $4906: $e0 $ad
     call Call_000_0cf2                            ; $4908: $cd $f2 $0c
     ret                                           ; $490b: $c9
@@ -1241,7 +1241,7 @@ Call_001_4acd:
     ld [$c660], a                                 ; $4af1: $ea $60 $c6
     ld a, [$c596]                                 ; $4af4: $fa $96 $c5
     ld [$c5f5], a                                 ; $4af7: $ea $f5 $c5
-    ld a, [wPlayer_Position_x]                                 ; $4afa: $fa $dc $c1
+    ld a, [wPlayerPositionX]                                 ; $4afa: $fa $dc $c1
     swap a                                        ; $4afd: $cb $37
     srl a                                         ; $4aff: $cb $3f
     and $06                                       ; $4b01: $e6 $06
@@ -1443,7 +1443,7 @@ jr_001_4bef:
     ld bc, $c604                                  ; $4c65: $01 $04 $c6
     ld a, $01                                     ; $4c68: $3e $01
     ldh [$ac], a                                  ; $4c6a: $e0 $ac
-    ld a, [$4000]                                 ; $4c6c: $fa $00 $40
+    ld a, [rRAMB]                                 ; $4c6c: $fa $00 $40
     ldh [$ad], a                                  ; $4c6f: $e0 $ad
     call Call_000_0cf2                            ; $4c71: $cd $f2 $0c
     ld hl, $c660                                  ; $4c74: $21 $60 $c6
@@ -2846,7 +2846,7 @@ jr_001_53f0:
     ldh [$ac], a                                  ; $53f1: $e0 $ac
     inc a                                         ; $53f3: $3c
     ldh [$ae], a                                  ; $53f4: $e0 $ae
-    ld a, [$4000]                                 ; $53f6: $fa $00 $40
+    ld a, [rRAMB]                                 ; $53f6: $fa $00 $40
     ldh [$ad], a                                  ; $53f9: $e0 $ad
     call Call_000_0cf2                            ; $53fb: $cd $f2 $0c
     ret                                           ; $53fe: $c9
@@ -4035,9 +4035,9 @@ jr_001_5ae1:
     ld a, [$cec8]                                 ; $5ae5: $fa $c8 $ce
     ld [$c1d6], a                                 ; $5ae8: $ea $d6 $c1
     ld a, [$cec9]                                 ; $5aeb: $fa $c9 $ce
-    ld [wMap_Position_x], a                                 ; $5aee: $ea $d7 $c1
+    ld [wMapPositionX], a                                 ; $5aee: $ea $d7 $c1
     ld a, [$ceca]                                 ; $5af1: $fa $ca $ce
-    ld [wMap_Position_y], a                                 ; $5af4: $ea $d8 $c1
+    ld [wMapPositionY], a                                 ; $5af4: $ea $d8 $c1
     ld a, [$c12e]                                 ; $5af7: $fa $2e $c1
     ld [wGameState], a                                 ; $5afa: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $5afd: $fa $a6 $c0
@@ -4893,7 +4893,7 @@ jr_001_6090:
     ld [$c597], a                                 ; $6091: $ea $97 $c5
     ld a, h                                       ; $6094: $7c
     ld [$c598], a                                 ; $6095: $ea $98 $c5
-    ld a, [$4000]                                 ; $6098: $fa $00 $40
+    ld a, [rRAMB]                                 ; $6098: $fa $00 $40
     ld [$c59b], a                                 ; $609b: $ea $9b $c5
     ld a, $ff                                     ; $609e: $3e $ff
     ld [$c67a], a                                 ; $60a0: $ea $7a $c6
@@ -4953,7 +4953,7 @@ jr_001_60f1:
     ld [$c597], a                                 ; $60f2: $ea $97 $c5
     ld a, h                                       ; $60f5: $7c
     ld [$c598], a                                 ; $60f6: $ea $98 $c5
-    ld a, [$4000]                                 ; $60f9: $fa $00 $40
+    ld a, [rRAMB]                                 ; $60f9: $fa $00 $40
     ld [$c59b], a                                 ; $60fc: $ea $9b $c5
     ld a, $ff                                     ; $60ff: $3e $ff
     ld [$c67a], a                                 ; $6101: $ea $7a $c6

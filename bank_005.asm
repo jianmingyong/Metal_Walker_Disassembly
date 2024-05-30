@@ -3756,7 +3756,7 @@ jr_005_564e:
     ld b, d                                       ; $567f: $42
     ld c, $01                                     ; $5680: $0e $01
     ld de, $cb7d                                  ; $5682: $11 $7d $cb
-    ld a, [$4000]                                 ; $5685: $fa $00 $40
+    ld a, [rRAMB]                                 ; $5685: $fa $00 $40
     ldh [$a7], a                                  ; $5688: $e0 $a7
     call Call_000_06c0                            ; $568a: $cd $c0 $06
     ret                                           ; $568d: $c9
@@ -3805,7 +3805,7 @@ jr_005_56b7:
 jr_005_56bf:
     xor a                                         ; $56bf: $af
     ldh [$ac], a                                  ; $56c0: $e0 $ac
-    ld a, [$4000]                                 ; $56c2: $fa $00 $40
+    ld a, [rRAMB]                                 ; $56c2: $fa $00 $40
     ldh [$ad], a                                  ; $56c5: $e0 $ad
     ld a, b                                       ; $56c7: $78
     ldh [$ae], a                                  ; $56c8: $e0 $ae
@@ -3831,7 +3831,7 @@ Call_005_56d2:
     ld b, d                                       ; $56e5: $42
     ld c, $01                                     ; $56e6: $0e $01
     ld de, $cb7d                                  ; $56e8: $11 $7d $cb
-    ld a, [$4000]                                 ; $56eb: $fa $00 $40
+    ld a, [rRAMB]                                 ; $56eb: $fa $00 $40
     ldh [$a7], a                                  ; $56ee: $e0 $a7
     pop hl                                        ; $56f0: $e1
     call Call_000_06c0                            ; $56f1: $cd $c0 $06
@@ -3895,7 +3895,7 @@ jr_005_572e:
 jr_005_5736:
     xor a                                         ; $5736: $af
     ldh [$ac], a                                  ; $5737: $e0 $ac
-    ld a, [$4000]                                 ; $5739: $fa $00 $40
+    ld a, [rRAMB]                                 ; $5739: $fa $00 $40
     ldh [$ad], a                                  ; $573c: $e0 $ad
     ld a, b                                       ; $573e: $78
     ldh [$ae], a                                  ; $573f: $e0 $ae
@@ -3954,7 +3954,7 @@ Call_005_5760:
     ld e, a                                       ; $578a: $5f
     xor a                                         ; $578b: $af
     ldh [$ac], a                                  ; $578c: $e0 $ac
-    ld a, [$4000]                                 ; $578e: $fa $00 $40
+    ld a, [rRAMB]                                 ; $578e: $fa $00 $40
     ldh [$ad], a                                  ; $5791: $e0 $ad
     ld a, b                                       ; $5793: $78
     ldh [$ae], a                                  ; $5794: $e0 $ae
@@ -3985,7 +3985,7 @@ Call_005_57a7:
     pop de                                        ; $57b7: $d1
     ld b, d                                       ; $57b8: $42
     ld c, $01                                     ; $57b9: $0e $01
-    ld a, [$4000]                                 ; $57bb: $fa $00 $40
+    ld a, [rRAMB]                                 ; $57bb: $fa $00 $40
     ldh [$a7], a                                  ; $57be: $e0 $a7
     ld hl, $cb7d                                  ; $57c0: $21 $7d $cb
     ld a, $05                                     ; $57c3: $3e $05
@@ -4016,7 +4016,7 @@ Call_005_57d1:
     pop de                                        ; $57e3: $d1
     ld b, d                                       ; $57e4: $42
     ld c, $01                                     ; $57e5: $0e $01
-    ld a, [$4000]                                 ; $57e7: $fa $00 $40
+    ld a, [rRAMB]                                 ; $57e7: $fa $00 $40
     ldh [$a7], a                                  ; $57ea: $e0 $a7
     ld de, $cb7d                                  ; $57ec: $11 $7d $cb
     pop hl                                        ; $57ef: $e1
