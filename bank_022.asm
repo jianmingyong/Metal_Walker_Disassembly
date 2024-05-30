@@ -1,6 +1,6 @@
 ; Disassembly of "Metal_Walker_USA.gbc"
 ; This file was created with:
-; mgbdis v1.5 - Game Boy ROM disassembler by Matt Currie and contributors.
+; mgbdis v2.0 - Game Boy ROM disassembler by Matt Currie and contributors.
 ; https://github.com/mattcurrie/mgbdis
 
 SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
@@ -497,7 +497,7 @@ jr_022_47a2:
 
 jr_022_47b3:
     db $eb                                        ; $47b3: $eb
-    ld_long a, $ffcb                              ; $47b4: $fa $cb $ff
+    ld a, [$ffcb]                                 ; $47b4: $fa $cb $ff
     rst $38                                       ; $47b7: $ff
     nop                                           ; $47b8: $00
     rra                                           ; $47b9: $1f
@@ -2826,7 +2826,7 @@ jr_022_6212:
     rst $38                                       ; $624e: $ff
     nop                                           ; $624f: $00
     cp $00                                        ; $6250: $fe $00
-    ld_long a, $ff02                              ; $6252: $fa $02 $ff
+    ld a, [$ff02]                                 ; $6252: $fa $02 $ff
     inc c                                         ; $6255: $0c
     or $19                                        ; $6256: $f6 $19
     add sp, $37                                   ; $6258: $e8 $37
@@ -3846,7 +3846,7 @@ jr_022_6d0c:
     db $fc                                        ; $6d16: $fc
     db $fd                                        ; $6d17: $fd
     ld bc, $0203                                  ; $6d18: $01 $03 $02
-    ld_long a, $ff41                              ; $6d1b: $fa $41 $ff
+    ld a, [$ff41]                                 ; $6d1b: $fa $41 $ff
     ld b, d                                       ; $6d1e: $42
     cp $44                                        ; $6d1f: $fe $44
     db $fc                                        ; $6d21: $fc
@@ -5944,7 +5944,7 @@ jr_022_7953:
     xor $19                                       ; $797d: $ee $19
     rst $38                                       ; $797f: $ff
     rrca                                          ; $7980: $0f
-    ld_long a, $ff02                              ; $7981: $fa $02 $ff
+    ld a, [$ff02]                                 ; $7981: $fa $02 $ff
     ld bc, $000a                                  ; $7984: $01 $0a $00
     nop                                           ; $7987: $00
     ld e, [hl]                                    ; $7988: $5e

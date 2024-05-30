@@ -1,6 +1,6 @@
 ; Disassembly of "Metal_Walker_USA.gbc"
 ; This file was created with:
-; mgbdis v1.5 - Game Boy ROM disassembler by Matt Currie and contributors.
+; mgbdis v2.0 - Game Boy ROM disassembler by Matt Currie and contributors.
 ; https://github.com/mattcurrie/mgbdis
 
 SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
@@ -1914,7 +1914,7 @@ jr_01b_47dd:
     nop                                           ; $486d: $00
     ld b, $fe                                     ; $486e: $06 $fe
     ld bc, $03fd                                  ; $4870: $01 $fd $03
-    ld_long a, $ff06                              ; $4873: $fa $06 $ff
+    ld a, [$ff06]                                 ; $4873: $fa $06 $ff
 
 jr_01b_4876:
     nop                                           ; $4876: $00
