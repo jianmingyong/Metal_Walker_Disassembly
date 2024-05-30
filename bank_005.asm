@@ -5583,7 +5583,7 @@ jr_005_60ce:
     ret                                           ; $6116: $c9
 
 
-    ld a, [$c810]                                 ; $6117: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $6117: $fa $10 $c8
     inc a                                         ; $611a: $3c
     cp $64                                        ; $611b: $fe $64
     jr nc, jr_005_6158                            ; $611d: $30 $39
@@ -5595,7 +5595,7 @@ jr_005_60ce:
     ld hl, $9a10                                  ; $6124: $21 $10 $9a
     call Call_005_56d2                            ; $6127: $cd $d2 $56
     ld b, $00                                     ; $612a: $06 $00
-    ld a, [$c810]                                 ; $612c: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $612c: $fa $10 $c8
     inc a                                         ; $612f: $3c
     cp $64                                        ; $6130: $fe $64
     jr c, jr_005_6138                             ; $6132: $38 $04
@@ -10512,7 +10512,7 @@ Call_005_7d46:
     ld h, $7e                                     ; $7d4b: $26 $7e
     ld a, $05                                     ; $7d4d: $3e $05
     call Call_000_0a5e                            ; $7d4f: $cd $5e $0a
-    ld a, [$c810]                                 ; $7d52: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $7d52: $fa $10 $c8
     ld b, a                                       ; $7d55: $47
     ld a, [$ca4c]                                 ; $7d56: $fa $4c $ca
     add b                                         ; $7d59: $80

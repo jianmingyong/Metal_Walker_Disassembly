@@ -486,7 +486,7 @@ jr_001_4326:
     ld [hl+], a                                   ; $43d9: $22
     ld a, [$c80d]                                 ; $43da: $fa $0d $c8
     ld [hl+], a                                   ; $43dd: $22
-    ld a, [$c810]                                 ; $43de: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $43de: $fa $10 $c8
     ld [hl+], a                                   ; $43e1: $22
     ld a, [$c80e]                                 ; $43e2: $fa $0e $c8
     ld [hl+], a                                   ; $43e5: $22
@@ -605,15 +605,15 @@ jr_001_44c5:
     swap a                                        ; $44df: $cb $37
     add $08                                       ; $44e1: $c6 $08
     ld [wPlayerPositionX], a                                 ; $44e3: $ea $dc $c1
-    ld [$c6b8], a                                 ; $44e6: $ea $b8 $c6
+    ld [wBusterPositionX], a                                 ; $44e6: $ea $b8 $c6
     ld a, [hl+]                                   ; $44e9: $2a
     swap a                                        ; $44ea: $cb $37
     add $0f                                       ; $44ec: $c6 $0f
     ld [wPlayerPositionY], a                                 ; $44ee: $ea $dd $c1
-    ld [$c6b9], a                                 ; $44f1: $ea $b9 $c6
+    ld [wBusterPositionY], a                                 ; $44f1: $ea $b9 $c6
     ld a, [hl+]                                   ; $44f4: $2a
     ld [wPlayerFacing], a                                 ; $44f5: $ea $de $c1
-    ld [$c6ba], a                                 ; $44f8: $ea $ba $c6
+    ld [wBusterFacing], a                                 ; $44f8: $ea $ba $c6
     ld de, $c6a6                                  ; $44fb: $11 $a6 $c6
     ld bc, $0007                                  ; $44fe: $01 $07 $00
     call WriteToRegisterDEFromHL                  ; $4501: $cd $31 $0b
@@ -706,7 +706,7 @@ jr_001_44c5:
     ld a, [hl+]                                   ; $45ae: $2a
     ld [$c80d], a                                 ; $45af: $ea $0d $c8
     ld a, [hl+]                                   ; $45b2: $2a
-    ld [$c810], a                                 ; $45b3: $ea $10 $c8
+    ld [wPlayerLevel], a                                 ; $45b3: $ea $10 $c8
     ld a, [hl+]                                   ; $45b6: $2a
     ld [$c80e], a                                 ; $45b7: $ea $0e $c8
     ld a, [hl+]                                   ; $45ba: $2a
@@ -5693,7 +5693,7 @@ jr_001_651b:
     or a                                          ; $6555: $b7
     ret nz                                        ; $6556: $c0
 
-    ld a, [$c810]                                 ; $6557: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $6557: $fa $10 $c8
     cp $63                                        ; $655a: $fe $63
     jr c, jr_001_6567                             ; $655c: $38 $09
 
@@ -5742,9 +5742,9 @@ jr_001_659d:
     push bc                                       ; $659d: $c5
     call Call_001_6a4e                            ; $659e: $cd $4e $6a
     pop bc                                        ; $65a1: $c1
-    ld a, [$c810]                                 ; $65a2: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $65a2: $fa $10 $c8
     inc a                                         ; $65a5: $3c
-    ld [$c810], a                                 ; $65a6: $ea $10 $c8
+    ld [wPlayerLevel], a                                 ; $65a6: $ea $10 $c8
     ld hl, $c80e                                  ; $65a9: $21 $0e $c8
     ld a, c                                       ; $65ac: $79
     sub [hl]                                      ; $65ad: $96
@@ -5757,7 +5757,7 @@ jr_001_659d:
     ld [$ce87], a                                 ; $65b4: $ea $87 $ce
     ld a, b                                       ; $65b7: $78
     ld [$ce88], a                                 ; $65b8: $ea $88 $ce
-    ld a, [$c810]                                 ; $65bb: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $65bb: $fa $10 $c8
     sla a                                         ; $65be: $cb $27
     ld hl, $7721                                  ; $65c0: $21 $21 $77
     add l                                         ; $65c3: $85
@@ -5781,7 +5781,7 @@ jr_001_659d:
     or a                                          ; $65e1: $b7
     ret nz                                        ; $65e2: $c0
 
-    ld a, [$c810]                                 ; $65e3: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $65e3: $fa $10 $c8
     ld c, a                                       ; $65e6: $4f
     ld b, $00                                     ; $65e7: $06 $00
     ldh [$9c], a                                  ; $65e9: $e0 $9c
@@ -6327,12 +6327,12 @@ Call_001_69f6:
 
 
 Call_001_6a4e:
-    ld a, [$c810]                                 ; $6a4e: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $6a4e: $fa $10 $c8
     or a                                          ; $6a51: $b7
     ret z                                         ; $6a52: $c8
 
     call Call_001_6afc                            ; $6a53: $cd $fc $6a
-    ld a, [$c810]                                 ; $6a56: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $6a56: $fa $10 $c8
     dec a                                         ; $6a59: $3d
     ld b, $00                                     ; $6a5a: $06 $00
     sla a                                         ; $6a5c: $cb $27

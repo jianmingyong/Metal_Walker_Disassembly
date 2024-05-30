@@ -6320,35 +6320,35 @@ Jump_000_20c3:
     swap a                                        ; $20d5: $cb $37
     add $08                                       ; $20d7: $c6 $08
     ld [wPlayerPositionX], a                                 ; $20d9: $ea $dc $c1
-    ld [$c6b8], a                                 ; $20dc: $ea $b8 $c6
+    ld [wBusterPositionX], a                                 ; $20dc: $ea $b8 $c6
     inc bc                                        ; $20df: $03
     ld a, [bc]                                    ; $20e0: $0a
     swap a                                        ; $20e1: $cb $37
     add $0f                                       ; $20e3: $c6 $0f
     ld [wPlayerPositionY], a                                 ; $20e5: $ea $dd $c1
-    ld [$c6b9], a                                 ; $20e8: $ea $b9 $c6
+    ld [wBusterPositionY], a                                 ; $20e8: $ea $b9 $c6
     inc bc                                        ; $20eb: $03
     ld a, [bc]                                    ; $20ec: $0a
     ld [wPlayerFacing], a                                 ; $20ed: $ea $de $c1
     or $80                                        ; $20f0: $f6 $80
-    ld [$c6ba], a                                 ; $20f2: $ea $ba $c6
+    ld [wBusterFacing], a                                 ; $20f2: $ea $ba $c6
     jr jr_000_2147                                ; $20f5: $18 $50
 
 jr_000_20f7:
     ld a, [$c6af]                                 ; $20f7: $fa $af $c6
     ld [wPlayerPositionX], a                                 ; $20fa: $ea $dc $c1
-    ld [$c6b8], a                                 ; $20fd: $ea $b8 $c6
+    ld [wBusterPositionX], a                                 ; $20fd: $ea $b8 $c6
     ld a, [$c6b0]                                 ; $2100: $fa $b0 $c6
     add $10                                       ; $2103: $c6 $10
     ld [wPlayerPositionY], a                                 ; $2105: $ea $dd $c1
-    ld [$c6b9], a                                 ; $2108: $ea $b9 $c6
+    ld [wBusterPositionY], a                                 ; $2108: $ea $b9 $c6
     ld a, [$c5f8]                                 ; $210b: $fa $f8 $c5
     ld [wMapPositionX], a                                 ; $210e: $ea $d7 $c1
     ld a, [$c5f9]                                 ; $2111: $fa $f9 $c5
     ld [wMapPositionY], a                                 ; $2114: $ea $d8 $c1
     xor a                                         ; $2117: $af
     ld [wPlayerFacing], a                                 ; $2118: $ea $de $c1
-    ld [$c6ba], a                                 ; $211b: $ea $ba $c6
+    ld [wBusterFacing], a                                 ; $211b: $ea $ba $c6
 
 Jump_000_211e:
     jr jr_000_2145                                ; $211e: $18 $25
@@ -6356,17 +6356,17 @@ Jump_000_211e:
 jr_000_2120:
     ld a, [$c6b1]                                 ; $2120: $fa $b1 $c6
     ld [wPlayerPositionX], a                                 ; $2123: $ea $dc $c1
-    ld [$c6b8], a                                 ; $2126: $ea $b8 $c6
+    ld [wBusterPositionX], a                                 ; $2126: $ea $b8 $c6
     ld a, [$c6b2]                                 ; $2129: $fa $b2 $c6
     ld [wPlayerPositionY], a                                 ; $212c: $ea $dd $c1
-    ld [$c6b9], a                                 ; $212f: $ea $b9 $c6
+    ld [wBusterPositionY], a                                 ; $212f: $ea $b9 $c6
     ld a, [$c5fa]                                 ; $2132: $fa $fa $c5
     ld [wMapPositionX], a                                 ; $2135: $ea $d7 $c1
     ld a, [$c5fb]                                 ; $2138: $fa $fb $c5
     ld [wMapPositionY], a                                 ; $213b: $ea $d8 $c1
     xor a                                         ; $213e: $af
     ld [wPlayerFacing], a                                 ; $213f: $ea $de $c1
-    ld [$c6ba], a                                 ; $2142: $ea $ba $c6
+    ld [wBusterFacing], a                                 ; $2142: $ea $ba $c6
 
 Jump_000_2145:
 jr_000_2145:

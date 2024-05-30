@@ -2759,7 +2759,7 @@ Call_003_4f4c:
     cp $02                                        ; $4f66: $fe $02
     ret z                                         ; $4f68: $c8
 
-    ld a, [$c810]                                 ; $4f69: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $4f69: $fa $10 $c8
     cp $63                                        ; $4f6c: $fe $63
     jr nc, jr_003_4fda                            ; $4f6e: $30 $6a
 
@@ -3484,7 +3484,7 @@ jr_003_52ff:
     ld a, [$cbef]                                 ; $53dc: $fa $ef $cb
     add b                                         ; $53df: $80
     ld b, a                                       ; $53e0: $47
-    ld a, [$c810]                                 ; $53e1: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $53e1: $fa $10 $c8
     add b                                         ; $53e4: $80
     cp $64                                        ; $53e5: $fe $64
     jr c, jr_003_53ef                             ; $53e7: $38 $06
@@ -3527,7 +3527,7 @@ jr_003_53f3:
     inc a                                         ; $541e: $3c
     add b                                         ; $541f: $80
     ld b, a                                       ; $5420: $47
-    ld a, [$c810]                                 ; $5421: $fa $10 $c8
+    ld a, [wPlayerLevel]                                 ; $5421: $fa $10 $c8
     add b                                         ; $5424: $80
     cp $64                                        ; $5425: $fe $64
     jr c, jr_003_542f                             ; $5427: $38 $06
