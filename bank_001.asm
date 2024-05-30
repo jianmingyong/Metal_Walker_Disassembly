@@ -47,7 +47,7 @@ SECTION "ROM Bank $001", ROMX[$4000], BANK[$1]
     db $22, $00, $3f, $42, $46, $47, $02, $ff, $ff
 
 Call_001_405d:
-    ld a, [$c0a7]                                 ; $405d: $fa $a7 $c0
+    ld a, [wGameState]                                 ; $405d: $fa $a7 $c0
     ld hl, $409c                                  ; $4060: $21 $9c $40
     call Call_000_07ab                            ; $4063: $cd $ab $07
 
@@ -210,20 +210,20 @@ ResetSaveFile::
     ld bc, $1818                                  ; $41bc: $01 $18 $18
     call CalculateSaveChecksum                    ; $41bf: $cd $0f $42
     ld a, e                                       ; $41c2: $7b
-    ld [$b818], a                                 ; $41c3: $ea $18 $b8
+    ld [sChecksumLsb], a                                 ; $41c3: $ea $18 $b8
     ld a, d                                       ; $41c6: $7a
-    ld [$b819], a                                 ; $41c7: $ea $19 $b8
+    ld [sChecksumMsb], a                                 ; $41c7: $ea $19 $b8
     jr jr_001_41e1                                ; $41ca: $18 $15
 
 CheckSaveChecksum::
     ld hl, $a000                                  ; $41cc: $21 $00 $a0
     ld bc, $1818                                  ; $41cf: $01 $18 $18
     call CalculateSaveChecksum                    ; $41d2: $cd $0f $42
-    ld a, [$b818]                                 ; $41d5: $fa $18 $b8
+    ld a, [sChecksumLsb]                                 ; $41d5: $fa $18 $b8
     cp e                                          ; $41d8: $bb
     jr nz, ResetSaveFile                          ; $41d9: $20 $bd
 
-    ld a, [$b819]                                 ; $41db: $fa $19 $b8
+    ld a, [sChecksumMsb]                                 ; $41db: $fa $19 $b8
     cp d                                          ; $41de: $ba
     jr nz, ResetSaveFile                          ; $41df: $20 $b7
 
@@ -279,8 +279,7 @@ CalculateSaveChecksum::
 
 
 SaveFileHeader::
-    db $4d, $65, $74, $61, $6c, $20, $57, $61, $6c, $6b, $65, $72, $20, $56, $65, $72
-    db $30, $2e, $30, $32, $20, $20, $20, $20, $20, $20, $20, $20, $20, $20, $20, $20
+    db "Metal Walker Ver0.02            "
 
     rst $38                                       ; $4242: $ff
     ld a, $03                                     ; $4243: $3e $03
@@ -330,9 +329,9 @@ SaveFileHeader::
     ld bc, $1818                                  ; $42a4: $01 $18 $18
     call CalculateSaveChecksum                    ; $42a7: $cd $0f $42
     ld a, e                                       ; $42aa: $7b
-    ld [$b818], a                                 ; $42ab: $ea $18 $b8
+    ld [sChecksumLsb], a                                 ; $42ab: $ea $18 $b8
     ld a, d                                       ; $42ae: $7a
-    ld [$b819], a                                 ; $42af: $ea $19 $b8
+    ld [sChecksumMsb], a                                 ; $42af: $ea $19 $b8
     call Call_000_0f8e                            ; $42b2: $cd $8e $0f
     ret                                           ; $42b5: $c9
 
@@ -349,9 +348,9 @@ SaveFileHeader::
     ld de, $cbe0                                  ; $42d0: $11 $e0 $cb
     ld bc, $000d                                  ; $42d3: $01 $0d $00
     call WriteToRegisterHLFromDE                  ; $42d6: $cd $3a $0b
-    ld a, [$c1ea]                                 ; $42d9: $fa $ea $c1
+    ld a, [wGameTimeLsb]                                 ; $42d9: $fa $ea $c1
     ld [hl+], a                                   ; $42dc: $22
-    ld a, [$c1eb]                                 ; $42dd: $fa $eb $c1
+    ld a, [wGameTimeMsb]                                 ; $42dd: $fa $eb $c1
     ld [hl+], a                                   ; $42e0: $22
     ld a, [$c1d6]                                 ; $42e1: $fa $d6 $c1
     cp $21                                        ; $42e4: $fe $21
@@ -379,19 +378,19 @@ SaveFileHeader::
 jr_001_4306:
     ld a, [$c1d6]                                 ; $4306: $fa $d6 $c1
     ld [hl+], a                                   ; $4309: $22
-    ld a, [$c1d7]                                 ; $430a: $fa $d7 $c1
+    ld a, [wMap_Position_x]                                 ; $430a: $fa $d7 $c1
     ld [hl+], a                                   ; $430d: $22
-    ld a, [$c1d8]                                 ; $430e: $fa $d8 $c1
+    ld a, [wMap_Position_y]                                 ; $430e: $fa $d8 $c1
     ld [hl+], a                                   ; $4311: $22
-    ld a, [$c1dc]                                 ; $4312: $fa $dc $c1
+    ld a, [wPlayer_Position_x]                                 ; $4312: $fa $dc $c1
     sub $08                                       ; $4315: $d6 $08
     swap a                                        ; $4317: $cb $37
     ld [hl+], a                                   ; $4319: $22
-    ld a, [$c1dd]                                 ; $431a: $fa $dd $c1
+    ld a, [wPlayer_Position_y]                                 ; $431a: $fa $dd $c1
     sub $0f                                       ; $431d: $d6 $0f
     swap a                                        ; $431f: $cb $37
     ld [hl+], a                                   ; $4321: $22
-    ld a, [$c1de]                                 ; $4322: $fa $de $c1
+    ld a, [wPlayer_Facing]                                 ; $4322: $fa $de $c1
     ld [hl+], a                                   ; $4325: $22
 
 jr_001_4326:
@@ -529,9 +528,9 @@ jr_001_4326:
     ld bc, $1818                                  ; $443d: $01 $18 $18
     call CalculateSaveChecksum                    ; $4440: $cd $0f $42
     ld a, e                                       ; $4443: $7b
-    ld [$b818], a                                 ; $4444: $ea $18 $b8
+    ld [sChecksumLsb], a                                 ; $4444: $ea $18 $b8
     ld a, d                                       ; $4447: $7a
-    ld [$b819], a                                 ; $4448: $ea $19 $b8
+    ld [sChecksumMsb], a                                 ; $4448: $ea $19 $b8
     ld hl, $a000                                  ; $444b: $21 $00 $a0
     ld b, $40                                     ; $444e: $06 $40
 
@@ -593,27 +592,27 @@ jr_001_44c5:
     ld a, $01                                     ; $44c5: $3e $01
     call Call_000_0f80                            ; $44c7: $cd $80 $0f
     ld a, [hl+]                                   ; $44ca: $2a
-    ld [$c1ea], a                                 ; $44cb: $ea $ea $c1
+    ld [wGameTimeLsb], a                                 ; $44cb: $ea $ea $c1
     ld a, [hl+]                                   ; $44ce: $2a
-    ld [$c1eb], a                                 ; $44cf: $ea $eb $c1
+    ld [wGameTimeMsb], a                                 ; $44cf: $ea $eb $c1
     ld a, [hl+]                                   ; $44d2: $2a
     ld [$c1d6], a                                 ; $44d3: $ea $d6 $c1
     ld a, [hl+]                                   ; $44d6: $2a
-    ld [$c1d7], a                                 ; $44d7: $ea $d7 $c1
+    ld [wMap_Position_x], a                                 ; $44d7: $ea $d7 $c1
     ld a, [hl+]                                   ; $44da: $2a
-    ld [$c1d8], a                                 ; $44db: $ea $d8 $c1
+    ld [wMap_Position_y], a                                 ; $44db: $ea $d8 $c1
     ld a, [hl+]                                   ; $44de: $2a
     swap a                                        ; $44df: $cb $37
     add $08                                       ; $44e1: $c6 $08
-    ld [$c1dc], a                                 ; $44e3: $ea $dc $c1
+    ld [wPlayer_Position_x], a                                 ; $44e3: $ea $dc $c1
     ld [$c6b8], a                                 ; $44e6: $ea $b8 $c6
     ld a, [hl+]                                   ; $44e9: $2a
     swap a                                        ; $44ea: $cb $37
     add $0f                                       ; $44ec: $c6 $0f
-    ld [$c1dd], a                                 ; $44ee: $ea $dd $c1
+    ld [wPlayer_Position_y], a                                 ; $44ee: $ea $dd $c1
     ld [$c6b9], a                                 ; $44f1: $ea $b9 $c6
     ld a, [hl+]                                   ; $44f4: $2a
-    ld [$c1de], a                                 ; $44f5: $ea $de $c1
+    ld [wPlayer_Facing], a                                 ; $44f5: $ea $de $c1
     ld [$c6ba], a                                 ; $44f8: $ea $ba $c6
     ld de, $c6a6                                  ; $44fb: $11 $a6 $c6
     ld bc, $0007                                  ; $44fe: $01 $07 $00
@@ -840,7 +839,7 @@ jr_001_44c5:
     jr jr_001_47af                                ; $47a6: $18 $07
 
 jr_001_47a8:
-    ld a, [$c1dd]                                 ; $47a8: $fa $dd $c1
+    ld a, [wPlayer_Position_y]                                 ; $47a8: $fa $dd $c1
     cp $58                                        ; $47ab: $fe $58
     jr nc, jr_001_47be                            ; $47ad: $30 $0f
 
@@ -1242,7 +1241,7 @@ Call_001_4acd:
     ld [$c660], a                                 ; $4af1: $ea $60 $c6
     ld a, [$c596]                                 ; $4af4: $fa $96 $c5
     ld [$c5f5], a                                 ; $4af7: $ea $f5 $c5
-    ld a, [$c1dc]                                 ; $4afa: $fa $dc $c1
+    ld a, [wPlayer_Position_x]                                 ; $4afa: $fa $dc $c1
     swap a                                        ; $4afd: $cb $37
     srl a                                         ; $4aff: $cb $3f
     and $06                                       ; $4b01: $e6 $06
@@ -3600,7 +3599,7 @@ jr_001_56db:
     ret                                           ; $584a: $c9
 
 
-    ld a, [$c0a7]                                 ; $584b: $fa $a7 $c0
+    ld a, [wGameState]                                 ; $584b: $fa $a7 $c0
     or a                                          ; $584e: $b7
     ret z                                         ; $584f: $c8
 
@@ -3618,7 +3617,7 @@ jr_001_585e:
     ld a, $02                                     ; $585e: $3e $02
     ld [$cec6], a                                 ; $5860: $ea $c6 $ce
     xor a                                         ; $5863: $af
-    ld [$c0a7], a                                 ; $5864: $ea $a7 $c0
+    ld [wGameState], a                                 ; $5864: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $5867: $fa $a6 $c0
     inc a                                         ; $586a: $3c
     ld [$c0a6], a                                 ; $586b: $ea $a6 $c0
@@ -3687,7 +3686,7 @@ jr_001_588f:
     jr z, jr_001_58dd                             ; $58cd: $28 $0e
 
     ld a, [$c12e]                                 ; $58cf: $fa $2e $c1
-    ld [$c0a7], a                                 ; $58d2: $ea $a7 $c0
+    ld [wGameState], a                                 ; $58d2: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $58d5: $fa $a6 $c0
     inc a                                         ; $58d8: $3c
     ld [$c0a6], a                                 ; $58d9: $ea $a6 $c0
@@ -3858,7 +3857,7 @@ jr_001_59c1:
     jr z, jr_001_59d5                             ; $59c5: $28 $0e
 
     ld a, [$c12e]                                 ; $59c7: $fa $2e $c1
-    ld [$c0a7], a                                 ; $59ca: $ea $a7 $c0
+    ld [wGameState], a                                 ; $59ca: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $59cd: $fa $a6 $c0
     inc a                                         ; $59d0: $3c
     ld [$c0a6], a                                 ; $59d1: $ea $a6 $c0
@@ -3872,7 +3871,7 @@ jr_001_59d5:
 
     xor a                                         ; $59da: $af
     ld [$cec5], a                                 ; $59db: $ea $c5 $ce
-    ld [$c0a7], a                                 ; $59de: $ea $a7 $c0
+    ld [wGameState], a                                 ; $59de: $ea $a7 $c0
     ld [$cec6], a                                 ; $59e1: $ea $c6 $ce
     ld a, [$c0a6]                                 ; $59e4: $fa $a6 $c0
     inc a                                         ; $59e7: $3c
@@ -3993,7 +3992,7 @@ Call_001_5a55:
 
 jr_001_5aae:
     ld a, [$c12e]                                 ; $5aae: $fa $2e $c1
-    ld [$c0a7], a                                 ; $5ab1: $ea $a7 $c0
+    ld [wGameState], a                                 ; $5ab1: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $5ab4: $fa $a6 $c0
     inc a                                         ; $5ab7: $3c
     ld [$c0a6], a                                 ; $5ab8: $ea $a6 $c0
@@ -4036,11 +4035,11 @@ jr_001_5ae1:
     ld a, [$cec8]                                 ; $5ae5: $fa $c8 $ce
     ld [$c1d6], a                                 ; $5ae8: $ea $d6 $c1
     ld a, [$cec9]                                 ; $5aeb: $fa $c9 $ce
-    ld [$c1d7], a                                 ; $5aee: $ea $d7 $c1
+    ld [wMap_Position_x], a                                 ; $5aee: $ea $d7 $c1
     ld a, [$ceca]                                 ; $5af1: $fa $ca $ce
-    ld [$c1d8], a                                 ; $5af4: $ea $d8 $c1
+    ld [wMap_Position_y], a                                 ; $5af4: $ea $d8 $c1
     ld a, [$c12e]                                 ; $5af7: $fa $2e $c1
-    ld [$c0a7], a                                 ; $5afa: $ea $a7 $c0
+    ld [wGameState], a                                 ; $5afa: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $5afd: $fa $a6 $c0
     inc a                                         ; $5b00: $3c
     ld [$c0a6], a                                 ; $5b01: $ea $a6 $c0
@@ -4386,7 +4385,7 @@ jr_001_5d0a:
     ret nz                                        ; $5d21: $c0
 
     ld a, $06                                     ; $5d22: $3e $06
-    ld [$c0a7], a                                 ; $5d24: $ea $a7 $c0
+    ld [wGameState], a                                 ; $5d24: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $5d27: $fa $a6 $c0
     inc a                                         ; $5d2a: $3c
     ld [$c0a6], a                                 ; $5d2b: $ea $a6 $c0
@@ -9916,7 +9915,7 @@ jr_001_7bb5:
     ret nz                                        ; $7bcc: $c0
 
     ld a, $04                                     ; $7bcd: $3e $04
-    ld [$c0a7], a                                 ; $7bcf: $ea $a7 $c0
+    ld [wGameState], a                                 ; $7bcf: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $7bd2: $fa $a6 $c0
     inc a                                         ; $7bd5: $3c
     ld [$c0a6], a                                 ; $7bd6: $ea $a6 $c0

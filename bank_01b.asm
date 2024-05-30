@@ -8367,7 +8367,7 @@ jr_01b_6cb6:
     jr nz, jr_01b_6cd4                            ; $6cc6: $20 $0c
 
     ld a, $01                                     ; $6cc8: $3e $01
-    ld [$c0a7], a                                 ; $6cca: $ea $a7 $c0
+    ld [wGameState], a                                 ; $6cca: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $6ccd: $fa $a6 $c0
     inc a                                         ; $6cd0: $3c
     ld [$c0a6], a                                 ; $6cd1: $ea $a6 $c0
@@ -8655,7 +8655,7 @@ jr_01b_6d81:
     pop af                                        ; $6eda: $f1
     ldh [rIE], a                                  ; $6edb: $e0 $ff
     ld a, $01                                     ; $6edd: $3e $01
-    ld [$c0a7], a                                 ; $6edf: $ea $a7 $c0
+    ld [wGameState], a                                 ; $6edf: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $6ee2: $fa $a6 $c0
     inc a                                         ; $6ee5: $3c
     ld [$c0a6], a                                 ; $6ee6: $ea $a6 $c0

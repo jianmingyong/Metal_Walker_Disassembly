@@ -5900,7 +5900,7 @@ jr_006_6363:
     ld [$ce89], a                                 ; $636a: $ea $89 $ce
     ld [$ce8a], a                                 ; $636d: $ea $8a $ce
     ld a, $01                                     ; $6370: $3e $01
-    ld [$c0a7], a                                 ; $6372: $ea $a7 $c0
+    ld [wGameState], a                                 ; $6372: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $6375: $fa $a6 $c0
     inc a                                         ; $6378: $3c
     ld [$c0a6], a                                 ; $6379: $ea $a6 $c0
@@ -8215,7 +8215,7 @@ jr_006_7206:
 
 jr_006_7285:
     ld a, $01                                     ; $7285: $3e $01
-    ld [$c0a7], a                                 ; $7287: $ea $a7 $c0
+    ld [wGameState], a                                 ; $7287: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $728a: $fa $a6 $c0
     inc a                                         ; $728d: $3c
     ld [$c0a6], a                                 ; $728e: $ea $a6 $c0
@@ -8373,7 +8373,7 @@ jr_006_7389:
     ld a, $00                                     ; $738e: $3e $00
     ld [$cb66], a                                 ; $7390: $ea $66 $cb
     ld a, $01                                     ; $7393: $3e $01
-    ld [$c0a7], a                                 ; $7395: $ea $a7 $c0
+    ld [wGameState], a                                 ; $7395: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $7398: $fa $a6 $c0
     inc a                                         ; $739b: $3c
     ld [$c0a6], a                                 ; $739c: $ea $a6 $c0

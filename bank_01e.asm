@@ -803,7 +803,7 @@ jr_01e_450f:
 
 jr_01e_4516:
     ld a, $05                                     ; $4516: $3e $05
-    ld [$c0a7], a                                 ; $4518: $ea $a7 $c0
+    ld [wGameState], a                                 ; $4518: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $451b: $fa $a6 $c0
     inc a                                         ; $451e: $3c
     ld [$c0a6], a                                 ; $451f: $ea $a6 $c0
@@ -8127,7 +8127,7 @@ jr_01e_7267:
     add $20                                       ; $7267: $c6 $20
     ld [$c949], a                                 ; $7269: $ea $49 $c9
     ld a, $03                                     ; $726c: $3e $03
-    ld [$c0a7], a                                 ; $726e: $ea $a7 $c0
+    ld [wGameState], a                                 ; $726e: $ea $a7 $c0
     ld a, $00                                     ; $7271: $3e $00
     ld [$c130], a                                 ; $7273: $ea $30 $c1
     ld a, $05                                     ; $7276: $3e $05
@@ -8139,7 +8139,7 @@ jr_01e_727e:
     add $20                                       ; $727e: $c6 $20
     ld [$c949], a                                 ; $7280: $ea $49 $c9
     ld a, $03                                     ; $7283: $3e $03
-    ld [$c0a7], a                                 ; $7285: $ea $a7 $c0
+    ld [wGameState], a                                 ; $7285: $ea $a7 $c0
     ld a, $00                                     ; $7288: $3e $00
     ld [$c130], a                                 ; $728a: $ea $30 $c1
     ld a, $1d                                     ; $728d: $3e $1d
@@ -8161,7 +8161,7 @@ jr_01e_7295:
     ld a, [hl]                                    ; $72a7: $7e
     ld [$c97f], a                                 ; $72a8: $ea $7f $c9
     ld a, $03                                     ; $72ab: $3e $03
-    ld [$c0a7], a                                 ; $72ad: $ea $a7 $c0
+    ld [wGameState], a                                 ; $72ad: $ea $a7 $c0
     ld a, $00                                     ; $72b0: $3e $00
     ld [$c130], a                                 ; $72b2: $ea $30 $c1
     ld a, $02                                     ; $72b5: $3e $02
@@ -8548,7 +8548,7 @@ jr_01e_7505:
     add $20                                       ; $7505: $c6 $20
     ld [$c949], a                                 ; $7507: $ea $49 $c9
     ld a, $03                                     ; $750a: $3e $03
-    ld [$c0a7], a                                 ; $750c: $ea $a7 $c0
+    ld [wGameState], a                                 ; $750c: $ea $a7 $c0
     ld a, $00                                     ; $750f: $3e $00
     ld [$c130], a                                 ; $7511: $ea $30 $c1
     ld a, $05                                     ; $7514: $3e $05
@@ -8560,7 +8560,7 @@ jr_01e_751c:
     add $20                                       ; $751c: $c6 $20
     ld [$c949], a                                 ; $751e: $ea $49 $c9
     ld a, $03                                     ; $7521: $3e $03
-    ld [$c0a7], a                                 ; $7523: $ea $a7 $c0
+    ld [wGameState], a                                 ; $7523: $ea $a7 $c0
     ld a, $00                                     ; $7526: $3e $00
     ld [$c130], a                                 ; $7528: $ea $30 $c1
     ld a, $1d                                     ; $752b: $3e $1d
@@ -8660,7 +8660,7 @@ jr_01e_75bd:
     add $20                                       ; $75bd: $c6 $20
     ld [$c949], a                                 ; $75bf: $ea $49 $c9
     ld a, $03                                     ; $75c2: $3e $03
-    ld [$c0a7], a                                 ; $75c4: $ea $a7 $c0
+    ld [wGameState], a                                 ; $75c4: $ea $a7 $c0
     ld a, $00                                     ; $75c7: $3e $00
     ld [$c130], a                                 ; $75c9: $ea $30 $c1
     ld a, $05                                     ; $75cc: $3e $05
@@ -8672,7 +8672,7 @@ jr_01e_75d4:
     add $20                                       ; $75d4: $c6 $20
     ld [$c949], a                                 ; $75d6: $ea $49 $c9
     ld a, $03                                     ; $75d9: $3e $03
-    ld [$c0a7], a                                 ; $75db: $ea $a7 $c0
+    ld [wGameState], a                                 ; $75db: $ea $a7 $c0
     ld a, $00                                     ; $75de: $3e $00
     ld [$c130], a                                 ; $75e0: $ea $30 $c1
     ld a, $1d                                     ; $75e3: $3e $1d
@@ -9130,7 +9130,7 @@ Jump_01e_7818:
     ld a, [hl]                                    ; $7897: $7e
     ld [$c97f], a                                 ; $7898: $ea $7f $c9
     ld a, $03                                     ; $789b: $3e $03
-    ld [$c0a7], a                                 ; $789d: $ea $a7 $c0
+    ld [wGameState], a                                 ; $789d: $ea $a7 $c0
     ld a, $00                                     ; $78a0: $3e $00
     ld [$c130], a                                 ; $78a2: $ea $30 $c1
     ld a, $02                                     ; $78a5: $3e $02

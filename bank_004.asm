@@ -982,7 +982,7 @@ Jump_004_45e6:
     ld a, $18                                     ; $45f1: $3e $18
     call Call_000_13e0                            ; $45f3: $cd $e0 $13
     ld a, $01                                     ; $45f6: $3e $01
-    ld [$c0a7], a                                 ; $45f8: $ea $a7 $c0
+    ld [wGameState], a                                 ; $45f8: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $45fb: $fa $a6 $c0
     inc a                                         ; $45fe: $3c
     ld [$c0a6], a                                 ; $45ff: $ea $a6 $c0
@@ -1179,7 +1179,7 @@ jr_004_4710:
     ld a, $05                                     ; $4716: $3e $05
     call Call_000_0a5e                            ; $4718: $cd $5e $0a
     ld a, $01                                     ; $471b: $3e $01
-    ld [$c0a7], a                                 ; $471d: $ea $a7 $c0
+    ld [wGameState], a                                 ; $471d: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $4720: $fa $a6 $c0
     inc a                                         ; $4723: $3c
     ld [$c0a6], a                                 ; $4724: $ea $a6 $c0
@@ -2137,7 +2137,7 @@ jr_004_4c9b:
 
     call Call_004_4cb1                            ; $4c9f: $cd $b1 $4c
     ld a, $01                                     ; $4ca2: $3e $01
-    ld [$c0a7], a                                 ; $4ca4: $ea $a7 $c0
+    ld [wGameState], a                                 ; $4ca4: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $4ca7: $fa $a6 $c0
     inc a                                         ; $4caa: $3c
     ld [$c0a6], a                                 ; $4cab: $ea $a6 $c0
@@ -3321,7 +3321,7 @@ Call_004_54c9:
     xor a                                         ; $54e0: $af
     ld [$c130], a                                 ; $54e1: $ea $30 $c1
     ld a, $01                                     ; $54e4: $3e $01
-    ld [$c0a7], a                                 ; $54e6: $ea $a7 $c0
+    ld [wGameState], a                                 ; $54e6: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $54e9: $fa $a6 $c0
     inc a                                         ; $54ec: $3c
     ld [$c0a6], a                                 ; $54ed: $ea $a6 $c0
@@ -4724,7 +4724,7 @@ jr_004_5e2d:
     ld h, $41                                     ; $5e50: $26 $41
     ld a, $05                                     ; $5e52: $3e $05
     call Call_000_0a5e                            ; $5e54: $cd $5e $0a
-    ld a, [$c1de]                                 ; $5e57: $fa $de $c1
+    ld a, [wPlayer_Facing]                                 ; $5e57: $fa $de $c1
     ld [$c9c0], a                                 ; $5e5a: $ea $c0 $c9
     ld a, [$c811]                                 ; $5e5d: $fa $11 $c8
     ldh [$9c], a                                  ; $5e60: $e0 $9c
@@ -5622,7 +5622,7 @@ jr_004_661c:
     ld a, $01                                     ; $6638: $3e $01
     ld [$c9e7], a                                 ; $663a: $ea $e7 $c9
     ld a, $01                                     ; $663d: $3e $01
-    ld [$c0a7], a                                 ; $663f: $ea $a7 $c0
+    ld [wGameState], a                                 ; $663f: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $6642: $fa $a6 $c0
     inc a                                         ; $6645: $3c
     ld [$c0a6], a                                 ; $6646: $ea $a6 $c0
@@ -6095,12 +6095,12 @@ jr_004_690a:
     ld l, a                                       ; $6927: $6f
     push hl                                       ; $6928: $e5
     ld bc, $1018                                  ; $6929: $01 $18 $10
-    ld a, [$c1d7]                                 ; $692c: $fa $d7 $c1
+    ld a, [wMap_Position_x]                                 ; $692c: $fa $d7 $c1
     ld c, $04                                     ; $692f: $0e $04
     call Call_000_0758                            ; $6931: $cd $58 $07
     ld a, l                                       ; $6934: $7d
     ldh [$a7], a                                  ; $6935: $e0 $a7
-    ld a, [$c1d8]                                 ; $6937: $fa $d8 $c1
+    ld a, [wMap_Position_y]                                 ; $6937: $fa $d8 $c1
     ld c, $03                                     ; $693a: $0e $03
     call Call_000_0758                            ; $693c: $cd $58 $07
     ldh a, [$a7]                                  ; $693f: $f0 $a7
@@ -6123,7 +6123,7 @@ jr_004_690a:
     ld [$c9bf], a                                 ; $695c: $ea $bf $c9
     ld [$c9c1], a                                 ; $695f: $ea $c1 $c9
     ld [$c9bc], a                                 ; $6962: $ea $bc $c9
-    ld a, [$c1de]                                 ; $6965: $fa $de $c1
+    ld a, [wPlayer_Facing]                                 ; $6965: $fa $de $c1
     ld [$c9c0], a                                 ; $6968: $ea $c0 $c9
     ldh a, [rIE]                                  ; $696b: $f0 $ff
     push af                                       ; $696d: $f5
@@ -8282,7 +8282,7 @@ jr_004_7475:
     xor a                                         ; $7480: $af
     ld [$c130], a                                 ; $7481: $ea $30 $c1
     ld a, $01                                     ; $7484: $3e $01
-    ld [$c0a7], a                                 ; $7486: $ea $a7 $c0
+    ld [wGameState], a                                 ; $7486: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $7489: $fa $a6 $c0
     inc a                                         ; $748c: $3c
     ld [$c0a6], a                                 ; $748d: $ea $a6 $c0

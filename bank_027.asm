@@ -985,7 +985,7 @@ Jump_027_45e8:
     set 5, a                                      ; $45ef: $cb $ef
     ldh [rLCDC], a                                ; $45f1: $e0 $40
     ld a, $01                                     ; $45f3: $3e $01
-    ld [$c0a7], a                                 ; $45f5: $ea $a7 $c0
+    ld [wGameState], a                                 ; $45f5: $ea $a7 $c0
     ld a, $01                                     ; $45f8: $3e $01
     ldh [$8e], a                                  ; $45fa: $e0 $8e
     xor a                                         ; $45fc: $af
@@ -1684,7 +1684,7 @@ jr_027_498f:
     ld a, $00                                     ; $499d: $3e $00
     ld [$c4a7], a                                 ; $499f: $ea $a7 $c4
     ld a, $02                                     ; $49a2: $3e $02
-    ld [$c0a7], a                                 ; $49a4: $ea $a7 $c0
+    ld [wGameState], a                                 ; $49a4: $ea $a7 $c0
     ld [$c0a6], a                                 ; $49a7: $ea $a6 $c0
     xor a                                         ; $49aa: $af
     ld [$c12f], a                                 ; $49ab: $ea $2f $c1
@@ -2461,7 +2461,7 @@ jr_027_4e6e:
     ld [$c4a7], a                                 ; $4e70: $ea $a7 $c4
     ld [$c4ad], a                                 ; $4e73: $ea $ad $c4
     ld a, $02                                     ; $4e76: $3e $02
-    ld [$c0a7], a                                 ; $4e78: $ea $a7 $c0
+    ld [wGameState], a                                 ; $4e78: $ea $a7 $c0
     ld [$c0a6], a                                 ; $4e7b: $ea $a6 $c0
     xor a                                         ; $4e7e: $af
     ld [$c12f], a                                 ; $4e7f: $ea $2f $c1

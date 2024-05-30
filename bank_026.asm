@@ -591,7 +591,7 @@ Call_026_43df:
     ld a, $14                                     ; $440a: $3e $14
     ld [$c893], a                                 ; $440c: $ea $93 $c8
     ld a, $03                                     ; $440f: $3e $03
-    ld [$c0a7], a                                 ; $4411: $ea $a7 $c0
+    ld [wGameState], a                                 ; $4411: $ea $a7 $c0
     ret                                           ; $4414: $c9
 
 
@@ -606,7 +606,7 @@ jr_026_4415:
     xor a                                         ; $4425: $af
     ld [$c130], a                                 ; $4426: $ea $30 $c1
     ld a, $03                                     ; $4429: $3e $03
-    ld [$c0a7], a                                 ; $442b: $ea $a7 $c0
+    ld [wGameState], a                                 ; $442b: $ea $a7 $c0
     ret                                           ; $442e: $c9
 
 
@@ -695,7 +695,7 @@ jr_026_4480:
     ld a, $14                                     ; $44b5: $3e $14
     ld [$c893], a                                 ; $44b7: $ea $93 $c8
     ld a, $03                                     ; $44ba: $3e $03
-    ld [$c0a7], a                                 ; $44bc: $ea $a7 $c0
+    ld [wGameState], a                                 ; $44bc: $ea $a7 $c0
     ld a, $01                                     ; $44bf: $3e $01
     ld [$c9e7], a                                 ; $44c1: $ea $e7 $c9
     ret                                           ; $44c4: $c9
@@ -775,7 +775,7 @@ jr_026_44c6:
     ld a, $14                                     ; $4543: $3e $14
     ld [$c893], a                                 ; $4545: $ea $93 $c8
     ld a, $03                                     ; $4548: $3e $03
-    ld [$c0a7], a                                 ; $454a: $ea $a7 $c0
+    ld [wGameState], a                                 ; $454a: $ea $a7 $c0
     ld a, $01                                     ; $454d: $3e $01
     ld [$c9e7], a                                 ; $454f: $ea $e7 $c9
     ret                                           ; $4552: $c9

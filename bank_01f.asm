@@ -6088,7 +6088,7 @@ jr_01f_5f3d:
     ld [$c9bc], a                                 ; $5fb5: $ea $bc $c9
 
 jr_01f_5fb8:
-    ld a, [$c1de]                                 ; $5fb8: $fa $de $c1
+    ld a, [wPlayer_Facing]                                 ; $5fb8: $fa $de $c1
     ld [$c9c0], a                                 ; $5fbb: $ea $c0 $c9
     ld a, [$c811]                                 ; $5fbe: $fa $11 $c8
     ldh [$9c], a                                  ; $5fc1: $e0 $9c
@@ -6846,7 +6846,7 @@ Jump_01f_6558:
     ld a, $06                                     ; $6564: $3e $06
     ld [$c12f], a                                 ; $6566: $ea $2f $c1
     ld a, $05                                     ; $6569: $3e $05
-    ld [$c0a7], a                                 ; $656b: $ea $a7 $c0
+    ld [wGameState], a                                 ; $656b: $ea $a7 $c0
     ret                                           ; $656e: $c9
 
 
@@ -7457,14 +7457,14 @@ jr_01f_6a6b:
     ld a, $06                                     ; $6a99: $3e $06
     ld [$c12f], a                                 ; $6a9b: $ea $2f $c1
     ld a, $05                                     ; $6a9e: $3e $05
-    ld [$c0a7], a                                 ; $6aa0: $ea $a7 $c0
+    ld [wGameState], a                                 ; $6aa0: $ea $a7 $c0
     ret                                           ; $6aa3: $c9
 
 
     ld a, $06                                     ; $6aa4: $3e $06
     ld [$c12f], a                                 ; $6aa6: $ea $2f $c1
     ld a, $05                                     ; $6aa9: $3e $05
-    ld [$c0a7], a                                 ; $6aab: $ea $a7 $c0
+    ld [wGameState], a                                 ; $6aab: $ea $a7 $c0
     ret                                           ; $6aae: $c9
 
 
@@ -8653,7 +8653,7 @@ jr_01f_72cd:
     ld a, $06                                     ; $73cf: $3e $06
     ld [$c12f], a                                 ; $73d1: $ea $2f $c1
     ld a, $05                                     ; $73d4: $3e $05
-    ld [$c0a7], a                                 ; $73d6: $ea $a7 $c0
+    ld [wGameState], a                                 ; $73d6: $ea $a7 $c0
     ret                                           ; $73d9: $c9
 
 

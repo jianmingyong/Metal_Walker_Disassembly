@@ -785,7 +785,7 @@ jr_005_452e:
 
 
     ld a, $01                                     ; $45e8: $3e $01
-    ld [$c0a7], a                                 ; $45ea: $ea $a7 $c0
+    ld [wGameState], a                                 ; $45ea: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $45ed: $fa $a6 $c0
     inc a                                         ; $45f0: $3c
     ld [$c0a6], a                                 ; $45f1: $ea $a6 $c0
@@ -6687,7 +6687,7 @@ Call_005_67ea:
     jp z, Jump_005_67fe                           ; $67ee: $ca $fe $67
 
     ld a, $01                                     ; $67f1: $3e $01
-    ld [$c0a7], a                                 ; $67f3: $ea $a7 $c0
+    ld [wGameState], a                                 ; $67f3: $ea $a7 $c0
     ld a, [$c0a6]                                 ; $67f6: $fa $a6 $c0
     inc a                                         ; $67f9: $3c
     ld [$c0a6], a                                 ; $67fa: $ea $a6 $c0
